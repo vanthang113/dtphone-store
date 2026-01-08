@@ -1,0 +1,30 @@
+{
+    "id": "NV004",
+    "name": "Lê Văn C",
+    "role": "Nhân viên",
+    "gender": "Nam",
+    "dob": "10/10/1996",
+    "phone": "0904567890",
+    "email": "levanc@example.com",
+    "address": "Cần Thơ, Việt Nam",
+    "cccd": "423456789000",
+    "code": "NV004",
+    "position": "Chăm sóc khách hàng",
+    "department": "Dịch vụ",
+    "startDate": "01/07/2024",
+    "contractType": "Thử việc",
+    "status": "Đang làm việc",
+    "account": "levanc",
+    "permissions": "Xem đơn, Hỗ trợ khách hàng",
+    "salary": "9,000,000 VND",
+    "allowance": "800,000 VND",
+    "leaveDays": "7 ngày/năm",
+    "payMethod": "Chuyển khoản",
+    "bank": "1023 4567 8910 (ACB)",
+    "docs": [
+      { "label": "Sơ yếu lý lịch", "file": "so-yeu-ly-lich.pdf" },
+      { "label": "CCCD", "file": "cccd.pdf" },
+      { "label": "Hợp đồng", "file": "hop-dong.pdf" }
+    ]
+  }
+  
