@@ -67,18 +67,18 @@ export default function LoginForm() {
             {/* Logo quay về trang chủ */}
             <Link
                 href="/"
-                className="w-full flex justify-start mb-3 tablet:mb-6"
+                className="w-full flex justify-left mb-8 tablet:mb-10"
                 >
                 <Image
-                    src="/images/"
-                    alt="Smember"
-                    width={140}
-                    height={40}
-                    className="h-8 w-auto object-contain"
+                    src="/images/logo-dtphone-store.png"
+                    alt="DTPhone"
+                    width={480}
+                    height={160}
+                    className="h-28 tablet:h-36 laptop:h-44 desktop:h-52 w-auto object-contain"
                     priority
                 />
             </Link>
-            <h1 className="text-xl tablet:text-3xl laptop:text-4xl text-center tablet:text-primary-500 font-bold color-red-500">
+            <h1 className="text-xl tablet:text-3xl laptop:text-4xl text-left tablet:text-primary-500 font-bold color-red-500">
                 Đăng nhập SMEMBER
             </h1>
             <form
