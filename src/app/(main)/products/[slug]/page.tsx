@@ -196,7 +196,6 @@ export default function ProductDetail({ params }: Props) {
             </div>
           </div>
 
-          <HighlightSection slug={slug} />
           <ReviewSection slug={slug} />
           <QASection />
         </div>
