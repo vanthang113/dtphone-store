@@ -119,17 +119,16 @@ export default function LoginForm() {
           <section className="w-full">
             <div className="mx-auto w-full max-w-[520px]">
                 <div className="flex items-center gap-3 mb-2">
-                  <Link href="/" className="inline-flex flex-shrink-0">
-                    <Image
-                      src="/images/logo-dt.png"
-                      alt="DTPhone"
-                      width={180}
-                      height={56}
-                      className="h-10 w-auto object-contain"
-                      priority
-                    />
-                  </Link>
-
+                <Link href="/" className="flex-shrink-0 flex justify-center tablet:justify-start">
+                <Image
+                    src="/images/logo-dt.png"
+                    alt="DTPhone"
+                    width={300}
+                    height={90}
+                    className="h-16 tablet:h-20 laptop:h-24 w-auto object-contain"
+                    priority
+                />
+            </Link>
                   <h1 className="text-2xl tablet:text-3xl font-extrabold text-center text-red-600">
                     Đăng nhập SMEMBER
                   </h1>

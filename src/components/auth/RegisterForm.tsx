@@ -116,12 +116,11 @@ export default function RegisterForm() {
                     alt="DTPhone"
                     width={300}
                     height={90}
-                    // ↓ nhỏ lại so với trước
                     className="h-16 tablet:h-20 laptop:h-24 w-auto object-contain"
                     priority
                 />
             </Link>
-                <h1 className="text-xl tablet:text-3xl laptop:text-4xl max-w-[530px] font-bold text-red-600 flex-1">
+                <h1 className="text-2xl tablet:text-3xl font-extrabold max-w-[550px] font-bold text-red-600 flex-1">
                    Đăng ký trở thành SMEMBER
                 </h1>
              </div>

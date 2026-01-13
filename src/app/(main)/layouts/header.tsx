@@ -53,7 +53,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#d70018] shadow-md">
+    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-[#d70018] to-[#e45464] shadow-md">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between px-2 h-[64px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0 mr-2">
