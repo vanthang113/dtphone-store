@@ -61,7 +61,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
 
           {/* Product Details */}
           <div className="md:flex-1 ml-3">
-            <h3 className="text-gray-900 text-base font-semibold mb-1">
+            <h3 className="text-white text-base font-semibold mb-1">
               {name}
             </h3>
             
@@ -82,7 +82,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
                 onClick={onDelete}
                 className="p-1 hover:bg-gray-100"
               >
-                <Trash2 className="w-5 h-5 text-gray-400" />
+                <Trash2 className="w-5 h-5 text-white" />
               </Button>
             </div>
 
@@ -96,9 +96,9 @@ const ProductItem: React.FC<ProductItemProps> = ({
                   className="p-1 hover:bg-gray-100 h-8 w-8"
                   disabled={quantity <= 1}
                 >
-                  <Minus className="w-4 h-4 text-gray-600" />
+                  <Minus className="w-4 h-4 text-white" />
                 </Button>
-                <span className="px-3 py-1 text-gray-900 min-w-[40px] text-center">
+                <span className="px-3 py-1 text-white min-w-[40px] text-center">
                   {quantity}
                 </span>
                 <Button
@@ -107,7 +107,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
                   onClick={() => onQuantityChange(1)}
                   className="p-1 hover:bg-gray-100 h-8 w-8"
                 >
-                  <Plus className="w-4 h-4 text-gray-600" />
+                  <Plus className="w-4 h-4 text-white" />
                 </Button>
               </div>
             </div>

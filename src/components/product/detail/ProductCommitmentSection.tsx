@@ -9,7 +9,7 @@ export default function ProductCommitmentSection() {
         <div className="flex flex-col p-4 bg-gray-50 rounded-2xl space-y-2">
           <div
             className="w-10 h-10 text-white font-bold text-sm rounded-full px-2 text-center hover:brightness-110 transition flex flex-col items-center justify-center leading-tight"
-            style={{ background: 'linear-gradient(0deg, #d70018, #e45464)' }}
+            style={{ background: 'linear-gradient(0deg, #00868B, #00868B)' }}
           >
             <SmartphoneCharging />
           </div>
@@ -18,7 +18,7 @@ export default function ProductCommitmentSection() {
         <div className="flex flex-col p-4 bg-gray-50 rounded-2xl space-y-2">
           <div
             className="w-10 h-10 text-white font-bold text-sm rounded-full px-2 text-center hover:brightness-110 transition flex flex-col items-center justify-center leading-tight"
-            style={{ background: 'linear-gradient(0deg, #d70018, #e45464)' }}
+            style={{ background: 'linear-gradient(0deg, #00868B, #00868B)' }}
           >
             <ShieldX />
           </div>
@@ -30,7 +30,7 @@ export default function ProductCommitmentSection() {
         <div className="flex flex-col p-4 bg-gray-50 rounded-2xl space-y-2">
           <div
             className="w-10 h-10 text-white font-bold text-sm rounded-full px-2 text-center hover:brightness-110 transition flex flex-col items-center justify-center leading-tight"
-            style={{ background: 'linear-gradient(0deg, #d70018, #e45464)' }}
+            style={{ background: 'linear-gradient(0deg, #00868B, #00868B)' }}
           >
             <Cpu />
           </div>
@@ -44,7 +44,7 @@ export default function ProductCommitmentSection() {
         <div className="flex flex-col p-4 bg-gray-50 rounded-2xl space-y-2">
           <div
             className="w-10 h-10 text-white font-bold text-sm rounded-full flex flex-col items-center justify-center"
-            style={{ background: 'linear-gradient(0deg, #d70018, #e45464)' }}
+            style={{ background: 'linear-gradient(0deg, #00868B, #00868B)' }}
           >
             <Tickets />
           </div>

@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Eye, Clock, DollarSign } from 'lucide-react';
 
 export const UserInfo = () => (
-    <Card className="bg-white w-full px-small py-small tablet:px-1x-large tablet:py-medium rounded-1x-large mb-small">
+    <Card className="text-black bg-white w-full px-small py-small tablet:px-1x-large tablet:py-medium rounded-1x-large mb-small">
         <CardContent className="flex flex-col lg:flex-row items-center justify-around gap-y-4 p-4 lg:p-0">
             <div className="lg:flex-1 flex justify-center">
                 <div className="flex items-center gap-1x-small laptop:gap-small desktop:gap-medium">
@@ -37,7 +37,7 @@ export const UserInfo = () => (
                 </div>
             </div>
 
-            <div className="w-4/5 h-px bg-red-500 lg:w-px lg:h-24"></div>
+            <div className="w-4/5 h-px bg-[#00868B] lg:w-px lg:h-24"></div>
 
             <div className="flex flex-row w-full lg:flex-[2]">
                 <div className="flex-1 flex flex-col items-center gap-2">
@@ -61,7 +61,7 @@ export const UserInfo = () => (
                     </div>
                 </div>
 
-                <div className="w-px h-24 bg-red-500"></div>
+                <div className="w-px h-24 bg-[#00868B]"></div>
 
                 <div className="flex-1 flex flex-col items-center gap-2">
                     <div className="flex items-center gap-2x-small tablet:gap-1x-small laptop:gap-small desktop:gap-medium">

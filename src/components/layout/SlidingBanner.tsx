@@ -112,7 +112,7 @@ export function SlidingBanner({ slides, slideTitles: initialSlideTitles }: Slidi
           >
             {item.label}
             {item.active && (
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-600 rounded-full z-10" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#00777B] rounded-full z-10" />
             )}
           </div>
         ))}

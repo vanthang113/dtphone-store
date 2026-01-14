@@ -51,27 +51,27 @@ export default function MenuSlidePage() {
     return (
         <div className="mt-12">
             {/* Menu Slide Section */}
-            <div className="fixed top-[64px] left-0 w-full bg-[#c00c0c] text-white px-4 sm:px-6 lg:px-20 py-2 flex justify-around items-center z-40">
+            <div className="fixed top-[64px] left-0 w-full bg-[#00FFFF] text-white px-4 sm:px-6 lg:px-20 py-2 flex justify-around items-center z-40">
                 <Button
-                    className="text-base sm:text-xl text-white bg-[#c00c0c] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
+                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('register-section')}
                 >
                     ĐĂNG KÝ
                 </Button>
                 <Button
-                    className="text-base sm:text-xl text-white bg-[#c00c0c] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
+                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('events-section')}
                 >
                     LỊCH SỰ KIỆN
                 </Button>
                 <Button
-                    className="text-base sm:text-xl text-white bg-[#c00c0c] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
+                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('promotions-section')}
                 >
                     ƯU ĐÃI
                 </Button>
                 <Button
-                    className="text-base sm:text-xl text-white bg-[#c00c0c] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
+                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('top-deals-section')}
                 >
                     MUA NGAY
@@ -298,7 +298,7 @@ export default function MenuSlidePage() {
 
                 {/* Top deal xịn */}
                 <div id="top-deals-section" className="mt-10">
-                    <div className="bg-[#d7001d] w-full h-[670px] flex flex-col rounded-xl px-4">
+                    <div className="bg-[#] w-full h-[670px] flex flex-col rounded-xl px-4">
                         <div className=" flex flex-col justify-between mt-10 md:mt-1 lg:mt-4">
                             <Image
                                 src="/images/ảnh sinh viên lựa chọn.webp"
@@ -307,8 +307,8 @@ export default function MenuSlidePage() {
                                 height={100}
                                 className=" object-contain"
                             />
-                            <div className="flex gap-2 lg:ml-auto items-center justify-center mt-4 lg:mt-0">
-                                <span className="text-white text-sm font-medium mb-1">Sắp xếp theo:</span>
+                            <div className="text-black flex gap-2 lg:ml-auto items-center justify-center mt-4 lg:mt-0">
+                                <span className="text-black text-sm font-medium mb-1">Sắp xếp theo:</span>
                                 <select className="rounded-full border-1 border-black px-4 py-1 text-sm bg-white">
                                     <option>Xem nhiều</option>
                                     <option>Mới nhất</option>
@@ -327,7 +327,7 @@ export default function MenuSlidePage() {
                 </div>
 
                 {/* Toàn bộ Laptop */}
-                <div className='relative mt-10 sm:mt-50 w-full h-[680px] lg:h-auto bg-[#efefef] rounded-lg border-2 border-[#dc000f]'>
+                <div className='relative mt-10 sm:mt-50 w-full h-[680px] lg:h-auto bg-[#efefef] rounded-lg border-2 border-[#00868B]'>
                     <Image
                         src="/images/B2S_2025_Title_Laptop-desk.webp"
                         alt="Laptop Title"
@@ -420,7 +420,7 @@ export default function MenuSlidePage() {
                             className="hover:opacity-80 transition"
                         />
                     </div>
-                    <div className='rounded-2xl border-2 border-[#dc000f]'>
+                    <div className='rounded-2xl border-2 border-[#00868B]'>
                         <Image
                             src="/images/Cac_Thuong_Hieu_Dong_Hanh.webp"
                             alt="Partner Brands Icons"

@@ -49,7 +49,7 @@ export default function QASection() {
 
   return (
     <div className="w-full h-full rounded-lg bg-gray-100 mt-4 items-start md:items-center gap-4 p-4">
-      <h1 className="text-xl font-bold">Hỏi và đáp</h1>
+      <h1 className="text-black text-xl font-bold">Hỏi và đáp</h1>
       <div className="flex flex-col md:flex-row items-start md:items-center mt-4 bg-white rounded-lg p-4 gap-4">
         <Image
           src="/images/cellphones/hình ảnh biểu tượng cellphoneS.gif"
@@ -71,7 +71,7 @@ export default function QASection() {
               placeholder="Viết câu hỏi của bạn tại đây"
               className="flex-grow px-4 py-4 border rounded-lg outline-none text-sm bg-white mr-2"
             />
-            <button className="bg-red-600 text-white px-4 py-4 rounded-lg flex items-center gap-1 hover:bg-red-700 text-sm">
+            <button className="bg-[#00868B] text-white px-4 py-4 rounded-lg flex items-center gap-1 hover:bg-[#00777B] text-sm">
               Gửi câu hỏi <ArrowRight className="h-4 w-4 ml-1" />
             </button>
           </div>

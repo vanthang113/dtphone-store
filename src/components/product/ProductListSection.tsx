@@ -36,7 +36,7 @@ export function ProductListSection({ title, categoryLink, relatedTags, products,
           </h2>
           <a
             href={categoryLink}
-            className="text-[13px] font-normal text-[#111] hover:text-[#d70018] hover:underline hover:font-bold transition-all"
+            className="text-[13px] font-normal text-[#111] hover:text-[#00868B] hover:underline hover:font-bold transition-all"
           >
             Xem tất cả
           </a>

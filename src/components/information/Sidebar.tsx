@@ -67,13 +67,13 @@ export const Sidebar = () => {
                                         href={link.href}
                                         target={link.external ? '_blank' : '_self'} // Mở tab mới cho link ngoài
                                         className={`flex text-base items-center group relative transition-colors duration-200 rounded-md font-semibold ${isActive
-                                            ? 'bg-red-50 text-red-600 font-bold' // Style cho link active
-                                            : 'text-neutral-600 hover:bg-red-50 hover:text-red-600' // Style cho link thường
+                                            ? 'bg-[#E0FFFF] text-[#00868B] font-bold' // Style cho link active
+                                            : 'text-neutral-600 hover:bg-[#E0FFFF] hover:text-[#00868B]' // Style cho link thường
                                             }`}
                                     >
                                         {/* Thanh dọc màu đỏ báo hiệu link active */}
                                         <div
-                                            className={`absolute top-0 left-0 w-1 h-full shrink-0 rounded-r-full transition-colors duration-200 ${isActive ? 'bg-red-500' : 'bg-transparent group-hover:bg-red-500'
+                                            className={`absolute top-0 left-0 w-1 h-full shrink-0 rounded-r-full transition-colors duration-200 ${isActive ? 'bg-[#00868B]' : 'bg-transparent group-hover:bg-[#00868B]'
                                                 }`}
                                         ></div>
                                         <div className="w-full px-4 py-3 flex items-center gap-3">
@@ -93,8 +93,8 @@ export const Sidebar = () => {
                         {/* Nút Đăng xuất */}
                         <button
                             onClick={handleLogout}
-                            className="flex text-base items-center group relative transition-colors duration-200 rounded-md text-neutral-600 hover:bg-red-50 hover:text-red-600 font-semibold">
-                            <div className="absolute top-0 left-0 w-1 h-full shrink-0 rounded-r-full transition-colors duration-200 bg-transparent group-hover:bg-red-500"></div>
+                            className="flex text-base items-center group relative transition-colors duration-200 rounded-md text-neutral-600 hover:bg-[#E0FFFF] hover:text-[#00868B] font-semibold">
+                            <div className="absolute top-0 left-0 w-1 h-full shrink-0 rounded-r-full transition-colors duration-200 bg-transparent group-hover:bg-[#00868B]"></div>
                             <div className="w-full px-4 py-3 flex items-center gap-3 text-left">
                                 <LogOut className="shrink-0" size={20} />
                                 <span>Đăng xuất</span>

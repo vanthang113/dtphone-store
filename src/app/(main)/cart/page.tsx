@@ -80,7 +80,7 @@ export default function CartPage(): JSX.Element {
         <div className="px-4 py-4">
           {/* Cart Tab */}
           <div className="flex mb-4">
-            <Button className="bg-red-600 text-white px-4 py-2 rounded-lg text-base font-semibold mr-2">
+            <Button className="bg-[#00868B] text-white px-4 py-2 rounded-lg text-base font-semibold mr-2">
               Giỏ hàng
             </Button>
           </div>
@@ -132,8 +132,8 @@ export default function CartPage(): JSX.Element {
           <Button 
             className={`py-3 px-3 rounded-lg font-medium text-white transition-all duration-300 ease-in-out ${
               hasSelectedProducts 
-                ? 'bg-red-600 hover:bg-red-700 shadow-lg transform hover:scale-105' 
-                : 'bg-gray-400 hover:bg-gray-500'
+                ? 'bg-[#00868B] hover:bg-[#00777B] shadow-lg transform hover:scale-105' 
+                : 'bg-gray-400 hover:bg-[#00868B]'
             }`}
             onClick={handleProceedToPayment}
             disabled={!hasSelectedProducts}

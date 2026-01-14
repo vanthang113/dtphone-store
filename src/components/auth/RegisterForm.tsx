@@ -120,7 +120,7 @@ export default function RegisterForm() {
                     priority
                 />
             </Link>
-                <h1 className="text-2xl tablet:text-3xl font-extrabold max-w-[550px] font-bold text-red-600 flex-1">
+                <h1 className="text-2xl tablet:text-3xl font-extrabold max-w-[550px] font-bold text-[#00868B] flex-1">
                    Đăng ký trở thành SMEMBER
                 </h1>
              </div>
@@ -329,7 +329,7 @@ export default function RegisterForm() {
                             htmlFor="promotionConsent"
                             className="text-sm tablet:text-base font-regular"
                         >
-                            Đăng ký nhận tin khuyến mãi từ CellphoneS
+                            Đăng ký nhận tin khuyến mãi từ DTPhone
                         </Label>
                     </div>
                     <div className="flex gap-2 items-center">
@@ -378,7 +378,7 @@ export default function RegisterForm() {
                     <Button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full min-h-[40px] tablet:min-h-[48px] text-sm tablet:text-base font-medium bg-red-500 hover:bg-red-700 text-white disabled:opacity-50"
+                        className="w-full min-h-[40px] tablet:min-h-[48px] text-sm tablet:text-base font-medium bg-[#00868B] hover:bg-[#00777B] text-white disabled:opacity-50"
                     >
                         {isLoading ? 'Đang xử lý...' : 'Hoàn tất đăng ký'}
                     </Button>

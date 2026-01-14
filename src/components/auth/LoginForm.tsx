@@ -65,18 +65,17 @@ export default function LoginForm() {
             {/* Heading */}
             <div className="space-y-2">
               <p className="text-lg text-neutral-800">
-                Nhập hội khách hàng thành viên <span className="font-extrabold text-red-600">SMEMBER</span>
+                Nhập hội khách hàng thành viên <span className="font-extrabold text-[#00777B]">SMEMBER</span>
               </p>
               <p className="text-base text-neutral-700">
-                Để không bỏ lỡ các ưu đãi hấp dẫn từ <span className="font-extrabold text-red-600">DTPhone</span>
+                Để không bỏ lỡ các ưu đãi hấp dẫn từ <span className="font-extrabold text-[#00777B]">DTPhone</span>
               </p>
             </div>
 
             {/* Box ưu đãi (giống card bên trái) */}
             <div className="mt-6 rounded-2xl border border-red-100 bg-neutral-50 p-6 relative">
               {/* “khung đỏ” bo góc kiểu cellphones */}
-              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-red-500/20" />
-
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-[#00CDCD]" />
               <ul className="space-y-4">
                 {[
                   'Chiết khấu đến 5% khi mua các sản phẩm tại DTPhone',
@@ -87,7 +86,8 @@ export default function LoginForm() {
                   'Đặc quyền ưu đãi thêm cho học sinh / sinh viên',
                 ].map((t, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-sm text-neutral-800">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-red-50 text-red-600">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#00868B] text-white">
+                    {/* <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-red-50 text-red-600"> */}
                       <Gift className="h-4 w-4" />
                     </span>
                     <span>{t}</span>
@@ -96,7 +96,7 @@ export default function LoginForm() {
               </ul>
 
               <div className="mt-5 text-center">
-                <Link href="/" className="text-sm font-semibold text-red-600 hover:text-red-700">
+                <Link href="/" className="text-sm font-semibold text-[#00868B] hover:text-[#07777B]">
                   Xem chi tiết chính sách ưu đãi Smember &rsaquo;
                 </Link>
               </div>
@@ -129,7 +129,7 @@ export default function LoginForm() {
                     priority
                 />
             </Link>
-                  <h1 className="text-2xl tablet:text-3xl font-extrabold text-center text-red-600">
+                  <h1 className="text-2xl tablet:text-3xl font-extrabold text-center text-[#00868B]">
                     Đăng nhập SMEMBER
                   </h1>
                 </div>
@@ -207,7 +207,7 @@ export default function LoginForm() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="h-12 text-base font-semibold bg-red-600 hover:bg-red-700 text-white disabled:opacity-50"
+                  className="h-12 text-base font-semibold bg-[#00868B] hover:bg-[#00777B] text-white disabled:opacity-50"
                 >
                   {isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'}
                 </Button>
@@ -243,7 +243,7 @@ export default function LoginForm() {
 
                 <div className="pt-2 text-center">
                   <span className="text-sm text-neutral-600">Bạn chưa có tài khoản? </span>
-                  <Link href="/register" className="text-sm font-semibold text-red-600 hover:text-red-700">
+                  <Link href="/register" className="text-sm font-semibold text-[#00868B] hover:text-[#00777B]">
                     Đăng ký ngay
                   </Link>
                 </div>

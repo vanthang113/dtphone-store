@@ -14,14 +14,14 @@ const TradeInSection: React.FC<TradeInSectionProps> = ({ minPrice, options }) =>
       <div className="flex items-center space-x-3">
         <div
           className="flex w-10 h-10 text-white font-bold text-sm rounded-full px-2 text-center hover:brightness-110 transition flex flex-col items-center justify-center leading-tight"
-          style={{ background: 'linear-gradient(0deg, #d70018, #e45464)' }}
+          style={{ background: 'linear-gradient(0deg, #00868B, #00868B)' }}
         >
           <ArrowBigUpDash />
         </div>
 
         {/* Text nội dung */}
         <div>
-          <p className="font-semibold text-base">Thu cũ lên đời</p>
+          <p className="font-semibold text-[#00868B]">Thu cũ lên đời</p>
           <p className="text-sm text-gray-600">
             Chỉ từ <span className="text-blue-600 font-semibold">{minPrice}</span>
           </p>
@@ -37,7 +37,7 @@ const TradeInSection: React.FC<TradeInSectionProps> = ({ minPrice, options }) =>
         </select>
 
         {/* Nút kiểm tra */}
-        <button className="bg-red-100 text-red-600 font-semibold text-sm px-4 py-2 rounded-md flex items-center hover:bg-red-200 transition cursor-pointer">
+        <button className="bg-[#00868B] text-white font-semibold text-sm px-4 py-2 rounded-md flex items-center hover:bg-[#00868B] transition cursor-pointer">
           Kiểm tra ngay
           <ArrowRight className="h-4 w-4 ml-1" />
         </button>

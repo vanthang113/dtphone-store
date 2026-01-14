@@ -45,7 +45,7 @@ export default function MainLayout({
           {!isChatOpen && (
             <button
               onClick={() => setIsChatOpen(true)}
-              className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-full shadow-lg hover:bg-red-600 transition-colors"
+              className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-2 bg-[#00777B] text-white rounded-full shadow-lg hover:bg-[#00777B] transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               <span>Liên hệ</span>

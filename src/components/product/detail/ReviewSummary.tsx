@@ -14,7 +14,7 @@ export default function ReviewSummary() {
           <Star className="text-yellow-400 text-xs" />
         </div>
         <p className="text-sm text-gray-600">11 lượt đánh giá</p>
-        <Link href="#" className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+        <Link href="#" className="mt-4 px-4 py-2 bg-[#00868B] text-white rounded-lg hover:bg-[#00777B] transition">
           Viết đánh giá
         </Link>
       </div>
@@ -27,7 +27,7 @@ export default function ReviewSummary() {
             </div>
             <div className="w-full bg-gray-300 h-2 rounded-full overflow-hidden max-w-[300px]">
               <div
-                className="bg-red-600 h-2"
+                className="bg-yellow-400 h-2"
                 style={{ width: star === 5 ? "65%" : star === 4 ? "35%" : "0%" }}
               />
             </div>

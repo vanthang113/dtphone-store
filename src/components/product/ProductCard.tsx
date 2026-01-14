@@ -50,12 +50,12 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
                     {/* Thông tin giảm giá */}
                     <div className="absolute top-0 left-0 flex flex-col gap-1">
                         {discount && (
-                            <div className="bg-red-500 text-white text-xs font-bold px-3 
+                            <div className="bg-[#00777B] text-white text-xs font-bold px-3 
                                 py-1.5 rounded-r-md shadow-lg transform -translate-x-2 hover:translate-x-0 transition-all duration-300 ease-in-out 
                                 hover:shadow-xl hover:scale-105 hover:bg-red-600">
                                 -{discount}%
                             </div>
-                        )}
+                        )},
                     </div>
                 </Link>
             </CardHeader>

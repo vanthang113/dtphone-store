@@ -23,12 +23,12 @@ export function CategorySection({ categories, relatedTags, title, categoryLink, 
     <div className="mt-5">
       {!hideHeader && (
         <div className="flex justify-between items-center mb-2.5">
-          <h2 className="text-xl sm:text-2xl font-semibold text-blue-950">
+          <h2 className="text-xl sm:text-2xl font-semibold text-blue-950 box-shadow-sm">
             <Link href={categoryLink}>{title}</Link>
           </h2>
           <Link
             href={categoryLink}
-            className="text-[13px] font-normal text-[#111] hover:text-[#d70018] hover:underline hover:font-bold transition-all"
+            className="text-[13px] font-normal text-[#111] hover:text-[#00868B] hover:underline hover:font-bold transition-all"
           >
             Xem tất cả
           </Link>

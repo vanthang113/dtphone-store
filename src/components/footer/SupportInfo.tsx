@@ -70,7 +70,7 @@ export function SupportInfo({ supportNumbers, paymentMethods, newsletter }: Supp
           <Link href="#" className="text-red-600 text-xs no-underline">{newsletter.terms}</Link>
         </label>
       </div>
-      <button className="w-full bg-red-600 text-white font-semibold rounded-md py-2 text-sm">
+      <button className="w-full bg-[#00777B] text-white font-semibold rounded-md py-2 text-sm">
         ĐĂNG KÝ NGAY
       </button>
     </>

@@ -12,7 +12,7 @@ type FAQSectionProps = {
 
 export default function FAQSection({ features }: FAQSectionProps) {
   return (
-    <div className="mt-4 bg-gray-100 rounded-lg px-2 py-1">
+    <div className="mt-4 bg-[#00868B] rounded-lg px-2 py-1">
       <Accordion type="single" collapsible className="w-full">
         {features.map((feature) => (
           <AccordionItem key={feature.id} value={feature.id}>

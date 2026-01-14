@@ -6,7 +6,7 @@ export default function InformationPage() {
         <div className="flex-auto min-w-0 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Card hiển thị thông tin tóm tắt về đơn hàng */}
-                <Card className="bg-white w-full p-4 md:p-6 rounded-xl md:col-span-2">
+                <Card className="text-black bg-white w-full p-4 md:p-6 rounded-xl md:col-span-2">
                     <CardHeader className="flex-row items-center justify-between p-0 pb-4">
                         <h2 className="text-lg font-semibold">
                             Đơn hàng của tôi
@@ -17,7 +17,7 @@ export default function InformationPage() {
                     </CardContent>
                 </Card>
                 {/* Card hiển thị các ưu đãi */}
-                <Card className="bg-white w-full p-4 md:p-6 rounded-xl">
+                <Card className="text-black bg-white w-full p-4 md:p-6 rounded-xl">
                     <CardHeader className="flex-row items-center justify-between p-0 pb-4">
                         <h2 className="text-lg font-semibold">
                             Ưu đãi
@@ -29,7 +29,7 @@ export default function InformationPage() {
                 </Card>
             </div>
             {/* Card hiển thị danh sách sản phẩm yêu thích */}
-            <Card className="bg-white w-full p-4 md:p-6 rounded-xl">
+            <Card className="text-black bg-white w-full p-4 md:p-6 rounded-xl">
                 <CardHeader className="flex-row items-center justify-between p-0 pb-4">
                     <h2 className="text-lg font-semibold">
                         Sản phẩm yêu thích

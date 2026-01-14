@@ -39,7 +39,7 @@ export default function ProductInfoPanel({
     <div className="space-y-6">
       {/* Product Price */}
       <div className="p-4 bg-blue-50 border border-blue-800 rounded-2xl w-fit">
-        <h3 className="text-lg font-semibold mb-2">Giá sản phẩm</h3>
+        <h3 className="text-[#00868B] font-semibold mb-2">Giá sản phẩm</h3>
         <p className="text-2xl font-bold text-red-600">
           {price} <span className="text-gray-500 line-through">{originalPrice}</span>
         </p>
@@ -47,13 +47,13 @@ export default function ProductInfoPanel({
 
       {/* Product Versions */}
       <div>
-        <h3 className="text-lg font-semibold mb-2">Phiên bản</h3>
+        <h3 className="text-[#00868B] font-semibold mb-2">Phiên bản</h3>
         <div className="flex space-x-3">
           {versions.map((version, index) => (
             <Button
               key={index}
               className={cn(
-                "w-[100px] h-[55px] border rounded-lg text-center hover:shadow-md transition-shadow cursor-pointer",
+                "bg-[#00868B] w-[100px] h-[55px] border rounded-lg text-center hover:shadow-md transition-shadow cursor-pointer",
                 selection.version === version && "border-red-400 ring-2 ring-red-300"
               )}
 
@@ -70,7 +70,7 @@ export default function ProductInfoPanel({
 
       {/* Product Colors */}
       <div>
-        <h3 className="text-lg font-semibold mb-2">Màu sắc</h3>
+        <h3 className="text-[#00868B] font-semibold mb-2">Màu sắc</h3>
         <div className="flex flex-wrap gap-2">
           {colors.map((color, index) => (
             <Card
