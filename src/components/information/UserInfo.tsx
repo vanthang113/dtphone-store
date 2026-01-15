@@ -12,10 +12,10 @@ export const UserInfo = () => (
                         <Image
                             alt="avatar"
                             title="avatar"
-                            width={44}
-                            height={44}
-                            className="w-[44px] h-[44px] object-contain"
-                            src="https://cdn-static.smember.com.vn/_next/static/media/avata-ant.b574f3e9.svg"
+                            src="/images/robo-like-gojo.png"
+                            width={80}
+                            height={80}
+                            className="w-[80px] h-[80px] object-contain"
                         />
                     </div>
                     <div className="flex flex-col gap-3x-small tablet:gap-2x-small">

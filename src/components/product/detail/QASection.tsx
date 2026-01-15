@@ -52,7 +52,7 @@ export default function QASection() {
       <h1 className="text-black text-xl font-bold">Hỏi và đáp</h1>
       <div className="flex flex-col md:flex-row items-start md:items-center mt-4 bg-white rounded-lg p-4 gap-4">
         <Image
-          src="/images/cellphones/hình ảnh biểu tượng cellphoneS.gif"
+          src="/images/robo-like-gojo.png"
           alt="Bot"
           width={96}
           height={96}
@@ -94,7 +94,7 @@ export default function QASection() {
                   <p className="text-xs text-green-600 font-semibold mt-1">✓ Đã mua tại {review.boughtAt}</p>
                 )}
                 {review.tags && (
-                  <div className="flex flex-wrap gap-2 mt-2">
+                  <div className=" text-black flex flex-wrap gap-2 mt-2">
                     {review.tags.map((tag) => (
                       <span key={tag} className="text-xs px-2 py-1 bg-gray-100 rounded-full">
                         {tag}

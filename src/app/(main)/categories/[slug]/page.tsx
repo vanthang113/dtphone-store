@@ -115,7 +115,7 @@ export default function CategoryDetail() {
         {/* Phần lọc với dropdown */}
         <div className="mt-6">
           <span className="text-gray-600 text-lg font-medium">Chọn theo tiêu chí</span>
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="text-black flex flex-wrap gap-2 mt-2">
             <div className="relative">
               <Button
                 variant={isDropdownOpen.filter ? 'destructive' : 'outline'}
@@ -123,10 +123,10 @@ export default function CategoryDetail() {
                 onClick={() => toggleDropdown('filter')}
                 className={cn('')}
               >
-                <Funnel />Bộ lọc
+                Bộ lọc <ChevronDown className="mt-1" />
               </Button>
               {isDropdownOpen.filter && (
-                <div className="absolute z-10 mt-1 w-64 bg-white border border-gray-200 rounded-md shadow-lg p-2">
+                <div className="text-black absolute z-10 mt-1 w-64 bg-white border border-gray-200 rounded-md shadow-lg p-2">
                   <div className="mb-2">
                     <h4 className="font-semibold text-gray-700">Tiện ích</h4>
                     <Button variant="ghost" size="sm" className="w-full text-left">
@@ -203,7 +203,7 @@ export default function CategoryDetail() {
                 onClick={() => toggleDropdown('product')}
                 className={cn('')}
               >
-                <CarTaxiFront /> Sẵn sàng
+                 Sẵn sàng <ChevronDown className="mt-1" />
               </Button>
             </div>
             <div className="relative">
@@ -213,7 +213,7 @@ export default function CategoryDetail() {
                 onClick={() => toggleDropdown('price')}
                 className={cn('')}
               >
-                <BadgeCent /> Giá
+                 Giá <ChevronDown className="mt-1" />
               </Button>
               {isDropdownOpen.price && (
                 <div className="absolute z-10 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
@@ -349,8 +349,8 @@ export default function CategoryDetail() {
 
         {/* Phần sắp xếp */}
         <div className="mt-4">
-          <span className="text-gray-600 text-lg font-medium">Sắp xếp theo</span>
-          <div className="flex flex-wrap gap-2 mt-2">
+          <span className="text-black text-lg font-medium">Sắp xếp theo</span>
+          <div className="text-black ">
             <Button variant="outline" size="sm">
               <ArrowDownNarrowWide /> Giá Cao - Thấp
             </Button>

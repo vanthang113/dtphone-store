@@ -51,7 +51,7 @@ export default function MenuSlidePage() {
     return (
         <div className="mt-12">
             {/* Menu Slide Section */}
-            <div className="fixed top-[64px] left-0 w-full bg-[#00FFFF] text-white px-4 sm:px-6 lg:px-20 py-2 flex justify-around items-center z-40">
+            <div className="fixed top-[64px] left-0 w-full bg-[#FFD700] text-white px-4 sm:px-6 lg:px-20 py-2 flex justify-around items-center z-40">
                 <Button
                     className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('register-section')}

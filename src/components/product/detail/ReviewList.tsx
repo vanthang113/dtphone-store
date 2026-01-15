@@ -41,7 +41,7 @@ export default function ReviewList() {
                 <p className="text-xs text-green-600 font-semibold mt-1">✓ Đã mua tại {review.boughtAt}</p>
               )}
               {review.tags && (
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="text-black flex flex-wrap gap-2 mt-2">
                   {review.tags.map((tag) => (
                     <span key={tag} className="text-xs px-2 py-1 bg-gray-100 rounded-full">
                       {tag}
