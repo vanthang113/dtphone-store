@@ -85,8 +85,8 @@ export default function ProductInfoPanel({
               }}
             >
               <div className="flex flex-col">
-                <span className="text-base font-bold text-black">{color.name}</span>
-                <span className="text-lg text-black">{color.price}</span>
+                <span className="text-base text-white font-bold text-black">{color.name}</span>
+                <span className="text-white text-lg text-black">{color.price}</span>
               </div>
             </Card>
           ))}

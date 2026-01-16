@@ -153,7 +153,7 @@ export default function ProductDetail({ params }: Props) {
         <div className="max-w-[1200px] mx-auto px-2">
           <div className="flex flex-col lg:flex-row">
             <div className="w-full lg:w-1/2 pr-0 lg:pr-4">
-              <h1 className="text-2xl font-bold mb-2">Chi tiết sản phẩm: {slug}</h1>
+              <h1 className="text-black text-2xl font-bold mb-2">Chi tiết sản phẩm: {slug}</h1>
               <div className="flex items-center mb-4">
                 <Star className="text-yellow-500 text-xl" />
                 <span className="text-lg font-semibold ml-1">4.9</span>

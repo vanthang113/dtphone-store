@@ -52,7 +52,7 @@ export default function RelatedAccessories({ accessories, onAddToCart }: Related
                     <span className="block text-gray-500 line-through">{accessory.originalPrice}</span>
                   </p>
                   <button
-                    className="bg-red-200 text-red-600 py-1 px-4 rounded-full text-xs font-medium ml-auto cursor-pointer"
+                    className="bg-[#00868B] text-white py-1 px-4 rounded-full text-xs font-medium ml-auto cursor-pointer"
                     onClick={() => onAddToCart?.(accessory.name)}
                   >
                     Thêm vào giỏ +

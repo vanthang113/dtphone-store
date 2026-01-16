@@ -107,7 +107,7 @@ const Footer = () => {
                 newsletter={{
                   title: "ĐĂNG KÝ NHẬN TIN KHUYẾN MÃI",
                   perks: ["(*) Nhận ngay voucher 10%", "*Voucher sẽ được gửi sau 24h, chỉ áp dụng cho khách hàng mới"],
-                  terms: "Tôi đồng ý với điều khoản của CellphoneS",
+                  terms: "Tôi đồng ý với điều khoản của DTphone",
                 }}
               />
             </div>
@@ -156,7 +156,7 @@ const Footer = () => {
 
             {/* Box 4: Social and Member Sites */}
             <div className="w-full md:w-1/4 px-3 mb-4">
-              <h3 className="text-base font-medium text-gray-700 mb-3">Kết nối với CellphoneS</h3>
+              <h3 className="text-base font-medium text-gray-700 mb-3">Kết nối với DTphone</h3>
               <SocialLinks links={socialLinks} />
               <h3 className="text-base font-medium mb-3">Website thành viên</h3>
               <MemberSites sites={memberSites} />

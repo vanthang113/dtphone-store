@@ -52,7 +52,7 @@ export default function QASection() {
       <h1 className="text-black text-xl font-bold">Hỏi và đáp</h1>
       <div className="flex flex-col md:flex-row items-start md:items-center mt-4 bg-white rounded-lg p-4 gap-4">
         <Image
-          src="/images/robo-like-gojo.png"
+          src="/images/robo-avatar.png"
           alt="Bot"
           width={96}
           height={96}
@@ -109,7 +109,7 @@ export default function QASection() {
           </div>
         ))}
         <div className="flex justify-center mt-6">
-          <Link href="#" className="px-6 py-2 rounded-full border hover:bg-gray-100 text-sm bg-white font-medium flex">
+          <Link href="#" className="text-white px-6 py-2 rounded-full border hover:bg-[#00868B] text-sm bg-[#00868B] font-medium flex">
             Xem tất cả đánh giá <ChevronRightIcon className="mt-1 h-3 w-5" />
           </Link>
         </div>

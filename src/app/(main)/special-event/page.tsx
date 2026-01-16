@@ -149,7 +149,7 @@ export default function MenuSlidePage() {
                         md:w-[55%]
                         px-2 shadow-md z-10
                         transition-all duration-300 ease-in-out
-                        focus-within:shadow-lg focus-within:ring-2 focus-within:ring-red-400"
+                        focus-within:shadow-lg focus-within:ring-2 focus-within:ring-[#00868B]"
                     >
                         <input
                             type="text"

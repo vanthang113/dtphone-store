@@ -228,7 +228,7 @@ const ChatWidget = ({ onClose }: ChatWidgetProps) => {
 
             {/* Footer: Input tin nhắn và nút */}
             <div className="p-4 border-t">
-                <div className="flex items-center gap-2">
+                <div className=" text-[#00868B] flex items-center gap-2">
                     <Textarea
                         placeholder="Nhập nội dung…"
                         value={message}
@@ -250,7 +250,7 @@ const ChatWidget = ({ onClose }: ChatWidgetProps) => {
                                 id="file-upload"
                                 type="file"
                                 accept="image/*,video/*,audio/*,.doc,.docx,.txt,.rtf,.pdf,.xls,.xlsx,.csv"
-                                className="hidden"
+                                className="hidden "
                                 onChange={handleFileUpload}
                             />
                             <Button

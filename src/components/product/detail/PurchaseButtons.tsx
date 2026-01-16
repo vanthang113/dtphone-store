@@ -4,7 +4,7 @@ export default function PurchaseButtons() {
   return (
     <div className="flex flex-row items-stretch justify-center gap-2 sm:gap-3 mt-4 w-full max-w-[750px]">
       <button
-        className="flex-1 aspect-[3/1] min-h-[44px] max-h-[64px] border border-blue-500 text-blue-600 font-semibold text-[clamp(10px,2.5vw,14px)] rounded-xl px-2 text-center hover:bg-blue-50 transition flex items-center justify-center cursor-pointer"
+        className="flex-1 aspect-[3/1] min-h-[44px] max-h-[64px] border border-[#00868B] text-[#00868B] font-semibold text-[clamp(10px,2.5vw,14px)] rounded-xl px-2 text-center hover:bg-blue-50 transition flex items-center justify-center cursor-pointer"
       >
         Trả góp 0%
       </button>

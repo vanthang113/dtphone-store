@@ -12,7 +12,7 @@ export const UserInfo = () => (
                         <Image
                             alt="avatar"
                             title="avatar"
-                            src="/images/robo-like-gojo.png"
+                            src="/images/robo-avatar.png"
                             width={80}
                             height={80}
                             className="w-[80px] h-[80px] object-contain"

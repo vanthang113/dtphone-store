@@ -40,7 +40,9 @@ const Header = () => {
           return;
         }
       }
-      const token = localStorage.getItem("access_token") || localStorage.getItem("token");
+      const token =
+        localStorage.getItem("access_token") ||
+        localStorage.getItem("token");
       if (token) {
         // token present — optionally fetch profile here. For now show generic 'Tài khoản'
         setUserName("Tài khoản");
@@ -54,21 +56,37 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#008B8B] shadow-md">
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between px-2  h-[64px]">
+      <div className="max-w-[1200px] mx-auto flex items-center justify-between px-2 h-[64px]">
+        
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0 mr-[5px]">
+        <Link
+          href="/"
+          className="
+            flex items-center shrink-0 mr-[5px]
+            h-[64px]
+            overflow-hidden
+            transition-all duration-200 ease-out
+            hover:scale-105 hover:drop-shadow-lg
+            active:scale-95
+          "
+        >
           <Image
             src="/images/logo-dtphone-store-pink2.png"
-            alt="Logo CellphoneS"
+            alt="Logo dtphone"
             width={220}
             height={65}
             priority
+            className="block"
           />
         </Link>
 
         <div className="flex items-center gap-x-1 flex-nowrap overflow-x-auto flex-1 justify-end">
+
           {/* Danh mục */}
-          <MenuItem icon={<MenuIcon className="w-6 h-6" />} onClick={() => setIsMenuOpen(prev => !prev)}>
+          <MenuItem
+            icon={<MenuIcon className="w-6 h-6" />}
+            onClick={() => setIsMenuOpen(prev => !prev)}
+          >
             <span>Danh mục</span>
           </MenuItem>
 
@@ -100,20 +118,27 @@ const Header = () => {
           />
 
           {/* Giỏ hàng */}
-          <CartItem icon={<CartIcon className="w-6 h-6" />} text="Giỏ<br />hàng" />
+          <CartItem
+            icon={<CartIcon className="w-6 h-6" />}
+            text="Giỏ<br />hàng"
+          />
 
           {/* Tài khoản */}
           {userName ? (
             <Link href="/information">
-              <UserItem icon={<UserIcon className="w-6 h-6" />} name={userName} />
+              <UserItem
+                icon={<UserIcon className="w-6 h-6" />}
+                name={userName}
+              />
             </Link>
           ) : (
             <Link href="/login">
-              <button className="bg-white text-[#00868B] rounded-xl px-3 py-1 text-[13px] font-medium">
+              <button className="bg-white text-[#00868B] rounded-xl px-4 py-2 text-[16px] font-medium ml-2 flex items-center justify-center whitespace-nowrap leading-none">
                 Đăng nhập
               </button>
             </Link>
           )}
+
         </div>
       </div>
 

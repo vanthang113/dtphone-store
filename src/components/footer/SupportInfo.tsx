@@ -46,7 +46,7 @@ export function SupportInfo({ supportNumbers, paymentMethods, newsletter }: Supp
 
       <h3 className="text-base font-medium text-gray-700 mt-3">{newsletter.title}</h3>
       {newsletter.perks.map((perk, index) => (
-        <p key={index} className={index === 0 ? "text-red-600 text-sm" : "text-xs"}>{perk}</p>
+        <p key={index} className={index === 0 ? "text-[#00868B] text-sm" : "text-xs"}>{perk}</p>
       ))}
       <div className="mb-3">
         <input
@@ -67,7 +67,7 @@ export function SupportInfo({ supportNumbers, paymentMethods, newsletter }: Supp
       <div className="flex items-center mb-3">
         <label className="flex items-center gap-1 text-sm">
           <input type="checkbox" checked disabled className="cursor-not-allowed" />
-          <Link href="#" className="text-red-600 text-xs no-underline">{newsletter.terms}</Link>
+          <Link href="#" className="text-[#00868B] text-xs no-underline">{newsletter.terms}</Link>
         </label>
       </div>
       <button className="w-full bg-[#00777B] text-white font-semibold rounded-md py-2 text-sm">
