@@ -53,28 +53,22 @@ export default function MenuSlidePage() {
             {/* Menu Slide Section */}
             <div className="fixed top-[64px] left-0 w-full bg-[#FFD700] text-white px-4 sm:px-6 lg:px-20 py-2 flex justify-around items-center z-40">
                 <Button
-                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
+                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-red-400 hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('register-section')}
                 >
                     ĐĂNG KÝ
                 </Button>
                 <Button
-                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
+                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-red-400 hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('events-section')}
                 >
                     LỊCH SỰ KIỆN
                 </Button>
                 <Button
-                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
+                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-red-400 hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
                     onClick={() => scrollToSection('promotions-section')}
                 >
                     ƯU ĐÃI
-                </Button>
-                <Button
-                    className="text-base sm:text-xl text-white bg-[#00868B] font-bold py-1 px-3 sm:px-6 rounded-full border-0 hover:bg-white hover:text-[#c00c0c] hover:scale-105 hover:shadow-md transition duration-400 ease-in-out"
-                    onClick={() => scrollToSection('top-deals-section')}
-                >
-                    MUA NGAY
                 </Button>
             </div>
 
@@ -297,7 +291,7 @@ export default function MenuSlidePage() {
                 </div>
 
                 {/* Top deal xịn */}
-                <div id="top-deals-section" className="mt-10">
+                {/* <div id="top-deals-section" className="mt-10">
                     <div className="bg-[#] w-full h-[670px] flex flex-col rounded-xl px-4">
                         <div className=" flex flex-col justify-between mt-10 md:mt-1 lg:mt-4">
                             <Image
@@ -316,48 +310,9 @@ export default function MenuSlidePage() {
                                 </select>
                             </div>
                         </div>
-                        <div className='mb-30'>
-                            <ProductListSection
-                                products={products}
-                                relatedTags={[]}
-                                formatPrice={formatPrice}
-                            />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
-
-                {/* Toàn bộ Laptop */}
-                <div className='relative mt-10 sm:mt-50 w-full h-[680px] lg:h-auto bg-[#efefef] rounded-lg border-2 border-[#00868B]'>
-                    <Image
-                        src="/images/B2S_2025_Title_Laptop-desk.webp"
-                        alt="Laptop Title"
-                        width={1200}
-                        height={150}
-                        className="absolute bottom-155 lg:bottom-148 left-1/2 transform -translate-x-1/2 w-full max-w-[1150px] h-auto"
-                    />
-                    <div className="flex flex-col justify-between items-center mt-2 lg:mt-4 md:mt-2 pt-6 md:pt-10 lg:pt-15 w-full px-4">
-                        <h3 className="text-2xl font-bold text-black z-10">
-                            Tặng kèm balo trị giá 600k
-                        </h3>
-                        <div className="flex gap-2 lg:ml-auto">
-                            <span className="text-black text-sm font-medium mb-1">Sắp xếp theo:</span>
-                            <select className="rounded-full border px-4 py-1 text-sm">
-                                <option>Xem nhiều</option>
-                                <option>Mới nhất</option>
-                                <option>Giá thấp → cao</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className='px-3'>
-                        <ProductListSection
-                            products={products}
-                            relatedTags={relatedTags}
-                            formatPrice={formatPrice}
-                        />
-                    </div>
-                </div>
-
-
                 {/* Trả Góp Sinh Viên */}
                 <div className="items-center justify-center flex flex-wrap mt-10 gap-1 md:gap-2">
                     <Image
@@ -431,12 +386,10 @@ export default function MenuSlidePage() {
                         />
                     </div>
                 </div>
-
                 {/* HighlightSection */}
                 <HighlightSection slug="slug" />
                 {/* QASection */}
                 <QASection />
             </div>
-        </div>
     );
 }

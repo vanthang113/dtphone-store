@@ -350,7 +350,7 @@ export default function CategoryDetail() {
         {/* Phần sắp xếp */}
         <div className="mt-4">
           <span className="text-black text-lg font-medium">Sắp xếp theo</span>
-          <div className="text-black ">
+          <div className="text-black flex flex-wrap items-center gap-2">
             <Button variant="outline" size="sm">
               <ArrowDownNarrowWide /> Giá Cao - Thấp
             </Button>

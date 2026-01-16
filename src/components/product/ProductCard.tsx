@@ -28,17 +28,17 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
 
     return (
         <Card className="w-[221px] overflow-hidden rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.1)] bg-white 
-             transition-transform duration-300 ease-in-out
-             hover:shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:scale-100 
-             active:scale-95 cursor-pointer">
+                        transition-transform duration-300 ease-in-out
+                        hover:shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:scale-100 
+                        active:scale-95 cursor-pointer">
             {/* Phần hình ảnh */}
             <CardHeader className="p-0 relative">
                 <Link href={`/products/${id}`} className="block">
                     <div
                         className="relative w-[150px] h-[150px] mx-auto 
-             overflow-hidden rounded-md 
-             transition-transform duration-300 ease-in-out 
-             hover:scale-103 active:scale-95 cursor-pointer"
+                                    overflow-hidden rounded-md 
+                                    transition-transform duration-300 ease-in-out 
+                                    hover:scale-103 active:scale-95 cursor-pointer"
                     >
                         <Image
                             src={image}

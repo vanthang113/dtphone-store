@@ -41,7 +41,7 @@ export default function OrderPage() {
                                         key={status}
                                         onClick={() => setActiveStatus(status)}
                                         className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeStatus === status
-                                            ? 'border-red-500 text-red-600'
+                                            ? 'border-[#00868B] text-red-400'
                                             : 'border-transparent text-neutral-500 hover:text-neutral-700 hover:border-neutral-300'
                                             }`}
                                     >
@@ -54,7 +54,7 @@ export default function OrderPage() {
 
                     {/* Khu vực bộ lọc theo ngày */}
                     <div className="flex flex-col md:flex-row items-center md:items-center gap-y-2 md:gap-y-0 md:gap-x-4 w-full">
-                        <h3 className="text-base font-semibold">Lịch sử mua hàng của bạn</h3>
+                        <h3 className="text-base text-black font-semibold">Lịch sử mua hàng của bạn</h3>
                         <div className="relative w-full md:w-[260px]">
                             {/* Nút bấm để mở/đóng calendar */}
                             <Button
@@ -65,12 +65,12 @@ export default function OrderPage() {
                                 )}
                                 onClick={() => setIsPickerOpen(!isPickerOpen)}
                             >
-                                <span className="flex items-center gap-2">
+                                <span className="flex items-center gap-2 text-white bg-[#00868B] px-2 py-1 rounded-md">
                                     <CalendarIcon className="h-4 w-4" />
                                     Chọn ngày
                                 </span>
                                 {/* Hiển thị khoảng ngày đã chọn */}
-                                <span className="text-xs text-neutral-500 font-normal">
+                                <span className="text-xs text-neutral-500 font-normal text-white">
                                     {date?.from ? (
                                         date.to ? (
                                             <>
@@ -102,7 +102,7 @@ export default function OrderPage() {
                         </div>
                     </div>
                 </CardHeader>
-                <CardContent className="p-4 md:p-6">
+                <CardContent className="text-black md:p-6">
                     {/* Nội dung danh sách đơn hàng sẽ được hiển thị ở đây */}
                     Thông tin đơn hàng sẽ được hiển thị ở đây.
                 </CardContent>

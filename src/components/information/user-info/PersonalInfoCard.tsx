@@ -86,9 +86,9 @@ export function PersonalInfoCard() {
         <>
             <Card className="bg-white w-full rounded-xl">
                 <CardHeader className="py-0 flex w-full justify-between items-center">
-                    <h2 className="text-base font-bold">Thông tin cá nhân</h2>
+                    <h2 className="text-base font-bold text-black">Thông tin cá nhân</h2>
                     {/* Nút bấm để mở form chỉnh sửa */}
-                    <h2 onClick={() => setOpen(true)} className="text-base font-bold flex items-center gap-1 text-red-500 cursor-pointer"><Pencil className="w-4 h-4" />Cập nhật</h2>
+                    <h2 onClick={() => setOpen(true)} className="text-base font-bold flex items-center gap-1 text-[#00868B] cursor-pointer"><Pencil className="w-4 h-4" />Cập nhật</h2>
                 </CardHeader>
                 <CardContent className="p-4 md:p-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">

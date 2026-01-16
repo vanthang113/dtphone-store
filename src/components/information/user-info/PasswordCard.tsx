@@ -90,10 +90,10 @@ export function PasswordCard() {
         <>
             <Card className="bg-white w-full md:w-1/2 rounded-xl">
                 <CardHeader className="py-0 flex w-full justify-between items-center">
-                    <h2 className="text-base font-bold">Thay đổi mật khẩu</h2>
+                    <h2 className="text-base font-bold text-black">Thay đổi mật khẩu</h2>
                     <h2
                         onClick={handleUpdate}
-                        className="text-base font-bold flex items-center gap-1 text-red-500 cursor-pointer"
+                        className="text-base font-bold flex items-center gap-1 text-[#00868B] cursor-pointer"
                     >
                         <Pencil className="w-4 h-4" />
                         Cập nhật

@@ -56,7 +56,7 @@ export function ProductListSection({ title, categoryLink, relatedTags, products,
       </div>
       {/* Danh sách sản phẩm */}
       <div className="relative overflow-hidden mx-auto max-w-[1160px] w-full">
-        <div className="inline-grid grid-flow-col gap-5 md:gap-3 snap-x snap-mandatory py-2 justify-center">
+        <div className="flex gap-5 md:gap-3 overflow-x-auto snap-x snap-mandatory py-2 px-3">
           {products.map((product) => (
             <ProductCard
               key={product.id}

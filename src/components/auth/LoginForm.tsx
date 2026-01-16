@@ -47,8 +47,14 @@ export default function LoginForm() {
         password: formData.password,
       }).unwrap();
 
-      if (result?.data?.access_token) localStorage.setItem('access_token', result.data.access_token);
-      if (result?.data?.refresh_token) localStorage.setItem('refresh_token', result.data.refresh_token);
+      if (result?.access_token) localStorage.setItem('access_token', result.access_token);
+      if (result?.refresh_token) localStorage.setItem('refresh_token', result.refresh_token);
+      
+      // Store user data for header display
+      localStorage.setItem('user', JSON.stringify({
+        name: formData.email.split('@')[0],
+        email: formData.email
+      }));
 
       window.location.href = '/';
     } catch (err: any) {
@@ -211,36 +217,23 @@ export default function LoginForm() {
                 >
                   {isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'}
                 </Button>
-
                 <div className="flex items-center gap-3 py-2">
                   <div className="h-px flex-1 bg-neutral-200" />
                   <span className="text-sm text-neutral-500">Hoặc đăng nhập bằng</span>
                   <div className="h-px flex-1 bg-neutral-200" />
                 </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <Button variant="outline" className="h-12 gap-2">
-                    <Image
-                      src="/images/logo-google.png"
-                      alt="Google"
-                      width={22}
-                      height={22}
-                      className="h-5 w-5 object-contain"
-                    />
-                    Google
-                  </Button>
-                  <Button variant="outline" className="h-12 gap-2">
-                    <Image
-                      src="/images/logo_zalo.png"
-                      alt="Zalo"
-                      width={22}
-                      height={22}
-                      className="h-5 w-5 object-contain"
-                    />
-                    Zalo
-                  </Button>
-                </div>
-
+                <div className="flex justify-center items-center max-w-[450px] mx-auto">
+                <Button variant="outline" className="h-12 gap-2">
+                  <Image
+                    src="/images/logo-google.png"
+                    alt="Google"
+                    width={22}
+                    height={22}
+                    className="h-5 w-5 object-contain"
+                  />
+                  Google
+                </Button>
+              </div>
                 <div className="pt-2 text-center">
                   <span className="text-sm text-neutral-600">Bạn chưa có tài khoản? </span>
                   <Link href="/register" className="text-sm font-semibold text-[#00868B] hover:text-[#00777B]">

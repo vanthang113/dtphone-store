@@ -105,11 +105,11 @@ export default function PromotionPage() {
         <div className="flex-auto min-w-0 space-y-4">
             <Card className="bg-white w-full p-4 md:p-6 rounded-xl md:col-span-2">
                 <CardHeader className="flex-row items-center justify-between p-0 pb-4">
-                    <h2 className="text-lg font-semibold">
+                    <h2 className="text-lg font-semibold text-black">
                         Ưu đãi của bạn
                     </h2>
                 </CardHeader>
-                <CardContent className="p-0">
+                <CardContent className="p-0 text-black">
                     Thông tin
                 </CardContent>
             </Card>
@@ -164,15 +164,15 @@ export default function PromotionPage() {
                     {/* Nội dung chi tiết theo từng hạng thành viên */}
                     <div className="p-4 space-y-6">
                       <div className="text-center">
-                        <div className="font-semibold text-base mb-1 text-red-500 text-lg font-bold">Điều kiện thăng cấp</div>
+                        <div className="font-semibold text-base mb-1 text-[#00868B] text-lg font-bold">Điều kiện thăng cấp</div>
                         <div className="text-gray-700 text-sm">{promotionDetails[activeIndex].conditions}</div>
                       </div>
                       <div className="text-center">
-                        <div className="font-semibold text-base mb-1 text-red-500  text-lg font-bold">Ưu đãi mua hàng</div>
+                        <div className="font-semibold text-base mb-1 text-[#00868B] text-lg font-bold">Ưu đãi mua hàng</div>
                         <div className="text-gray-700 text-sm">{promotionDetails[activeIndex].offers}</div>
                       </div>
                       <div className="text-center">
-                        <div className="font-semibold text-base mb-1 text-red-500  text-lg font-bold">Chính sách phục vụ</div>
+                        <div className="font-semibold text-base mb-1 text-[#00868B] text-lg font-bold">Chính sách phục vụ</div>
                         <div className="text-gray-700 text-sm">{promotionDetails[activeIndex].policy}</div>
                       </div>
                     </div>

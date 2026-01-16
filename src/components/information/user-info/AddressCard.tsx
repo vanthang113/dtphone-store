@@ -34,10 +34,10 @@ type Address = {
 const AddressItem = ({ address, onEdit }: { address: Address; onEdit: (address: Address) => void; }) => (
     <div className="border rounded-lg p-4 flex flex-col space-y-4">
         <div className="flex justify-between items-center">
-            <h3 className="font-bold uppercase">{address.type}</h3>
+            <h3 className="font-bold uppercase text-black">{address.type}</h3>
             {/* Hiển thị tag "Mặc định" nếu đây là địa chỉ mặc định */}
             {address.isDefault && (
-                <span className="text-red-500 text-xs font-semibold border border-red-500 rounded-full px-2 py-0.5">Mặc định</span>
+                <span className="text-[#00868B] text-xs font-semibold border border-[#00868B] rounded-full px-2 py-0.5">Mặc định</span>
             )}
         </div>
         <div className="text-sm text-gray-700 space-y-2">
@@ -45,8 +45,8 @@ const AddressItem = ({ address, onEdit }: { address: Address; onEdit: (address: 
             <p>{address.fullAddress}</p>
         </div>
         <div className="flex justify-end gap-x-4 text-sm">
-            <button onClick={() => onEdit(address)} className="text-blue-600 hover:underline">Cập nhật</button>
-            <button className="text-red-600 hover:underline">Xóa</button>
+            <button onClick={() => onEdit(address)} className="text-[#00868B] hover:underline">Cập nhật</button>
+            <button className="text-red-400 hover:underline">Xóa</button>
         </div>
     </div>
 );
@@ -188,8 +188,8 @@ export function AddressCard() {
         <>
             <Card className="bg-white w-full rounded-xl">
                 <CardHeader className="py-0 flex w-full justify-between items-center">
-                    <h2 className="text-base font-bold">Số địa chỉ</h2>
-                    <h2 onClick={handleAdd} className="text-base font-bold flex items-center gap-1 text-red-500 cursor-pointer"><Pencil className="w-4 h-4" />Thêm địa chỉ</h2>
+                    <h2 className="text-base font-bold text-black">Số địa chỉ</h2>
+                    <h2 onClick={handleAdd} className="text-base font-bold flex items-center gap-1 text-[#00868B] cursor-pointer"><Pencil className="w-4 h-4" />Thêm địa chỉ</h2>
                 </CardHeader>
                 <CardContent className="p-4 md:p-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">

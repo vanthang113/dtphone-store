@@ -1,4 +1,5 @@
 import { baseApi } from "../baseApi"
+import { mockLoginResponse, mockUser } from "@/data/mockData"
 
 // Types
 interface LoginRequest {
@@ -43,42 +44,52 @@ interface VerifyEmailRequest {
 // Auth API endpoints
 export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    // Đăng nhập
+    // Đăng nhập (Mock)
     login: build.mutation<LoginResponse, LoginRequest>({
-      query: (credentials) => ({
-        url: '/api/v1/login',
-        method: 'POST',
-        body: credentials,
-      }),
+      async queryFn(credentials) {
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 500))
+        // Return mock data for any email/password
+        return { data: mockLoginResponse }
+      },
       invalidatesTags: ['User'],
     }),
 
-    // Đăng ký
+    // Đăng ký (Mock)
     register: build.mutation<{ message: string; email: string }, RegisterRequest>({
-      query: (userData) => ({
-        url: '/api/v1/register',
-        method: 'POST',
-        body: userData,
-      }),
+      async queryFn(userData) {
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 500))
+        return { 
+          data: { 
+            message: 'Đăng ký thành công. Vui lòng xác nhận email.',
+            email: userData.email 
+          } 
+        }
+      },
     }),
 
-    // Xác nhận email
+    // Xác nhận email (Mock)
     verifyEmail: build.mutation<UserResponse, VerifyEmailRequest>({
-      query: (data) => ({
-        url: '/api/v1/verify-email',
-        method: 'POST',
-        body: data,
-      }),
+      async queryFn(data) {
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 500))
+        return { data: { ...mockUser, email: data.email } }
+      },
       invalidatesTags: ['User'],
     }),
 
-    // Gửi lại mã xác nhận
+    // Gửi lại mã xác nhận (Mock)
     resendVerification: build.mutation<{ message: string }, string>({
-      query: (email) => ({
-        url: '/api/v1/resend-verification',
-        method: 'POST',
-        params: { email },
-      }),
+      async queryFn(email) {
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 500))
+        return { 
+          data: { 
+            message: 'Mã xác nhận đã được gửi lại đến email của bạn.' 
+          } 
+        }
+      },
     }),
 
     // Đăng xuất (client-side): xóa token, reset cache
@@ -100,9 +111,13 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: ['User'],
     }),
 
-    // Lấy thông tin user hiện tại
+    // Lấy thông tin user hiện tại (Mock)
     me: build.query<UserResponse, void>({
-      query: () => ({ url: '/api/v1/me' }),
+      async queryFn() {
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 300))
+        return { data: mockUser }
+      },
       providesTags: ['User'],
     }),
   }),

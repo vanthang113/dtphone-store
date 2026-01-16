@@ -25,19 +25,14 @@ export function LinkedAccountsCard() {
             logo: "/images/auth/logo_google.png",
             isLinked: true
         },
-        {
-            name: "Zalo",
-            logo: "/images/auth/logo_zalo.png",
-            isLinked: false
-        }
     ];
 
     return (
         <Card className="bg-white w-full md:w-1/2 rounded-xl">
             <CardHeader className="py-0 flex w-full justify-between items-center">
-                <h2 className="text-base font-bold">Tài khoản liên kết</h2>
+                <h2 className="text-base font-bold text-black">Tài khoản liên kết</h2>
             </CardHeader>
-            <CardContent className="p-4 md:p-6 space-y-4">
+            <CardContent className="p-4 md:p-6 space-y-4 text-black">
                 {accounts.map(account => (
                     <LinkedAccountItem key={account.name} {...account} />
                 ))}

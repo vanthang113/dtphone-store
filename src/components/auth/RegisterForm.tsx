@@ -138,35 +138,20 @@ export default function RegisterForm() {
             <span className="font-regular text-sm tablet:text-lg text-neutral-500">
                 Đăng ký bằng tài khoản mạng xã hội
             </span>
-            <div className="w-full flex gap-2 tablet:gap-6 justify-between items-center max-w-[450px]">
+            <div className="text-black w-full flex gap-2 flex justify-center tablet:gap-6 justify-between items-center max-w-[450px]">
                 <Button
                     variant="outline"
-                    className="flex items-center justify-center gap-2 flex-1 min-w-[100px] tablet:min-w-[120px] min-h-[40px] tablet:min-h-[48px] text-sm tablet:text-base"
-                >
+                    className=" flex items-center justify-center gap-2 w-[140px] tablet:w-[180px] min-h-[40px] tablet:min-h-[48px] text-sm tablet:text-base">
                     <Image
                         src="/images/logo-google.png"
                         alt="Google"
                         width={25}
                         height={24}
-                        className="w-[20px] h-[20px] tablet:w-[25px] tablet:h-[24px] object-contain"
+                        className="w-[25px] h-[24px] tablet:w-[25px] tablet:h-[24px] object-contain"
                     />
                     Google
                 </Button>
                 <div className="w-[5px] h-[5px] tablet:w-[7px] tablet:h-[7px] rounded-full bg-neutral-200 flex-shrink-0"></div>
-
-                <Button
-                    variant="outline"
-                    className="flex items-center justify-center gap-2 flex-1 min-w-[100px] tablet:min-w-[120px] min-h-[40px] tablet:min-h-[48px] text-sm tablet:text-base"
-                >
-                    <Image
-                        src="/images/auth/logo_zalo.png"
-                        alt="Zalo"
-                        width={25}
-                        height={24}
-                        className="w-[20px] h-[20px] tablet:w-[25px] tablet:h-[24px] object-contain"
-                    />
-                    Zalo
-                </Button>
             </div>
             <span className="font-regular text-sm tablet:text-lg text-neutral-500">
                 Hoặc điền thông tin sau
@@ -175,7 +160,7 @@ export default function RegisterForm() {
                 className="w-full flex flex-col gap-3 tablet:gap-4 relative px-2 tablet:px-0"
                 onSubmit={handleSubmit}
             >
-                <h2 className="font-bold text-base tablet:text-xl">Thông tin cá nhân</h2>
+                <h2 className="text-black font-bold text-base tablet:text-xl">Thông tin cá nhân</h2>
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 tablet:gap-4 items-stretch">
                     <div className="flex flex-col gap-1 tablet:gap-2">
                         <Label htmlFor="name" className="text-sm tablet:text-base font-medium">
@@ -251,7 +236,7 @@ export default function RegisterForm() {
                         </div>
                     </div>
                 </div>
-                <h2 className="font-bold text-base tablet:text-xl">Tạo mật khẩu</h2>
+                <h2 className="text-black font-bold text-base tablet:text-xl">Tạo mật khẩu</h2>
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 tablet:gap-4 items-stretch">
                     <div className="flex flex-col gap-1 tablet:gap-2">
                         <Label htmlFor="password" className="text-sm tablet:text-base font-medium">

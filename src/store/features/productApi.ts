@@ -1,4 +1,5 @@
 import { baseApi } from '../baseApi'
+import { mockProducts } from '@/data/mockData'
 
 // Types for products
 interface Product {
@@ -14,6 +15,7 @@ interface Product {
   status?: string
   category_id: number
   sku?: string
+  image?: string
   created_at: string
   updated_at: string
 }
@@ -28,17 +30,48 @@ interface ProductsResponse {
 // Product API endpoints
 export const productApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    // Lấy danh sách sản phẩm
+    // Lấy danh sách sản phẩm (Mock)
     getProducts: build.query<ProductsResponse, {
       page?: number
       page_size?: number
       category_id?: number
       search?: string
     }>({
-      query: (params) => ({
-        url: '/api/v1/products',
-        params,
-      }),
+      async queryFn(params) {
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 400))
+        
+        const page = params.page || 1
+        const pageSize = params.page_size || 10
+        
+        let filtered = mockProducts
+        
+        // Filter by category
+        if (params.category_id) {
+          filtered = filtered.filter(p => p.category_id === params.category_id)
+        }
+        
+        // Filter by search
+        if (params.search) {
+          filtered = filtered.filter(p => 
+            p.name.toLowerCase().includes(params.search?.toLowerCase() || '')
+          )
+        }
+        
+        // Pagination
+        const startIdx = (page - 1) * pageSize
+        const endIdx = startIdx + pageSize
+        const paginatedProducts = filtered.slice(startIdx, endIdx)
+        
+        return {
+          data: {
+            products: paginatedProducts,
+            total: filtered.length,
+            page,
+            page_size: pageSize,
+          }
+        }
+      },
       providesTags: (result) =>
         result
           ? [
@@ -48,9 +81,25 @@ export const productApi = baseApi.injectEndpoints({
           : [{ type: 'Product', id: 'LIST' }],
     }),
 
-    // Lấy chi tiết sản phẩm
+    // Lấy chi tiết sản phẩm (Mock)
     getProduct: build.query<Product, number>({
-      query: (id) => ({ url: `/api/v1/products/${id}` }),
+      async queryFn(id) {
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 300))
+        
+        const product = mockProducts.find(p => p.product_id === id)
+        
+        if (!product) {
+          return {
+            error: {
+              status: 404,
+              data: { message: 'Product not found' }
+            } as any
+          }
+        }
+        
+        return { data: product }
+      },
       providesTags: (result, error, id) => [{ type: 'Product', id }],
     }),
   }),

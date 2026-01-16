@@ -47,10 +47,10 @@ export const Sidebar = () => {
         { href: '/information/promotion', icon: Gift, label: 'Hạng thành viên và ưu đãi' },
         { href: '/information/promotion/s-edu', icon: BookOpen, label: 'Ưu đãi S-Student và S-Teacher', separator: true },
         { href: '/information/user-info', icon: UserCog, label: 'Thông tin tài khoản' },
-        { href: 'https://cellphones.com.vn/dia-chi-cua-hang', icon: MapPin, label: 'Tìm kiếm cửa hàng', external: true },
-        { href: 'https://cellphones.com.vn/chinh-sach-bao-hanh', icon: FileText, label: 'Chính sách bảo hành', external: true },
-        { href: '/information/support', icon: Mail, label: 'Góp ý - Phản hồi - Hỗ trợ' },
-        { href: 'https://cellphones.com.vn/tos', icon: FileText, label: 'Điều khoản sử dụng', external: true, separator: true },
+        { href: '/shop', icon: MapPin, label: 'Tìm kiếm cửa hàng', external: true },
+        { href: '/shop', icon: FileText, label: 'Chính sách bảo hành', external: true },
+        { href: '/shop', icon: Mail, label: 'Góp ý - Phản hồi - Hỗ trợ' },
+        { href: '/shop', icon: FileText, label: 'Điều khoản sử dụng', external: true, separator: true },
     ];
 
     return (
