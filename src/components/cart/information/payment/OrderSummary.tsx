@@ -17,37 +17,37 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
     const discount = originalTotal - totalAmount;
 
     return (
-        <div className="mb-6 space-y-3">
-            <div className="flex justify-between items-center">
+        <div className="mb-6 space-y-2 sm:space-y-3">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
                 <span className="text-gray-600 text-sm">Số lượng sản phẩm</span>
                 <span className="text-sm">{totalQuantity.toString().padStart(2, '0')}</span>
             </div>
             
-            <div className="flex justify-between items-center">
-                <span className="text-gray-600 text-sm">Tổng tiền hàng</span>
-                <span className="text-sm">{formatPrice(originalTotal)}</span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                <span className="text-gray-600 text-xs sm:text-sm">Tổng tiền hàng</span>
+                <span className="text-xs sm:text-sm">{formatPrice(originalTotal)}</span>
             </div>
             
-            <div className="flex justify-between items-center">
-                <span className="text-gray-600 text-sm">Phí vận chuyển</span>
-                <span className="text-sm text-green-600">Miễn phí</span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                <span className="text-gray-600 text-xs sm:text-sm">Phí vận chuyển</span>
+                <span className="text-xs sm:text-sm text-green-600">Miễn phí</span>
             </div>
             
             {discount > 0 && (
-                <div className="flex justify-between items-center">
-                    <span className="text-gray-600 text-sm">Giảm giá trực tiếp</span>
-                    <span className="text-sm text-red-600">- {formatPrice(discount)}</span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                    <span className="text-gray-600 text-xs sm:text-sm">Giảm giá trực tiếp</span>
+                    <span className="text-xs sm:text-sm text-red-600">- {formatPrice(discount)}</span>
                 </div>
             )}
             
-            <hr className="my-3" />
+            <hr className="my-2 sm:my-3" />
             
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-0">
                 <div>
-                    <div className="font-semibold text-base">Tổng tiền</div>
+                    <div className="font-semibold text-sm sm:text-base">Tổng tiền</div>
                     <div className="text-xs text-gray-500">Đã gồm VAT và được làm tròn</div>
                 </div>
-                <span className="font-semibold text-lg text-red-600">{formatPrice(totalAmount)}</span>
+                <span className="font-semibold text-base sm:text-lg text-red-600">{formatPrice(totalAmount)}</span>
             </div>
         </div>
     );

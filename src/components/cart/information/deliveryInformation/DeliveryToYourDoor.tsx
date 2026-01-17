@@ -96,7 +96,7 @@ const DeliveryToYourDoor = () => {
     }));
 
     return (
-        <div className='grid grid-cols-2 gap-8 mb-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-4'>
             <Input 
                 label='Tên người nhận *' 
                 value={formData.delivery.receiverName}

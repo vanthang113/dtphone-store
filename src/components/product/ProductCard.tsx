@@ -27,12 +27,13 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
     }
 
     return (
-        <Card className="w-[221px] overflow-hidden rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.1)] bg-white 
+        <Card className="w-[221px] h-[480px] overflow-hidden rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.1)] bg-white 
                         transition-transform duration-300 ease-in-out
                         hover:shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:scale-100 
-                        active:scale-95 cursor-pointer">
+                        active:scale-95 cursor-pointer
+                        flex flex-col">
             {/* Phần hình ảnh */}
-            <CardHeader className="p-0 relative">
+            <CardHeader className="p-0 relative h-[170px] flex items-center justify-center">
                 <Link href={`/products/${id}`} className="block">
                     <div
                         className="relative w-[150px] h-[150px] mx-auto 
@@ -61,12 +62,12 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
             </CardHeader>
 
             {/* Phần thông tin sản phẩm */}
-            <CardContent className="p-3">
-                <Link href={`/products/${id}`} className="block">
-                    <h3 className="text-sm font-medium line-clamp-2 mb-2">{name}</h3>
-                    <div className="space-y-1">
+            <CardContent className="p-3 flex-1 flex flex-col min-h-0">
+                <Link href={`/products/${id}`} className="block flex flex-col h-full">
+                    <h3 className="text-sm font-medium line-clamp-2 mb-2 h-[48px] flex items-center">{name}</h3>
+                    <div className="space-y-1 flex-1 flex flex-col">
                         {/* Giá sản phẩm */}
-                        <div className="flex items-baseline gap-2">
+                        <div className="flex items-baseline gap-2 h-[36px] flex items-center">
                             <p className="text-lg font-bold text-primary-500">
                                 {new Intl.NumberFormat('vi-VN', {
                                     style: 'currency',
@@ -83,16 +84,17 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
                             )}
                         </div>
                         {promotion && (
-                            <div className="text-xs text-gray-600 mt-1">
+                            <div className="text-xs text-gray-600 line-clamp-2 h-[32px] flex items-center">
                                 {promotion}
                             </div>
                         )}
+                        <div className="flex-1"></div>
                     </div>
                 </Link>
             </CardContent>
 
             {/* Phần footer với đánh giá và nút yêu thích */}
-            <CardFooter className="px-3 pb-3 pt-0">
+            <CardFooter className="px-3 pb-3 pt-2 mt-auto h-[50px] flex items-center border-t border-gray-100">
                 <div className="flex items-center justify-between w-full">
                     {/* Đánh giá sao */}
                     <div className="flex items-center gap-0.5">

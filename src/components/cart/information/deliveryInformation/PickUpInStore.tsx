@@ -109,7 +109,7 @@ const PickUpInStore = () => {
     const selectedStore = storeOptions.find(store => store.label === formData.delivery.storeAddress);
 
     return (
-        <div className='grid grid-cols-2 gap-8 mb-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-4'>
 
                         <div>
                             <label className="block mb-1 text-sm text-black font-medium">TỈNH/THÀNH PHỐ *</label>

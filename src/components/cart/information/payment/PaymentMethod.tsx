@@ -83,19 +83,19 @@ const PaymentMethod = () => {
       <div className="mb-6">
         <h3 className="font-semibold text-gray-700 my-3">THÔNG TIN THANH TOÁN</h3>
         <div 
-          className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-white cursor-pointer hover:bg-gray-50 transition-colors"
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 border border-gray-200 rounded-lg bg-white cursor-pointer hover:bg-gray-50 transition-colors gap-2 sm:gap-0"
           onClick={() => setIsDialogOpen(true)}
         >
-          <div className="flex items-center space-x-3">
-            {selectedPayment ? selectedPayment.icon : <CreditCard className="w-5 h-5 text-red-600" />}
-            <div>
-              <div className={`text-sm font-medium ${selectedPayment ? 'text-gray-900' : 'text-red-600'}`}>
+          <div className="flex items-center space-x-2 sm:space-x-3 flex-1">
+            {selectedPayment ? selectedPayment.icon : <CreditCard className="w-5 h-5 text-red-600 flex-shrink-0" />}
+            <div className="min-w-0 flex-1">
+              <div className={`text-xs sm:text-sm font-medium ${selectedPayment ? 'text-gray-900' : 'text-red-600'} truncate`}>
                 {displayText.title}
               </div>
-              <div className="text-xs text-gray-500">{displayText.subtitle}</div>
+              <div className="text-xs text-gray-500 truncate">{displayText.subtitle}</div>
             </div>
           </div>
-          <ChevronRight className="w-4 h-4 text-red-600" />
+          <ChevronRight className="w-4 h-4 text-red-600 flex-shrink-0" />
         </div>
       </div>
 

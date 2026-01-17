@@ -22,20 +22,20 @@ const DeliveryInformation = () => {
     };
 
     return (
-        <div className='py-4'>
+        <div className='py-4 w-full'>
             <h1 className='text-base text-black font-medium mb-0.5'>THÔNG TIN NHẬN HÀNG</h1>
 
-            <Tabs value={selectedTab} onValueChange={handleTabChange} defaultValue="pickUpInStore" className="bg-white flex flex-col gap-4 rounded-lg border border-gray-200">
-                <TabsList className='grid grid-cols-2 bg-red-400 rounded-t-lg'>
-                    <TabsTrigger className={`py-3 ${selectedTab === "pickUpInStore" ? "bg-red-400 rounded-tr-sm text-white" : "bg-gray-400 "}`} value="pickUpInStore">
+            <Tabs value={selectedTab} onValueChange={handleTabChange} defaultValue="pickUpInStore" className="bg-white flex flex-col gap-4 rounded-lg border border-gray-200 w-full">
+                <TabsList className='grid grid-cols-2 bg-[#FFCCCC] rounded-t-lg w-full overflow-x-auto'>
+                    <TabsTrigger className={`py-3 text-center truncate ${selectedTab === "pickUpInStore" ? "bg-[#FFCCCC] rounded-tr-sm font-bold text-gray-600" : "bg-gray-400"}`} value="pickUpInStore">
                         Nhận tại cửa hàng
                     </TabsTrigger>
-                    <TabsTrigger className={`py-3 ${selectedTab === "deliveryToYourDoor" ? "bg-red-400 rounded-tl-sm text-white" : "bg-gray-400"}`} value="deliveryToYourDoor">
+                    <TabsTrigger className={`py-3 text-center truncate ${selectedTab === "deliveryToYourDoor" ? "bg-[#FFCCCC] rounded-tl-sm font-bold text-gray-600" : "bg-gray-400"}`} value="deliveryToYourDoor">
                         Giao hàng tận nơi
                     </TabsTrigger>
                 </TabsList>
 
-                <div className='px-4 py-3 text-black'>
+                <div className='px-4 py-3 text-black w-full'>
                     <TabsContent value="pickUpInStore">
                         <PickUpInStore />
                     </TabsContent>

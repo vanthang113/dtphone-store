@@ -15,16 +15,16 @@ const handlePromotionCode = (e: React.ChangeEvent<HTMLInputElement>) => {
 
     return (
         <div className="mb-6 mt-6" >
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-6 gap-2 sm:gap-4">
 
-          <div className='col-span-5'><Input 
+          <div className='col-span-1 sm:col-span-1'><Input 
         
                 label='Nhập mã giảm giá chỉ áp dụng một lần' 
                 value={promotionCode}
                 onChange={handlePromotionCode}
             /></div>
         
-<div className='col-span-1'><Button 
+<div className='col-span-1 sm:col-span-1'><Button 
             className={`py-3 px-3  rounded-lg font-medium transition-all duration-300 ease-in-out ${promotionCode?.length ? "bg-red-600 text-white":"bg-gray-300 text-gray-600 "  } `}
           >
             Áp dụng
