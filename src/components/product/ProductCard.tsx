@@ -52,7 +52,7 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
                         {discount && (
                             <div className="bg-[#00777B] text-white text-xs font-bold px-3 
                                 py-1.5 rounded-r-md shadow-lg transform -translate-x-2 hover:translate-x-0 transition-all duration-300 ease-in-out 
-                                hover:shadow-xl hover:scale-105 hover:bg-red-600">
+                                hover:shadow-xl hover:scale-105 hover:bg-[#FF9999]">
                                 -{discount}%
                             </div>
                         )},

@@ -182,5 +182,12 @@
   body {
     @apply bg-background text-foreground;  /* Áp dụng màu nền và chữ mặc định */
   }
+  /* Make native buttons show pointer cursor and disabled state show not-allowed */
+  button {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed;
+  }
 }
 

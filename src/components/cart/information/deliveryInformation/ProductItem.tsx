@@ -34,7 +34,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
 
                     {/* Product Details */}
                     <div className="md:flex-1 ml-3">
-                        <h3 className="text-gray-900 text-sm md:text-base font-semibold mb-1 overflow-x-hidden">
+                        <h3 className="text-white text-sm md:text-base font-semibold mb-1 overflow-x-hidden">
                             {name}
                         </h3>
 
@@ -46,7 +46,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
 
                             {/* quantity */}
                             <div className="p-1 text-base font-normal">
-                                Số lượng: <span className="text-red-600">{quantity}</span>
+                                Số lượng: <span className="text-white">{quantity}</span>
                             </div>
                         </div>
                     </div>

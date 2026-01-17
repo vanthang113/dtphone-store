@@ -59,7 +59,7 @@ export default function PaymentInfoPage(): JSX.Element {
         </p>
         <Button 
           onClick={() => router.push('/cart')}
-          className="bg-red-600 hover:bg-red-700 text-white"
+          className="bg-[#00868B] hover:bg-[#00868B] text-white"
         >
           Quay lại giỏ hàng
         </Button>

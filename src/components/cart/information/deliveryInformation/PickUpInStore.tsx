@@ -112,7 +112,7 @@ const PickUpInStore = () => {
         <div className='grid grid-cols-2 gap-8 mb-4'>
 
                         <div>
-                            <label className="block mb-1 text-sm font-medium">TỈNH/THÀNH PHỐ *</label>
+                            <label className="block mb-1 text-sm text-black font-medium">TỈNH/THÀNH PHỐ *</label>
                             <Select
                                 value={formData.delivery.province?.value?.toString() ?? ''}
                                 onValueChange={val => {
@@ -121,7 +121,7 @@ const PickUpInStore = () => {
                                 }}
                                 disabled={loading}
                             >
-                                <SelectTrigger className="w-full">
+                                <SelectTrigger className="w-full text-black">
                                     <SelectValue placeholder="Chọn tỉnh/thành phố" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -135,7 +135,7 @@ const PickUpInStore = () => {
                         </div>
 
                         <div>
-                            <label className="block mb-1 text-sm font-medium">QUẬN/HUYỆN *</label>
+                            <label className="block mb-1 text-sm text-black font-medium">QUẬN/HUYỆN *</label>
                             <Select
                                 value={formData.delivery.district?.value?.toString() ?? ''}
                                 onValueChange={val => {
@@ -144,7 +144,7 @@ const PickUpInStore = () => {
                                 }}
                                 disabled={loading || !formData.delivery.province}
                             >
-                                <SelectTrigger className="w-full">
+                                <SelectTrigger className="w-full text-black">
                                     <SelectValue placeholder="Chọn quận/huyện" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -158,7 +158,7 @@ const PickUpInStore = () => {
                         </div>
 
                         <div className='col-span-2'>
-                            <label className="block mb-1 text-sm font-medium">Chọn địa chỉ cửa hàng *</label>
+                            <label className="block mb-1 text-sm text-black font-medium">Chọn địa chỉ cửa hàng *</label>
                             <Select
                                 value={selectedStore?.value?.toString() ?? ''}
                                 onValueChange={val => {
@@ -167,7 +167,7 @@ const PickUpInStore = () => {
                                 }}
                                 disabled={!formData.delivery.district}
                             >
-                                <SelectTrigger className="w-full">
+                                <SelectTrigger className="w-full text-black">
                                     <SelectValue placeholder="Chọn cửa hàng gần bạn" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -180,7 +180,7 @@ const PickUpInStore = () => {
                             </Select>
                         </div>
             
-            <div className='col-span-2'>
+            <div className='col-span-2 text-black'>
                 <Input 
                     label='Ghi chú khác nếu có' 
                     value={formData.delivery.note}

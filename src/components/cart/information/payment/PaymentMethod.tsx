@@ -153,7 +153,7 @@ const PaymentMethod = () => {
             <div className="p-4 border-t border-gray-200">
               <Button 
                 onClick={() => setIsDialogOpen(false)}
-                className="w-full bg-red-600 hover:bg-red-700 text-white"
+                className="w-full bg-[#00868B] hover:bg-[#00868B] text-white"
               >
                 Xác nhận
               </Button>

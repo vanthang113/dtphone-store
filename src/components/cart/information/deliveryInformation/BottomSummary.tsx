@@ -29,7 +29,7 @@ const BottomSummary: React.FC<BottomSummaryProps> = ({
           className={`py-3 px-3 rounded-lg font-medium w-full transition-all duration-300 ${
             disabled
               ? 'bg-gray-400 text-white cursor-not-allowed'
-              : 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+              : 'bg-[#00868B] hover:bg-[#00868B] text-white shadow-lg'
           }`}
           onClick={onButtonClick}
           disabled={disabled}
