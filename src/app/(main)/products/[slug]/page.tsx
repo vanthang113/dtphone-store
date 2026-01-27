@@ -149,15 +149,15 @@ export default function ProductDetail({ params }: Props) {
   return (
     <>
       <ProductBreadcrumb slug={slug} />
-      <div className="pt-30">
-        <div className="max-w-[1200px] mx-auto px-2">
-          <div className="flex flex-col lg:flex-row">
-            <div className="w-full lg:w-1/2 pr-0 lg:pr-4">
-              <h1 className="text-black text-2xl font-bold mb-2">Chi tiết sản phẩm: {slug}</h1>
-              <div className="flex items-center mb-4">
-                <Star className="text-yellow-500 text-xl" />
-                <span className="text-lg font-semibold ml-1">4.9</span>
-                <span className="text-gray-500 ml-1 text-sm">(302 đánh giá)</span>
+      <div className="pt-6 sm:pt-8 md:pt-10 lg:pt-20">
+        <div className="max-w-[1200px] mx-auto px-2 sm:px-3 md:px-4">
+          <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 md:gap-6">
+            <div className="w-full lg:w-1/2 pr-0 lg:pr-3 md:pr-4">
+              <h1 className="text-lg sm:text-xl md:text-2xl text-black font-bold mb-2 sm:mb-3">Chi tiết sản phẩm: {slug}</h1>
+              <div className="flex items-center mb-3 sm:mb-4">
+                <Star className="text-yellow-500 text-base sm:text-lg md:text-xl" />
+                <span className="text-base sm:text-lg md:text-lg font-semibold ml-1">4.9</span>
+                <span className="text-gray-500 ml-1 text-xs sm:text-sm">(302 đánh giá)</span>
               </div>
               <ActionButtons
                 onFavoriteClick={handleFavoriteClick}
@@ -177,7 +177,7 @@ export default function ProductDetail({ params }: Props) {
               <FAQSection features={features} />
             </div>
 
-            <div className="w-full lg:w-1/2 pl-0 lg:pl-4">
+            <div className="w-full lg:w-1/2 pl-0 lg:pl-3 md:pl-4">
               <ProductInfoPanel
                 price={price}
                 originalPrice={originalPrice}

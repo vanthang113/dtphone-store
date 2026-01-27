@@ -92,11 +92,11 @@ const Footer = () => {
   return (
     <footer className="mt-5 w-full bg-gray-100 shadow-lg">
       {/* Footer Top */}
-      <div className="p-4">
+      <div className="p-2 sm:p-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap -mx-3">
+          <div className="flex flex-wrap -mx-2 sm:-mx-3">
             {/* Box 1: Support and Payment */}
-            <div className="w-full md:w-1/4 px-3 mb-4">
+            <div className="w-full sm:w-1/2 md:w-1/4 px-2 sm:px-3 mb-4">
               <SupportInfo
                 supportNumbers={[
                   { number: "1800.2097", label: "Gọi mua hàng (7h30 - 22h00)" },
@@ -113,9 +113,9 @@ const Footer = () => {
             </div>
 
             {/* Box 2: Policies */}
-            <div className="w-full md:w-1/4 px-3 mb-4">
-              <h3 className="text-base font-medium text-gray-700 mb-3">Thông tin và chính sách</h3>
-              <ul className="list-none p-0 text-sm">
+            <div className="w-full sm:w-1/2 md:w-1/4 px-2 sm:px-3 mb-4">
+              <h3 className="text-sm sm:text-base font-medium text-gray-700 mb-3">Thông tin và chính sách</h3>
+              <ul className="list-none p-0 text-xs sm:text-sm">
                 {policies.map((item, index) => (
                   <li key={index} className="mb-1">
                     <Link href="#" className="text-gray-600  no-underline">{item}</Link>
@@ -125,9 +125,9 @@ const Footer = () => {
             </div>
 
             {/* Box 3: Services */}
-            <div className="w-full md:w-1/4 px-3 mb-4">
-              <h3 className="text-base font-medium text-gray-700 mb-3">Dịch vụ và thông tin khác</h3>
-              <ul className="list-none p-0 text-sm">
+            <div className="w-full sm:w-1/2 md:w-1/4 px-2 sm:px-3 mb-4">
+              <h3 className="text-sm sm:text-base font-medium text-gray-700 mb-3">Dịch vụ và thông tin khác</h3>
+              <ul className="list-none p-0 text-xs sm:text-sm">
                 {services.map((item, index) => (
                   <li key={index} className="mb-1">
                     <Link href="#" className="text-gray-600  no-underline">{item}</Link>
@@ -135,7 +135,7 @@ const Footer = () => {
                 ))}
                 <li className="mb-1">
                   <div className="flex flex-col">
-                    <p className="flex items-center gap-1 text-sm">
+                    <p className="flex items-center gap-1 text-xs sm:text-sm">
                       <Image src="/images/logo_S.png" alt="Smember" width={15} height={15} className="rounded" />
                       Smember: Tích điểm & sử dụng ưu đãi
                     </p>
@@ -155,10 +155,10 @@ const Footer = () => {
             </div>
 
             {/* Box 4: Social and Member Sites */}
-            <div className="w-full md:w-1/4 px-3 mb-4">
-              <h3 className="text-base font-medium text-gray-700 mb-3">Kết nối với DTphone</h3>
+            <div className="w-full sm:w-1/2 md:w-1/4 px-2 sm:px-3 mb-4">
+              <h3 className="text-sm sm:text-base font-medium text-gray-700 mb-3">Kết nối với DTphone</h3>
               <SocialLinks links={socialLinks} />
-              <h3 className="text-base font-medium mb-3">Website thành viên</h3>
+              <h3 className="text-sm sm:text-base font-medium mb-3">Website thành viên</h3>
               <MemberSites sites={memberSites} />
             </div>
           </div>
@@ -166,14 +166,14 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="bg-gray-100 p-4">
+      <div className="bg-gray-100 p-2 sm:p-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="flex flex-wrap -mx-2 sm:-mx-3 mb-2">
             {bottomLinks.map((group, index) => (
-              <div key={index} className="w-full md:w-1/4 px-3 mb-2">
+              <div key={index} className="w-full sm:w-1/2 md:w-1/4 px-2 sm:px-3 mb-2">
                 {group.map((item, idx) => (
                   <span key={idx} className="inline-block mr-1">
-                    <Link href={item.href} className="text-[12px] text-gray-600  no-underline">{item.text}</Link>
+                    <Link href={item.href} className="text-[10px] sm:text-[12px] text-gray-600  no-underline">{item.text}</Link>
                     {idx < group.length - 1 && <span className='text-gray-600 '> | </span>}
                   </span>
                 ))}
@@ -181,7 +181,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="flex flex-col items-center">
-            <p className="text-[11px] text-gray-500 mb-2 text-center">
+            <p className="text-[10px] sm:text-[11px] text-gray-500 mb-2 text-center">
               Công ty TNHH Thương Mại Tổng Hợp HTV - GPĐKKD: 0108075931 cấp tại Sở KH & ĐT TP. Hà Nội. Địa chỉ văn
               phòng: 543 Nguyễn Trãi, phường Thanh Xuân Nam, quận Thanh Xuân, Thành phố Hà Nội, Việt Nam. Điện thoại:
               024.7303.0119.

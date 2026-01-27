@@ -574,11 +574,11 @@ export const paymentBanners = [
 
 export default function HomePage() {
   return (
-    <section className="box-border block h-full mx-auto relative w-full max-w-[1200px] py-2 px-2 bg-white">
+    <section className="box-border block h-full mx-auto relative w-full max-w-[1200px] py-2 px-2 sm:px-3 md:px-4 bg-white">
       {/* Menu banner */}
-      <div className="mb-3 w-full h-[400px]">
+      <div className="mb-3 w-full h-[200px] sm:h-[300px] md:h-[400px]">
         {/* Top Home Section */}
-        <div className="flex flex-row flex-nowrap gap-4 h-full">
+        <div className="flex flex-col md:flex-row gap-2 sm:gap-3 md:gap-4 h-full">
           <SlidingBanner
             slides={[
               { src: '/images/banner/iPhone-17-Pro-PRE-home-0925.webp', alt: 'Mừng khai trương ưu đãi cực khủng', href: '/promotions/opening' },

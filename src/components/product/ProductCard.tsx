@@ -27,16 +27,16 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
     }
 
     return (
-        <Card className="w-[221px] h-[480px] overflow-hidden rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.1)] bg-white 
+        <Card className="w-[200px] sm:w-[210px] md:w-[221px] h-[450px] sm:h-[465px] md:h-[480px] overflow-hidden rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.1)] bg-white 
                         transition-transform duration-300 ease-in-out
                         hover:shadow-[0_2px_10px_rgba(0,0,0,0.2)] hover:scale-100 
                         active:scale-95 cursor-pointer
-                        flex flex-col">
+                        flex flex-col flex-shrink-0">
             {/* Phần hình ảnh */}
-            <CardHeader className="p-0 relative h-[170px] flex items-center justify-center">
+            <CardHeader className="p-0 relative h-[140px] sm:h-[155px] md:h-[170px] flex items-center justify-center">
                 <Link href={`/products/${id}`} className="block">
                     <div
-                        className="relative w-[150px] h-[150px] mx-auto 
+                        className="relative w-[120px] sm:w-[135px] md:w-[150px] h-[120px] sm:h-[135px] md:h-[150px] mx-auto 
                                     overflow-hidden rounded-md 
                                     transition-transform duration-300 ease-in-out 
                                     hover:scale-103 active:scale-95 cursor-pointer"
@@ -51,8 +51,8 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
                     {/* Thông tin giảm giá */}
                     <div className="absolute top-0 left-0 flex flex-col gap-1">
                         {discount && (
-                            <div className="bg-[#00777B] text-white text-xs font-bold px-3 
-                                py-1.5 rounded-r-md shadow-lg transform -translate-x-2 hover:translate-x-0 transition-all duration-300 ease-in-out 
+                            <div className="bg-[#00777B] text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 
+                                py-1 sm:py-1.5 rounded-r-md shadow-lg transform -translate-x-2 hover:translate-x-0 transition-all duration-300 ease-in-out 
                                 hover:shadow-xl hover:scale-105 hover:bg-[#FF9999]">
                                 -{discount}%
                             </div>
@@ -62,20 +62,20 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
             </CardHeader>
 
             {/* Phần thông tin sản phẩm */}
-            <CardContent className="p-3 flex-1 flex flex-col min-h-0">
+            <CardContent className="p-2 sm:p-2.5 md:p-3 flex-1 flex flex-col min-h-0">
                 <Link href={`/products/${id}`} className="block flex flex-col h-full">
-                    <h3 className="text-sm font-medium line-clamp-2 mb-2 h-[48px] flex items-center">{name}</h3>
-                    <div className="space-y-1 flex-1 flex flex-col">
+                    <h3 className="text-[11px] sm:text-sm md:text-sm font-medium line-clamp-2 mb-1 sm:mb-2 h-[40px] sm:h-[48px] flex items-center">{name}</h3>
+                    <div className="space-y-0.5 sm:space-y-1 flex-1 flex flex-col">
                         {/* Giá sản phẩm */}
-                        <div className="flex items-baseline gap-2 h-[36px] flex items-center">
-                            <p className="text-lg font-bold text-primary-500">
+                        <div className="flex items-baseline gap-1 sm:gap-2 h-[30px] sm:h-[36px] flex items-center">
+                            <p className="text-sm sm:text-lg font-bold text-primary-500">
                                 {new Intl.NumberFormat('vi-VN', {
                                     style: 'currency',
                                     currency: 'VND'
                                 }).format(price)}
                             </p>
                             {originalPrice && (
-                                <p className="text-sm text-gray-500 line-through">
+                                <p className="text-[10px] sm:text-sm text-gray-500 line-through">
                                     {new Intl.NumberFormat('vi-VN', {
                                         style: 'currency',
                                         currency: 'VND'
@@ -84,7 +84,7 @@ function ProductCard({ id, name, price, originalPrice, image, rating, discount, 
                             )}
                         </div>
                         {promotion && (
-                            <div className="text-xs text-gray-600 line-clamp-2 h-[32px] flex items-center">
+                            <div className="text-[9px] sm:text-xs text-gray-600 line-clamp-2 h-[28px] sm:h-[32px] flex items-center">
                                 {promotion}
                             </div>
                         )}

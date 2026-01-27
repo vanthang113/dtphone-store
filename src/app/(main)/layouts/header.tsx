@@ -56,7 +56,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#008B8B] shadow-md">
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between px-2 h-[64px]">
+      <div className="max-w-[1200px] mx-auto flex items-center justify-between px-2 sm:px-4 h-[64px]">
         
         {/* Logo */}
         <Link
@@ -76,11 +76,11 @@ const Header = () => {
             width={220}
             height={65}
             priority
-            className="block"
+            className="block w-auto"
           />
         </Link>
 
-        <div className="flex items-center gap-x-1 flex-nowrap overflow-x-auto flex-1 justify-end">
+        <div className="flex items-center gap-x-1 sm:gap-x-2 flex-nowrap overflow-x-auto flex-1 justify-end">
 
           {/* Danh mục */}
           <MenuItem

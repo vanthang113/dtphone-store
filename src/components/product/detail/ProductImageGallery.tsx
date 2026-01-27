@@ -22,9 +22,9 @@ export default function ProductImageGallery({
   onImageClick,
 }: ProductImageGalleryProps) {
   return (
-    <div className="mt-6">
+    <div className="mt-4 sm:mt-5 md:mt-6">
       {/* Main Image Display */}
-      <div className="relative w-full h-96 bg-white rounded-lg overflow-hidden group flex items-center justify-center">
+      <div className="relative w-full h-[250px] sm:h-[300px] md:h-96 bg-white rounded-lg overflow-hidden group flex items-center justify-center">
         <Image
           src={currentImage.src}
           alt={currentImage.alt}
@@ -32,18 +32,18 @@ export default function ProductImageGallery({
           className="object-contain"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        <div className="absolute inset-0 z-10 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <div className="absolute inset-0 z-10 flex items-center justify-between px-2 sm:px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <Button
-            className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full cursor-pointer"
+            className="bg-black/40 hover:bg-black/60 text-white p-1.5 sm:p-2 rounded-full cursor-pointer"
             onClick={onPrevClick}
           >
-            <ChevronLeftIcon className="w-7 h-7" />
+            <ChevronLeftIcon className="w-5 sm:w-7 h-5 sm:h-7" />
           </Button>
           <button
-            className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full cursor-pointer"
+            className="bg-black/40 hover:bg-black/60 text-white p-1.5 sm:p-2 rounded-full cursor-pointer"
             onClick={onNextClick}
           >
-            <ChevronRightIcon className="w-7 h-7" />
+            <ChevronRightIcon className="w-5 sm:w-7 h-5 sm:h-7" />
           </button>
         </div>
       </div>
