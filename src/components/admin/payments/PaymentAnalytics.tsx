@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,58 +10,58 @@ import {
   Text,
   Flex,
   Grid,
-  Col
-} from '@tremor/react';
+} from "@tremor/react";
 import {
   TrendingUp,
   TrendingDown,
   CreditCard,
   Wallet,
-  Building,
-  Smartphone
-} from 'lucide-react';
+} from "lucide-react";
 
 // Mock data for charts
 const revenueData = [
-  { month: 'Jan', 'Doanh thu': 2400000, 'Giao dịch': 45 },
-  { month: 'Feb', 'Doanh thu': 1398000, 'Giao dịch': 32 },
-  { month: 'Mar', 'Doanh thu': 9800000, 'Giao dịch': 87 },
-  { month: 'Apr', 'Doanh thu': 3908000, 'Giao dịch': 56 },
-  { month: 'May', 'Doanh thu': 4800000, 'Giao dịch': 73 },
-  { month: 'Jun', 'Doanh thu': 3800000, 'Giao dịch': 68 }
+  { month: "Jan", "Doanh thu": 2400000, "Giao dịch": 45 },
+  { month: "Feb", "Doanh thu": 1398000, "Giao dịch": 32 },
+  { month: "Mar", "Doanh thu": 9800000, "Giao dịch": 87 },
+  { month: "Apr", "Doanh thu": 3908000, "Giao dịch": 56 },
+  { month: "May", "Doanh thu": 4800000, "Giao dịch": 73 },
+  { month: "Jun", "Doanh thu": 3800000, "Giao dịch": 68 },
 ];
 
 const paymentMethodData = [
-  { name: 'Thẻ tín dụng', value: 45, amount: 25000000 },
-  { name: 'Ví MoMo', value: 25, amount: 15000000 },
-  { name: 'ZaloPay', value: 15, amount: 8500000 },
-  { name: 'Chuyển khoản', value: 10, amount: 5200000 },
-  { name: 'COD', value: 5, amount: 2300000 }
+  { name: "Thẻ tín dụng", value: 45, amount: 25000000 },
+  { name: "Ví MoMo", value: 25, amount: 15000000 },
+  { name: "ZaloPay", value: 15, amount: 8500000 },
+  { name: "Chuyển khoản", value: 10, amount: 5200000 },
+  { name: "COD", value: 5, amount: 2300000 },
 ];
 
 const dailyTransactions = [
-  { day: 'Mon', 'Thành công': 12, 'Thất bại': 2, 'Đang xử lý': 1 },
-  { day: 'Tue', 'Thành công': 19, 'Thất bại': 1, 'Đang xử lý': 2 },
-  { day: 'Wed', 'Thành công': 15, 'Thất bại': 3, 'Đang xử lý': 1 },
-  { day: 'Thu', 'Thành công': 22, 'Thất bại': 1, 'Đang xử lý': 0 },
-  { day: 'Fri', 'Thành công': 18, 'Thất bại': 2, 'Đang xử lý': 3 },
-  { day: 'Sat', 'Thành công': 8, 'Thất bại': 1, 'Đang xử lý': 1 },
-  { day: 'Sun', 'Thành công': 6, 'Thất bại': 0, 'Đang xử lý': 0 }
+  { day: "Mon", "Thành công": 12, "Thất bại": 2, "Đang xử lý": 1 },
+  { day: "Tue", "Thành công": 19, "Thất bại": 1, "Đang xử lý": 2 },
+  { day: "Wed", "Thành công": 15, "Thất bại": 3, "Đang xử lý": 1 },
+  { day: "Thu", "Thành công": 22, "Thất bại": 1, "Đang xử lý": 0 },
+  { day: "Fri", "Thành công": 18, "Thất bại": 2, "Đang xử lý": 3 },
+  { day: "Sat", "Thành công": 8, "Thất bại": 1, "Đang xử lý": 1 },
+  { day: "Sun", "Thành công": 6, "Thất bại": 0, "Đang xử lý": 0 },
 ];
 
 const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-    minimumFractionDigits: 0
+  return new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    minimumFractionDigits: 0,
   }).format(value);
 };
 
 const valueFormatter = (number: number) => formatCurrency(number);
 
+// Màu cho chấm hiển thị (không dùng tailwind class động để tránh mất màu khi build)
+const DOT_COLORS = ["#3b82f6", "#14b8a6", "#f59e0b", "#f43f5e", "#6366f1"]; // blue, teal, amber, rose, indigo
+
 export default function PaymentAnalytics() {
-  const totalRevenue = revenueData.reduce((sum, item) => sum + item['Doanh thu'], 0);
-  const totalTransactions = revenueData.reduce((sum, item) => sum + item['Giao dịch'], 0);
+  const totalRevenue = revenueData.reduce((sum, item) => sum + item["Doanh thu"], 0);
+  const totalTransactions = revenueData.reduce((sum, item) => sum + item["Giao dịch"], 0);
   const avgTransactionValue = totalRevenue / totalTransactions;
 
   return (
@@ -123,8 +123,8 @@ export default function PaymentAnalytics() {
               className="h-72"
               data={revenueData}
               index="month"
-              categories={['Doanh thu']}
-              colors={['blue']}
+              categories={["Doanh thu"]}
+              colors={["blue"]}
               valueFormatter={valueFormatter}
               yAxisWidth={80}
             />
@@ -143,7 +143,7 @@ export default function PaymentAnalytics() {
               category="value"
               index="name"
               valueFormatter={(number: number) => `${number}%`}
-              colors={['blue', 'teal', 'amber', 'rose', 'indigo']}
+              colors={["blue", "teal", "amber", "rose", "indigo"]}
               showLabel={true}
             />
           </CardContent>
@@ -161,8 +161,8 @@ export default function PaymentAnalytics() {
               className="h-72"
               data={dailyTransactions}
               index="day"
-              categories={['Thành công', 'Thất bại', 'Đang xử lý']}
-              colors={['emerald', 'red', 'amber']}
+              categories={["Thành công", "Thất bại", "Đang xử lý"]}
+              colors={["emerald", "red", "amber"]}
               valueFormatter={(number: number) => `${number} giao dịch`}
               stack={true}
             />
@@ -178,27 +178,31 @@ export default function PaymentAnalytics() {
             <div className="space-y-4">
               {paymentMethodData.map((method, index) => {
                 const successRate = 95 - index * 3; // Mock success rates
-                const colors = ['blue', 'teal', 'amber', 'rose', 'indigo'];
+                const dotColor = DOT_COLORS[index] ?? "#3b82f6";
+
                 return (
                   <div key={method.name} className="flex items-center justify-between p-3 border rounded-lg">
                     <div className="flex items-center gap-3">
-                      <div 
-                        className={`w-4 h-4 rounded-full bg-${colors[index]}-500`}
+                      <span
+                        className="w-4 h-4 rounded-full"
+                        style={{ backgroundColor: dotColor }}
+                        aria-hidden="true"
                       />
                       <div>
                         <Text className="font-medium">{method.name}</Text>
-                        <Text className="text-sm">
-                          {formatCurrency(method.amount)}
-                        </Text>
+                        <Text className="text-sm">{formatCurrency(method.amount)}</Text>
                       </div>
                     </div>
+
                     <div className="text-right">
-                      <Badge variant={successRate > 90 ? "default" : successRate > 80 ? "secondary" : "destructive"}>
+                      <Badge
+                        variant={
+                          successRate > 90 ? "default" : successRate > 80 ? "secondary" : "destructive"
+                        }
+                      >
                         {successRate}% thành công
                       </Badge>
-                      <Text className="text-sm mt-1">
-                        {method.value}% tổng số
-                      </Text>
+                      <Text className="text-sm mt-1">{method.value}% tổng số</Text>
                     </div>
                   </div>
                 );
@@ -218,8 +222,8 @@ export default function PaymentAnalytics() {
             className="h-72"
             data={revenueData}
             index="month"
-            categories={['Giao dịch']}
-            colors={['blue']}
+            categories={["Giao dịch"]}
+            colors={["blue"]}
             valueFormatter={(number: number) => `${number} giao dịch`}
             yAxisWidth={60}
           />

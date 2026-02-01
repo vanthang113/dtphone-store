@@ -20,7 +20,7 @@ import {
   CartIcon,
   UserIcon,
 } from "@/components/icons/HeaderIcons";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,24 +32,29 @@ const Header = () => {
       const rawUser = localStorage.getItem("user");
       if (rawUser) {
         try {
-          const parsed = JSON.parse(rawUser);
-          setUserName(parsed?.name ?? String(parsed));
+          const parsed: unknown = JSON.parse(rawUser);
+          const name =
+            typeof parsed === "object" && parsed !== null && "name" in parsed
+              ? String((parsed as { name?: unknown }).name ?? "")
+              : String(parsed);
+
+          setUserName(name || rawUser);
           return;
-        } catch (e) {
+        } catch {
           setUserName(rawUser);
           return;
         }
       }
-      const token =
-        localStorage.getItem("access_token") ||
-        localStorage.getItem("token");
+
+      const token = localStorage.getItem("access_token") || localStorage.getItem("token");
       if (token) {
         // token present — optionally fetch profile here. For now show generic 'Tài khoản'
         setUserName("Tài khoản");
         return;
       }
+
       setUserName(null);
-    } catch (err) {
+    } catch {
       setUserName(null);
     }
   }, []);
@@ -57,7 +62,6 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#008B8B] shadow-md">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between px-2 sm:px-4 h-[64px]">
-        
         {/* Logo */}
         <Link
           href="/"
@@ -81,55 +85,33 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center gap-x-1 sm:gap-x-2 flex-nowrap overflow-x-auto flex-1 justify-end">
-
           {/* Danh mục */}
-          <MenuItem
-            icon={<MenuIcon className="w-6 h-6" />}
-            onClick={() => setIsMenuOpen(prev => !prev)}
-          >
+          <MenuItem icon={<MenuIcon className="w-6 h-6" />} onClick={() => setIsMenuOpen((prev) => !prev)}>
             <span>Danh mục</span>
           </MenuItem>
 
           {/* Xem giá tại */}
-          <LocationItem
-            icon={<LocationIcon className="w-6 h-6" />}
-            location="Hồ Chí Minh"
-          />
+          <LocationItem icon={<LocationIcon className="w-6 h-6" />} location="Hồ Chí Minh" />
 
           {/* Search */}
           <SearchBar />
 
           {/* Gọi mua hàng */}
-          <PhoneItem
-            icon={<PhoneIcon className="w-6 h-6" />}
-            number="1800.2097"
-          />
+          <PhoneItem icon={<PhoneIcon className="w-6 h-6" />} number="1800.2097" />
 
           {/* Cửa hàng gần bạn */}
-          <StoreItem
-            icon={<StoreIcon className="w-6 h-6" />}
-            text="Cửa hàng<br />gần bạn"
-          />
+          <StoreItem icon={<StoreIcon className="w-6 h-6" />} text="Cửa hàng<br />gần bạn" />
 
           {/* Tra cứu đơn hàng */}
-          <DeliveryTrackingItem
-            icon={<DeliveryTrackingIcon className="w-10 h-10" />}
-            text="Tra cứu<br />đơn hàng"
-          />
+          <DeliveryTrackingItem icon={<DeliveryTrackingIcon className="w-10 h-10" />} text="Tra cứu<br />đơn hàng" />
 
           {/* Giỏ hàng */}
-          <CartItem
-            icon={<CartIcon className="w-6 h-6" />}
-            text="Giỏ<br />hàng"
-          />
+          <CartItem icon={<CartIcon className="w-6 h-6" />} text="Giỏ<br />hàng" />
 
           {/* Tài khoản */}
           {userName ? (
             <Link href="/information">
-              <UserItem
-                icon={<UserIcon className="w-6 h-6" />}
-                name={userName}
-              />
+              <UserItem icon={<UserIcon className="w-6 h-6" />} name={userName} />
             </Link>
           ) : (
             <Link href="/login">
@@ -138,17 +120,11 @@ const Header = () => {
               </button>
             </Link>
           )}
-
         </div>
       </div>
 
       {/* Menu Banner as Overlay */}
-      {isMenuOpen && (
-        <MenuBanner
-          isOverlay
-          onClose={() => setIsMenuOpen(false)}
-        />
-      )}
+      {isMenuOpen && <MenuBanner isOverlay onClose={() => setIsMenuOpen(false)} />}
     </header>
   );
 };

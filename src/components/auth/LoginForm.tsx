@@ -1,64 +1,91 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Eye, EyeOff, Gift } from 'lucide-react';
-import { useLoginMutation } from '@/store/features/authApi';
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import type { FormEvent, ChangeEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Eye, EyeOff, Gift } from "lucide-react";
+import { useLoginMutation } from "@/store/features/authApi";
+
+type CheckedState = boolean | "indeterminate";
+
+type LoginFormState = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+};
+
+type LoginResponse = {
+  access_token?: string;
+  refresh_token?: string;
+};
+
+function toErrorMessage(err: unknown): string {
+  if (typeof err === "string") return err;
+  if (err instanceof Error) return err.message;
+
+  if (typeof err === "object" && err !== null) {
+    const e = err as { data?: { message?: string; detail?: string }; message?: string };
+    return e?.data?.message || e?.data?.detail || e?.message || "Đăng nhập thất bại. Vui lòng thử lại.";
+  }
+
+  return "Đăng nhập thất bại. Vui lòng thử lại.";
+}
 
 export default function LoginForm() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+  const [formData, setFormData] = useState<LoginFormState>({
+    email: "",
+    password: "",
     rememberMe: false,
   });
 
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const [login, { isLoading }] = useLoginMutation();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleCheckboxChange =
-    (name: keyof typeof formData) => (checked: boolean | 'indeterminate') => {
+    (name: keyof Pick<LoginFormState, "rememberMe">) => (checked: CheckedState) => {
       setFormData((prev) => ({
         ...prev,
         [name]: checked === true,
       }));
     };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrorMessage('');
+    setErrorMessage("");
+
+    const email = formData.email.trim();
+    const password = formData.password;
+
+    if (!email) return setErrorMessage("Vui lòng nhập email");
+    if (!password) return setErrorMessage("Vui lòng nhập mật khẩu");
 
     try {
-      const result: any = await login({
-        email: formData.email,
-        password: formData.password,
-      }).unwrap();
+      const resUnknown = await login({ email, password }).unwrap();
+      const result = resUnknown as LoginResponse;
 
-      if (result?.access_token) localStorage.setItem('access_token', result.access_token);
-      if (result?.refresh_token) localStorage.setItem('refresh_token', result.refresh_token);
-      
-      // Store user data for header display
-      localStorage.setItem('user', JSON.stringify({
-        name: formData.email.split('@')[0],
-        email: formData.email
-      }));
+      try {
+        if (result?.access_token) localStorage.setItem("access_token", result.access_token);
+        if (result?.refresh_token) localStorage.setItem("refresh_token", result.refresh_token);
 
-      window.location.href = '/';
-    } catch (err: any) {
-      setErrorMessage(err?.data?.message || err?.message || 'Đăng nhập thất bại. Vui lòng thử lại.');
+        localStorage.setItem("user", JSON.stringify({ name: email.split("@")[0], email }));
+      } catch {
+        // ignore storage errors (private mode / blocked storage)
+      }
+
+      window.location.href = "/";
+    } catch (err: unknown) {
+      setErrorMessage(toErrorMessage(err));
     }
   };
 
@@ -66,34 +93,32 @@ export default function LoginForm() {
     <div className="min-h-[calc(100vh-80px)] w-full bg-white">
       <div className="mx-auto w-full max-w-[1200px] px-4 py-8 lg:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
-          {/* ================= LEFT: Giống CellphoneS ================= */}
+          {/* LEFT */}
           <section className="hidden lg:block">
-            {/* Heading */}
             <div className="space-y-2">
               <p className="text-lg text-neutral-800">
-                Nhập hội khách hàng thành viên <span className="font-extrabold text-[#00777B]">SMEMBER</span>
+                Nhập hội khách hàng thành viên{" "}
+                <span className="font-extrabold text-[#00777B]">SMEMBER</span>
               </p>
               <p className="text-base text-neutral-700">
-                Để không bỏ lỡ các ưu đãi hấp dẫn từ <span className="font-extrabold text-[#00777B]">DTPhone</span>
+                Để không bỏ lỡ các ưu đãi hấp dẫn từ{" "}
+                <span className="font-extrabold text-[#00777B]">DTPhone</span>
               </p>
             </div>
 
-            {/* Box ưu đãi (giống card bên trái) */}
             <div className="mt-6 rounded-2xl border border-red-100 bg-neutral-50 p-6 relative">
-              {/* “khung đỏ” bo góc kiểu cellphones */}
               <div className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-[#00CDCD]" />
               <ul className="space-y-4">
                 {[
-                  'Chiết khấu đến 5% khi mua các sản phẩm tại DTPhone',
-                  'Miễn phí giao hàng cho thành viên và cho đơn hàng từ 300.000đ',
-                  'Tặng voucher sinh nhật đến 500.000đ cho khách hàng thành viên',
-                  'Trợ giá thu cũ lên đời đến 1 triệu',
-                  'Thăng hạng nhận voucher đến 300.000đ',
-                  'Đặc quyền ưu đãi thêm cho học sinh / sinh viên',
+                  "Chiết khấu đến 5% khi mua các sản phẩm tại DTPhone",
+                  "Miễn phí giao hàng cho thành viên và cho đơn hàng từ 300.000đ",
+                  "Tặng voucher sinh nhật đến 500.000đ cho khách hàng thành viên",
+                  "Trợ giá thu cũ lên đời đến 1 triệu",
+                  "Thăng hạng nhận voucher đến 300.000đ",
+                  "Đặc quyền ưu đãi thêm cho học sinh / sinh viên",
                 ].map((t, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-sm text-neutral-800">
                     <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#00868B] text-white">
-                    {/* <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-red-50 text-red-600"> */}
                       <Gift className="h-4 w-4" />
                     </span>
                     <span>{t}</span>
@@ -108,10 +133,9 @@ export default function LoginForm() {
               </div>
             </div>
 
-            {/* Ảnh mascot ở dưới (bạn chỉ thay src là ảnh của bạn) */}
             <div className="mt-8 flex justify-center">
               <Image
-                src="/images/auth/robo1.png" 
+                src="/images/auth/robo1.png"
                 alt="Mascot"
                 width={520}
                 height={320}
@@ -121,24 +145,24 @@ export default function LoginForm() {
             </div>
           </section>
 
-          {/* ================= RIGHT: Form đăng nhập ================= */}
+          {/* RIGHT */}
           <section className="w-full">
             <div className="mx-auto w-full max-w-[520px]">
-                <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3 mb-2">
                 <Link href="/" className="flex-shrink-0 flex justify-center tablet:justify-start">
-                <Image
+                  <Image
                     src="/images/logo-dt.png"
                     alt="DTPhone"
                     width={300}
                     height={90}
                     className="h-16 tablet:h-20 laptop:h-24 w-auto object-contain"
                     priority
-                />
-            </Link>
-                  <h1 className="text-2xl tablet:text-3xl font-extrabold text-center text-[#00868B]">
-                    Đăng nhập SMEMBER
-                  </h1>
-                </div>
+                  />
+                </Link>
+                <h1 className="text-2xl tablet:text-3xl font-extrabold text-center text-[#00868B]">
+                  Đăng nhập SMEMBER
+                </h1>
+              </div>
 
               <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit}>
                 <div className="space-y-2">
@@ -153,6 +177,8 @@ export default function LoginForm() {
                     onChange={handleInputChange}
                     placeholder="Nhập email của bạn"
                     className="h-12 text-base"
+                    required
+                    autoComplete="email"
                   />
                 </div>
 
@@ -164,11 +190,13 @@ export default function LoginForm() {
                     <Input
                       id="password"
                       name="password"
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       value={formData.password}
                       onChange={handleInputChange}
                       placeholder="Nhập mật khẩu của bạn"
                       className="h-12 text-base pr-12"
+                      required
+                      autoComplete={formData.rememberMe ? "current-password" : "off"}
                     />
                     <Button
                       type="button"
@@ -192,7 +220,7 @@ export default function LoginForm() {
                     <Checkbox
                       id="rememberMe"
                       checked={formData.rememberMe}
-                      onCheckedChange={handleCheckboxChange('rememberMe')}
+                      onCheckedChange={handleCheckboxChange("rememberMe")}
                     />
                     <Label htmlFor="rememberMe" className="text-sm text-neutral-700">
                       Ghi nhớ đăng nhập
@@ -215,32 +243,34 @@ export default function LoginForm() {
                   disabled={isLoading}
                   className="h-12 text-base font-semibold bg-[#00868B] hover:bg-[#00777B] text-white disabled:opacity-50"
                 >
-                  {isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'}
+                  {isLoading ? "Đang đăng nhập..." : "Đăng nhập"}
                 </Button>
+
                 <div className="flex items-center gap-3 py-2">
                   <div className="h-px flex-1 bg-neutral-200" />
                   <span className="text-sm text-neutral-500">Hoặc đăng nhập bằng</span>
                   <div className="h-px flex-1 bg-neutral-200" />
                 </div>
+
                 <div className="flex justify-center items-center max-w-[450px] mx-auto">
-                <Button variant="outline" className="h-12 gap-2">
-                  <Image
-                    src="/images/logo-google.png"
-                    alt="Google"
-                    width={22}
-                    height={22}
-                    className="h-5 w-5 object-contain"
-                  />
-                  Google
-                </Button>
-              </div>
+                  <Button variant="outline" className="h-12 gap-2" type="button">
+                    <Image
+                      src="/images/logo-google.png"
+                      alt="Google"
+                      width={22}
+                      height={22}
+                      className="h-5 w-5 object-contain"
+                    />
+                    Google
+                  </Button>
+                </div>
+
                 <div className="pt-2 text-center">
                   <span className="text-sm text-neutral-600">Bạn chưa có tài khoản? </span>
                   <Link href="/register" className="text-sm font-semibold text-[#00868B] hover:text-[#00777B]">
                     Đăng ký ngay
                   </Link>
                 </div>
-                {/* Footer nhỏ giống cellphones (tuỳ chọn) */}
               </form>
             </div>
           </section>

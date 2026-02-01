@@ -1,13 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import React from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -31,29 +25,19 @@ import {
   Users,
   Ticket,
   DollarSign,
-  TrendingUp,
-  Calendar,
   MoreVertical,
   Eye,
   Edit,
-  Delete,
-  Plus,
+  Trash2,
   Film,
-  Clock,
   Star,
   ArrowUpRight,
   ArrowDownRight,
 } from "lucide-react";
-import {
-  LineChart,
-  AreaChart,
-  BarChart,
-  DonutChart,
-} from "@tremor/react";
+import { AreaChart, BarChart, DonutChart } from "@tremor/react";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -113,46 +97,6 @@ export default function Dashboard() {
     { month: "T12", "Doanh thu": 125, "Số đơn hàng": 1850 },
   ];
 
-  // Dữ liệu cho LineChart khách hàng mới
-  const customerGrowthData = [
-    { week: "Tuần 1", "Khách hàng mới": 12, "Khách hàng cũ": 45 },
-    { week: "Tuần 2", "Khách hàng mới": 18, "Khách hàng cũ": 52 },
-    { week: "Tuần 3", "Khách hàng mới": 15, "Khách hàng cũ": 48 },
-    { week: "Tuần 4", "Khách hàng mới": 22, "Khách hàng cũ": 58 },
-    { week: "Tuần 5", "Khách hàng mới": 25, "Khách hàng cũ": 62 },
-    { week: "Tuần 6", "Khách hàng mới": 30, "Khách hàng cũ": 68 },
-    { week: "Tuần 7", "Khách hàng mới": 28, "Khách hàng cũ": 65 },
-    { week: "Tuần 8", "Khách hàng mới": 35, "Khách hàng cũ": 72 },
-  ];
-
-  // Dữ liệu cho LineChart đánh giá
-  const ratingData = [
-    { day: "T2", "Đánh giá": 4.2, "Số đánh giá": 15 },
-    { day: "T3", "Đánh giá": 4.4, "Số đánh giá": 18 },
-    { day: "T4", "Đánh giá": 4.1, "Số đánh giá": 12 },
-    { day: "T5", "Đánh giá": 4.6, "Số đánh giá": 22 },
-    { day: "T6", "Đánh giá": 4.8, "Số đánh giá": 28 },
-    { day: "T7", "Đánh giá": 4.7, "Số đánh giá": 25 },
-    { day: "CN", "Đánh giá": 4.5, "Số đánh giá": 20 },
-  ];
-
-  // Dữ liệu cho AreaChart
-  const stockData = [
-    { time: "9h", "Tồn kho": 450, "Sản phẩm bán": 20 },
-    { time: "10h", "Tồn kho": 420, "Sản phẩm bán": 30 },
-    { time: "11h", "Tồn kho": 400, "Sản phẩm bán": 25 },
-    { time: "12h", "Tồn kho": 380, "Sản phẩm bán": 40 },
-    { time: "13h", "Tồn kho": 360, "Sản phẩm bán": 50 },
-    { time: "14h", "Tồn kho": 340, "Sản phẩm bán": 60 },
-    { time: "15h", "Tồn kho": 320, "Sản phẩm bán": 45 },
-    { time: "16h", "Tồn kho": 300, "Sản phẩm bán": 55 },
-    { time: "17h", "Tồn kho": 280, "Sản phẩm bán": 50 },
-    { time: "18h", "Tồn kho": 260, "Sản phẩm bán": 60 },
-    { time: "19h", "Tồn kho": 240, "Sản phẩm bán": 70 },
-    { time: "20h", "Tồn kho": 220, "Sản phẩm bán": 55 },
-  ];
-
-  // Dữ liệu cho BarChart
   const dailyOrdersData = [
     { day: "T2", "Số đơn hàng": 45, "Doanh thu": 72 },
     { day: "T3", "Số đơn hàng": 52, "Doanh thu": 83 },
@@ -338,9 +282,7 @@ export default function Dashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">
-            Quản lý và theo dõi hoạt động bán hàng
-          </p>
+          <p className="text-muted-foreground">Quản lý và theo dõi hoạt động bán hàng</p>
         </div>
       </div>
 
@@ -349,9 +291,7 @@ export default function Dashboard() {
         {stats.map((stat, index) => (
           <Card key={index}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {stat.title}
-              </CardTitle>
+              <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
               <stat.icon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -362,13 +302,7 @@ export default function Dashboard() {
                 ) : (
                   <ArrowDownRight className="h-3 w-3 text-red-600" />
                 )}
-                <span
-                  className={
-                    stat.changeType === "positive"
-                      ? "text-green-600"
-                      : "text-red-600"
-                  }
-                >
+                <span className={stat.changeType === "positive" ? "text-green-600" : "text-red-600"}>
                   {stat.change}
                 </span>
                 <span>so với tháng trước</span>
@@ -384,9 +318,7 @@ export default function Dashboard() {
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Doanh thu theo tháng</CardTitle>
-            <CardDescription>
-              Biểu đồ doanh thu và số đơn hàng trong năm 2024
-            </CardDescription>
+            <CardDescription>Biểu đồ doanh thu và số đơn hàng trong năm 2024</CardDescription>
           </CardHeader>
           <CardContent>
             <AreaChart
@@ -405,9 +337,7 @@ export default function Dashboard() {
         <Card>
           <CardHeader>
             <CardTitle>Phân bố danh mục</CardTitle>
-            <CardDescription>
-              Tỷ lệ các danh mục sản phẩm bán chạy
-            </CardDescription>
+            <CardDescription>Tỷ lệ các danh mục sản phẩm bán chạy</CardDescription>
           </CardHeader>
           <CardContent>
             <DonutChart
@@ -425,9 +355,7 @@ export default function Dashboard() {
         <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle>Đơn hàng theo ngày trong tuần</CardTitle>
-            <CardDescription>
-              Số lượng đơn hàng và doanh thu theo từng ngày
-            </CardDescription>
+            <CardDescription>Số lượng đơn hàng và doanh thu theo từng ngày</CardDescription>
           </CardHeader>
           <CardContent>
             <BarChart
@@ -449,9 +377,7 @@ export default function Dashboard() {
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>Đơn hàng gần đây</CardTitle>
-            <CardDescription>
-              Các đơn hàng mới nhất trong hệ thống
-            </CardDescription>
+            <CardDescription>Các đơn hàng mới nhất trong hệ thống</CardDescription>
           </CardHeader>
           <CardContent>
             {/* Desktop Table */}
@@ -475,15 +401,11 @@ export default function Dashboard() {
                         <div className="flex items-center space-x-3">
                           <Avatar className="h-8 w-8">
                             <AvatarImage src="" />
-                            <AvatarFallback>
-                              {getInitials(order.customer)}
-                            </AvatarFallback>
+                            <AvatarFallback>{getInitials(order.customer)}</AvatarFallback>
                           </Avatar>
                           <div>
                             <div className="font-medium">{order.customer}</div>
-                            <div className="text-sm text-muted-foreground">
-                              {order.email}
-                            </div>
+                            <div className="text-sm text-muted-foreground">{order.email}</div>
                           </div>
                         </div>
                       </TableCell>
@@ -496,19 +418,14 @@ export default function Dashboard() {
                       <TableCell>
                         <div>
                           <div className="text-sm">{order.date}</div>
-                          <div className="text-xs text-muted-foreground">
-                            {order.time}
-                          </div>
+                          <div className="text-xs text-muted-foreground">{order.time}</div>
                         </div>
                       </TableCell>
                       <TableCell>
                         <Badge variant="secondary">{order.quantity}</Badge>
                       </TableCell>
                       <TableCell>
-                        <Badge
-                          variant="outline"
-                          className={getOrderStatusColor(order.status)}
-                        >
+                        <Badge variant="outline" className={getOrderStatusColor(order.status)}>
                           {getOrderStatusText(order.status)}
                         </Badge>
                       </TableCell>
@@ -533,7 +450,7 @@ export default function Dashboard() {
                               Chỉnh sửa
                             </DropdownMenuItem>
                             <DropdownMenuItem className="text-red-600">
-                              <Delete className="mr-2 h-4 w-4" />
+                              <Trash2 className="mr-2 h-4 w-4" />
                               Xóa
                             </DropdownMenuItem>
                           </DropdownMenuContent>
@@ -553,15 +470,11 @@ export default function Dashboard() {
                     <div className="flex items-center space-x-3">
                       <Avatar className="h-10 w-10">
                         <AvatarImage src="" />
-                        <AvatarFallback>
-                          {getInitials(order.customer)}
-                        </AvatarFallback>
+                        <AvatarFallback>{getInitials(order.customer)}</AvatarFallback>
                       </Avatar>
                       <div>
                         <div className="font-medium">{order.customer}</div>
-                        <div className="text-sm text-muted-foreground">
-                          {order.email}
-                        </div>
+                        <div className="text-sm text-muted-foreground">{order.email}</div>
                       </div>
                     </div>
                     <DropdownMenu>
@@ -581,39 +494,38 @@ export default function Dashboard() {
                           Chỉnh sửa
                         </DropdownMenuItem>
                         <DropdownMenuItem className="text-red-600">
-                          <Delete className="mr-2 h-4 w-4" />
+                          <Trash2 className="mr-2 h-4 w-4" />
                           Xóa
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Film className="h-4 w-4 text-muted-foreground" />
                       <span className="text-sm font-medium">{order.product}</span>
                     </div>
-                    
+
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Ngày:</span>
-                      <span>{order.date} {order.time}</span>
+                      <span>
+                        {order.date} {order.time}
+                      </span>
                     </div>
-                    
+
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Số lượng:</span>
                       <Badge variant="secondary">{order.quantity}</Badge>
                     </div>
-                    
+
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Trạng thái:</span>
-                      <Badge
-                        variant="outline"
-                        className={getOrderStatusColor(order.status)}
-                      >
+                      <Badge variant="outline" className={getOrderStatusColor(order.status)}>
                         {getOrderStatusText(order.status)}
                       </Badge>
                     </div>
-                    
+
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Thành tiền:</span>
                       <span className="font-medium text-green-600">{order.amount}</span>
@@ -630,25 +542,19 @@ export default function Dashboard() {
                   <PaginationItem>
                     <PaginationPrevious className="pointer-events-none opacity-50" />
                   </PaginationItem>
-                  
+
                   <PaginationItem>
-                    <PaginationLink isActive>
-                      1
-                    </PaginationLink>
+                    <PaginationLink isActive>1</PaginationLink>
                   </PaginationItem>
-                  
+
                   <PaginationItem>
-                    <PaginationLink>
-                      2
-                    </PaginationLink>
+                    <PaginationLink>2</PaginationLink>
                   </PaginationItem>
-                  
+
                   <PaginationItem>
-                    <PaginationLink>
-                      3
-                    </PaginationLink>
+                    <PaginationLink>3</PaginationLink>
                   </PaginationItem>
-                  
+
                   <PaginationItem>
                     <PaginationNext />
                   </PaginationItem>
@@ -664,9 +570,7 @@ export default function Dashboard() {
           <Card>
             <CardHeader>
               <CardTitle>Sản phẩm bán chạy</CardTitle>
-              <CardDescription>
-                Top sản phẩm có doanh thu cao nhất
-              </CardDescription>
+              <CardDescription>Top sản phẩm có doanh thu cao nhất</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {topProducts.map((product, index) => (
@@ -678,27 +582,19 @@ export default function Dashboard() {
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">
-                      {product.title}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {product.category}
-                    </p>
+                    <p className="text-sm font-medium leading-none">{product.title}</p>
+                    <p className="text-xs text-muted-foreground">{product.category}</p>
                     <div className="flex items-center space-x-2">
                       <div className="flex items-center space-x-1">
                         <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                         <span className="text-xs">{product.rating}</span>
                       </div>
                       <span className="text-xs text-muted-foreground">•</span>
-                      <span className="text-xs text-muted-foreground">
-                        {product.sold} đã bán
-                      </span>
+                      <span className="text-xs text-muted-foreground">{product.sold} đã bán</span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-medium text-green-600">
-                      {product.revenue}
-                    </p>
+                    <p className="text-sm font-medium text-green-600">{product.revenue}</p>
                   </div>
                 </div>
               ))}
@@ -718,9 +614,9 @@ export default function Dashboard() {
                 </div>
                 <Progress value={92} className="h-2" />
               </div>
-              
+
               <Separator />
-              
+
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span>Đánh giá trung bình</span>
@@ -730,30 +626,22 @@ export default function Dashboard() {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star
                       key={star}
-                      className={`h-4 w-4 ${
-                        star <= 4
-                          ? "fill-yellow-400 text-yellow-400"
-                          : "text-gray-300"
-                      }`}
+                      className={`h-4 w-4 ${star <= 4 ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
                     />
                   ))}
                 </div>
               </div>
-              
+
               <Separator />
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600">120</div>
-                  <div className="text-xs text-muted-foreground">
-                    Sản phẩm đang bán
-                  </div>
+                  <div className="text-xs text-muted-foreground">Sản phẩm đang bán</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-purple-600">32</div>
-                  <div className="text-xs text-muted-foreground">
-                    Đơn hàng hôm nay
-                  </div>
+                  <div className="text-xs text-muted-foreground">Đơn hàng hôm nay</div>
                 </div>
               </div>
             </CardContent>
@@ -762,4 +650,4 @@ export default function Dashboard() {
       </div>
     </div>
   );
-} 
+}

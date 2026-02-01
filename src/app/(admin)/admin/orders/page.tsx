@@ -1,5 +1,6 @@
-'use client'
-import React, { useState } from "react";
+'use client';
+
+import React, { useState } from 'react';
 import {
   Table,
   TableHeader,
@@ -7,21 +8,17 @@ import {
   TableRow,
   TableHead,
   TableCell,
-} from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/table';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectTrigger,
   SelectContent,
   SelectItem,
   SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Textarea } from "@/components/ui/textarea";
-import OrderDetail from "@/components/admin/orders/OrderDetail";
+} from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+import OrderDetail from '@/components/admin/orders/OrderDetail';
 
 // Định nghĩa type rõ ràng cho Order và các thành phần liên quan
 interface Product {
@@ -69,44 +66,44 @@ interface Order {
 
 const mockOrders: Order[] = [
   {
-    id: "ORD001",
-    status: "Chờ xác nhận",
-    createdAt: "2024-06-01 10:00",
-    updatedAt: "2024-06-02 12:00",
+    id: 'ORD001',
+    status: 'Chờ xác nhận',
+    createdAt: '2024-06-01 10:00',
+    updatedAt: '2024-06-02 12:00',
     customer: {
-      name: "Nguyễn Văn A",
-      phone: "0901234567",
-      email: "a.nguyen@gmail.com",
-      address: "123 Lê Lợi, Q.1, TP.HCM",
+      name: 'Nguyễn Văn A',
+      phone: '0901234567',
+      email: 'a.nguyen@gmail.com',
+      address: '123 Lê Lợi, Q.1, TP.HCM',
     },
     products: [
-      { name: "iPhone 15 Pro", quantity: 1, price: 30000000, color: "Đen", size: null },
-      { name: "Ốp lưng", quantity: 2, price: 200000, color: "Trong suốt", size: null },
+      { name: 'iPhone 15 Pro', quantity: 1, price: 30000000, color: 'Đen', size: null },
+      { name: 'Ốp lưng', quantity: 2, price: 200000, color: 'Trong suốt', size: null },
     ],
     total: 30400000,
     discount: 0,
     payment: {
-      method: "COD",
-      status: "Chưa thanh toán",
+      method: 'COD',
+      status: 'Chưa thanh toán',
     },
     shipping: {
-      provider: "Giao Hàng Nhanh",
-      tracking: "GHN123456",
-      status: "Chưa giao",
+      provider: 'Giao Hàng Nhanh',
+      tracking: 'GHN123456',
+      status: 'Chưa giao',
     },
     history: [
-      { action: "Tạo đơn", by: "Khách hàng", time: "2024-06-01 10:00" },
-      { action: "Chờ xác nhận", by: "Hệ thống", time: "2024-06-01 10:01" },
+      { action: 'Tạo đơn', by: 'Khách hàng', time: '2024-06-01 10:00' },
+      { action: 'Chờ xác nhận', by: 'Hệ thống', time: '2024-06-01 10:01' },
     ],
-    customerNote: "Giao giờ hành chính",
-    internalNote: "Liên hệ xác nhận trước khi giao",
+    customerNote: 'Giao giờ hành chính',
+    internalNote: 'Liên hệ xác nhận trước khi giao',
   },
   // ... thêm mock order khác nếu muốn
 ];
 
 export default function OrderPage() {
-  const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
+  const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -115,7 +112,8 @@ export default function OrderPage() {
       order.id.includes(search) ||
       order.customer.name.toLowerCase().includes(search.toLowerCase()) ||
       order.customer.phone.includes(search);
-    const matchStatus = statusFilter === "all" ? true : order.status === statusFilter;
+
+    const matchStatus = statusFilter === 'all' ? true : order.status === statusFilter;
     return matchSearch && matchStatus;
   });
 
@@ -127,6 +125,7 @@ export default function OrderPage() {
   return (
     <div className="p-2 sm:p-4 md:p-6">
       <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Quản lý đơn hàng</h1>
+
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-4">
         <Input
           placeholder="Tìm kiếm theo mã đơn, tên khách, SĐT..."
@@ -134,6 +133,7 @@ export default function OrderPage() {
           onChange={(e) => setSearch(e.target.value)}
           className="max-w-full sm:max-w-xs"
         />
+
         <Select value={statusFilter} onValueChange={setStatusFilter}>
           <SelectTrigger className="w-full sm:w-48">
             <SelectValue placeholder="Tất cả trạng thái" />
@@ -149,6 +149,7 @@ export default function OrderPage() {
           </SelectContent>
         </Select>
       </div>
+
       <div className="overflow-x-auto rounded-lg border bg-background">
         <Table>
           <TableHeader>
@@ -164,6 +165,7 @@ export default function OrderPage() {
               <TableHead>Hành động</TableHead>
             </TableRow>
           </TableHeader>
+
           <TableBody>
             {filteredOrders.length === 0 ? (
               <TableRow>
@@ -175,25 +177,30 @@ export default function OrderPage() {
               filteredOrders.map((order: Order) => (
                 <TableRow key={order.id}>
                   <TableCell>{order.id}</TableCell>
+
                   <TableCell>
                     {order.customer.name}
                     <br />
                     <span className="text-xs text-muted-foreground">{order.customer.phone}</span>
                   </TableCell>
+
                   <TableCell>{order.status}</TableCell>
                   <TableCell>{order.createdAt}</TableCell>
                   <TableCell>{order.updatedAt}</TableCell>
                   <TableCell>{order.total.toLocaleString()}₫</TableCell>
+
                   <TableCell>
                     {order.payment.method}
                     <br />
                     <span className="text-xs text-muted-foreground">{order.payment.status}</span>
                   </TableCell>
+
                   <TableCell>
                     {order.shipping.provider}
                     <br />
                     <span className="text-xs text-muted-foreground">{order.shipping.status}</span>
                   </TableCell>
+
                   <TableCell>
                     <Button variant="outline" size="sm" onClick={() => handleShowDetail(order)}>
                       Xem chi tiết

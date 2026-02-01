@@ -167,3 +167,5 @@ export const MOCK_API_EXAMPLES = {
   productCount: 6,
   mockDataLocation: 'src/data/mockData.ts',
 }
+
+

@@ -1,17 +1,15 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react';
-import { ChevronRight, CreditCard } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import PromoCode from '@/components/cart/information/payment/PromoCode';
-import OrderSummary from '@/components/cart/information/payment/OrderSummary';
-import PaymentMethod from '@/components/cart/information/payment/PaymentMethod';
-import CustomerInformation from '@/components/cart/information/payment/CustomerInformation';
-import AgreementCheckbox from '@/components/cart/information/payment/AgreementCheckbox';
-import BottomSummary from '@/components/cart/information/deliveryInformation/BottomSummary';
-import { useCart } from '@/context/CartContext';
-import { usePaymentForm } from '@/context/PaymentFormContext';
-import { useRouter } from 'next/navigation';
+import { Button } from "@/components/ui/button";
+import PromoCode from "@/components/cart/information/payment/PromoCode";
+import OrderSummary from "@/components/cart/information/payment/OrderSummary";
+import PaymentMethod from "@/components/cart/information/payment/PaymentMethod";
+import CustomerInformation from "@/components/cart/information/payment/CustomerInformation";
+import AgreementCheckbox from "@/components/cart/information/payment/AgreementCheckbox";
+import BottomSummary from "@/components/cart/information/deliveryInformation/BottomSummary";
+import { useCart } from "@/context/CartContext";
+import { usePaymentForm } from "@/context/PaymentFormContext";
+import { useRouter } from "next/navigation";
 
 export default function PaymentPage() {
   const router = useRouter();
@@ -20,7 +18,11 @@ export default function PaymentPage() {
 
   const handleCompletePayment = () => {
     // Here you can add payment processing logic
-    alert(`Thanh toán thành công!\n\nThông tin khách hàng:\n- Email: ${formData.customer.email}\n- Loại giao hàng: ${formData.delivery.deliveryType === 'pickup' ? 'Nhận tại cửa hàng' : 'Giao hàng tận nơi'}\n- Tổng tiền: ${formatPrice(totalAmount)}`);
+    alert(
+      `Thanh toán thành công!\n\nThông tin khách hàng:\n- Email: ${formData.customer.email}\n- Loại giao hàng: ${
+        formData.delivery.deliveryType === "pickup" ? "Nhận tại cửa hàng" : "Giao hàng tận nơi"
+      }\n- Tổng tiền: ${formatPrice(totalAmount)}`
+    );
     // Optionally redirect to success page
     // router.push('/order-success');
   };
@@ -35,8 +37,8 @@ export default function PaymentPage() {
         <p className="text-gray-600 mb-6 text-center">
           Vui lòng quay lại giỏ hàng và chọn sản phẩm bạn muốn mua.
         </p>
-        <Button 
-          onClick={() => router.push('/cart')}
+        <Button
+          onClick={() => router.push("/cart")}
           className="bg-[#00868B] hover:bg-[#00868B] text-white"
         >
           Quay lại giỏ hàng
@@ -46,30 +48,29 @@ export default function PaymentPage() {
   }
 
   return (
-    <div className="">
-      <div className='bg-white px-4 py-2 rounded-lg border border-gray-200'>
+    <div>
+      <div className="bg-white px-4 py-2 rounded-lg border border-gray-200">
         {/* Promo Code Section */}
-        <PromoCode/>
+        <PromoCode />
+
         {/* Order Summary - Pass selected products */}
-        <OrderSummary 
-          selectedProducts={selectedProducts} 
-          totalAmount={totalAmount} 
-          formatPrice={formatPrice}
-        />
+        <OrderSummary selectedProducts={selectedProducts} totalAmount={totalAmount} formatPrice={formatPrice} />
       </div>
+
       {/* Payment Method */}
-      <PaymentMethod/>
+      <PaymentMethod />
+
       {/* Customer Information - Pass form data as props */}
       <CustomerInformation formData={formData} />
 
       {/* Agreement Checkbox */}
-      <AgreementCheckbox/>
+      <AgreementCheckbox />
 
       {/* Bottom Summary with correct total */}
-      <BottomSummary 
-        subtotal={formatPrice(totalAmount)} 
-        buttonText="Thanh toán" 
-        onButtonClick={handleCompletePayment} 
+      <BottomSummary
+        subtotal={formatPrice(totalAmount)}
+        buttonText="Thanh toán"
+        onButtonClick={handleCompletePayment}
       />
     </div>
   );

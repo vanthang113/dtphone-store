@@ -1,49 +1,32 @@
-'use client'
+"use client";
 
-import React, { JSX, useState } from 'react';
-import { ChevronLeft, Trash2, Plus, Minus, ChevronDown, ChevronUp, Eye, EyeOff } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import DeliveryToYourDoor from '@/components/cart/information/deliveryInformation/DeliveryToYourDoor';
-import PickUpInStore from '@/components/cart/information/deliveryInformation/PickUpInStore';
-import Input from '@/components/cart/input/Input';
-import Link from 'next/link';
-import ProductItem from '@/components/cart/information/deliveryInformation/ProductItem';
-import CustomerInformation from '@/components/cart/information/deliveryInformation/CustomerInformation';
-import DeliveryInformation from '@/components/cart/information/deliveryInformation/DeliveryInformation';
-import BottomSummary from '@/components/cart/information/deliveryInformation/BottomSummary';
-import { useRouter } from 'next/navigation';
-import { useCart } from '@/context/CartContext';
-import { usePaymentForm } from '@/context/PaymentFormContext';
+import { useState } from "react";
+import { ChevronDown, ChevronUp, Eye, EyeOff } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import ProductItem from "@/components/cart/information/deliveryInformation/ProductItem";
+import CustomerInformation from "@/components/cart/information/deliveryInformation/CustomerInformation";
+import DeliveryInformation from "@/components/cart/information/deliveryInformation/DeliveryInformation";
+import BottomSummary from "@/components/cart/information/deliveryInformation/BottomSummary";
+import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
+import { usePaymentForm } from "@/context/PaymentFormContext";
 
-export default function PaymentInfoPage(): JSX.Element {
+export default function PaymentInfoPage() {
   const router = useRouter();
   const { selectedProducts, totalAmount, formatPrice } = useCart();
   const { isFormValid } = usePaymentForm();
-  
-  const [showAllProducts, setShowAllProducts] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
 
-  // Show only first product initially, all products when expanded
-  const visibleProducts = showAllProducts ? selectedProducts : selectedProducts.slice(0, 1);
-  const hiddenProductsCount = selectedProducts.length - 1;
+  const [showAllProducts, setShowAllProducts] = useState(false);
+
+  const hiddenProductsCount = Math.max(0, selectedProducts.length - 1);
 
   const handleViewAllProducts = () => {
-    if (!showAllProducts) {
-      setIsAnimating(true);
-      setShowAllProducts(true);
-      // Reset animation state after transition completes
-      setTimeout(() => setIsAnimating(false), 600);
-    } else {
-      setShowAllProducts(false);
-      setIsAnimating(false);
-    }
+    setShowAllProducts((v) => !v);
   };
 
-  // Handle navigation to payment page
   const handleContinueToPayment = () => {
     if (isFormValid()) {
-      router.push('/cart/payment');
+      router.push("/cart/payment");
     }
   };
 
@@ -57,10 +40,7 @@ export default function PaymentInfoPage(): JSX.Element {
         <p className="text-gray-600 mb-6 text-center">
           Vui lòng quay lại giỏ hàng và chọn sản phẩm bạn muốn mua.
         </p>
-        <Button 
-          onClick={() => router.push('/cart')}
-          className="bg-[#00868B] hover:bg-[#00868B] text-white"
-        >
+        <Button onClick={() => router.push("/cart")} className="bg-[#00868B] hover:bg-[#00868B] text-white">
           Quay lại giỏ hàng
         </Button>
       </div>
@@ -78,7 +58,7 @@ export default function PaymentInfoPage(): JSX.Element {
           <h2 className="text-lg font-semibold text-gray-800">
             Sản phẩm đã chọn ({selectedProducts.length})
           </h2>
-          
+
           {/* View All Products Button */}
           {hiddenProductsCount > 0 && (
             <Button
@@ -109,7 +89,7 @@ export default function PaymentInfoPage(): JSX.Element {
           {/* First product - always visible */}
           {selectedProducts.length > 0 && (
             <div className="transition-all duration-300 ease-in-out">
-              <ProductItem 
+              <ProductItem
                 key={selectedProducts[0].id}
                 name={selectedProducts[0].name}
                 price={formatPrice(selectedProducts[0].price)}
@@ -120,27 +100,23 @@ export default function PaymentInfoPage(): JSX.Element {
             </div>
           )}
 
-          {/* Additional products with smooth animation */}
-          <div 
+          {/* Additional products */}
+          <div
             className={`transition-all duration-500 ease-in-out overflow-hidden ${
-              showAllProducts 
-                ? 'max-h-[2000px] opacity-100' 
-                : 'max-h-0 opacity-0'
+              showAllProducts ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             {selectedProducts.slice(1).map((product, index) => (
-              <div 
+              <div
                 key={product.id}
                 className={`transform transition-all duration-500 ease-out ${
-                  showAllProducts 
-                    ? 'translate-y-0 opacity-100' 
-                    : 'translate-y-[-20px] opacity-0'
+                  showAllProducts ? "translate-y-0 opacity-100" : "translate-y-[-20px] opacity-0"
                 }`}
                 style={{
-                  transitionDelay: showAllProducts ? `${(index + 1) * 100}ms` : '0ms'
+                  transitionDelay: showAllProducts ? `${(index + 1) * 100}ms` : "0ms",
                 }}
               >
-                <ProductItem 
+                <ProductItem
                   name={product.name}
                   price={formatPrice(product.price)}
                   originalPrice={formatPrice(product.originalPrice)}
@@ -183,14 +159,14 @@ export default function PaymentInfoPage(): JSX.Element {
 
       <div className="h-24"></div>
 
-      {/* Bottom Summary with form validation using BottomSummary component */}
-      <BottomSummary 
+      {/* Bottom Summary */}
+      <BottomSummary
         subtotal={formatPrice(totalAmount)}
-        buttonText={isFormCompleted ? 'Tiếp tục' : 'Vui lòng điền đầy đủ thông tin'}
+        buttonText={isFormCompleted ? "Tiếp tục" : "Vui lòng điền đầy đủ thông tin"}
         onButtonClick={handleContinueToPayment}
         disabled={!isFormCompleted}
       />
-      
+
       {/* Additional validation message */}
       {!isFormCompleted && (
         <div className="fixed bottom-20 left-0 right-0 z-40">
@@ -202,5 +178,5 @@ export default function PaymentInfoPage(): JSX.Element {
         </div>
       )}
     </div>
-  )
+  );
 }

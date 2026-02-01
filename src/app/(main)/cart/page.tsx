@@ -1,15 +1,17 @@
-'use client'
+"use client";
 
-import React, { JSX, useState } from 'react';
-import { ChevronLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import Link from 'next/link';
-import ProductItem from '@/components/cart/ProductItem';
-import { useCart } from '@/context/CartContext';
-import { useRouter } from 'next/navigation';
+import React, { useMemo, useState } from "react";
+import { ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
+import ProductItem from "@/components/cart/ProductItem";
+import { useCart } from "@/context/CartContext";
+import { useRouter } from "next/navigation";
 
-export default function CartPage(): JSX.Element {
+type CheckedState = boolean | "indeterminate";
+
+export default function CartPage() {
   const {
     products,
     selectedProducts,
@@ -22,53 +24,66 @@ export default function CartPage(): JSX.Element {
   } = useCart();
 
   const router = useRouter();
-  const [isSelectAll, setIsSelectAll] = useState<boolean>(false);
+  const [isSelectAll, setIsSelectAll] = useState(false);
 
-  const handleSelectAll = (checked: boolean) => {
-    setIsSelectAll(checked);
-    selectAllProducts(checked);
+  // đồng bộ checkbox "Chọn tất cả" khi products thay đổi
+  const allSelected = useMemo(() => {
+    if (products.length === 0) return false;
+    return products.every((p) => p.isSelected);
+  }, [products]);
+
+  // nếu state lệch (do update từ context), đồng bộ lại
+  if (isSelectAll !== allSelected && products.length > 0) {
+    // tránh setState trong render liên tục: chỉ set khi khác và có products
+    // (React sẽ ổn vì điều kiện sẽ khớp sau 1 render)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // NOTE: không dùng useEffect để tránh thêm deps phức tạp cho bạn
+    setTimeout(() => setIsSelectAll(allSelected), 0);
+  }
+
+  const handleSelectAll = (checked: CheckedState) => {
+    const v = checked === true;
+    setIsSelectAll(v);
+    selectAllProducts(v);
   };
 
-  const handleProductSelection = (productId: string, checked: boolean) => {
-    updateProductSelection(productId, checked);
-    
-    // Update select all checkbox
-    const allSelected = products.every(product => 
-      product.id === productId ? checked : product.isSelected
+  const handleProductSelection = (productId: string, checked: CheckedState) => {
+    const v = checked === true;
+    updateProductSelection(productId, v);
+
+    // Update select all checkbox (dựa trên state hiện tại)
+    const nextAllSelected = products.every((product) =>
+      product.id === productId ? v : product.isSelected
     );
-    setIsSelectAll(allSelected);
+    setIsSelectAll(nextAllSelected);
   };
 
   const handleQuantityChange = (productId: string, change: number) => {
-    const product = products.find(p => p.id === productId);
-    if (product) {
-      updateProductQuantity(productId, product.quantity + change);
-    }
+    const product = products.find((p) => p.id === productId);
+    if (!product) return;
+    updateProductQuantity(productId, product.quantity + change);
   };
 
   const handleDeleteProduct = (productId: string) => {
     removeProduct(productId);
   };
 
-  // Check if any product is selected
   const hasSelectedProducts = selectedProducts.length > 0;
 
   const handleProceedToPayment = () => {
-    if (hasSelectedProducts) {
-      router.push('/cart/payment-info');
-    }
+    if (hasSelectedProducts) router.push("/cart/payment-info");
   };
 
   return (
-    <div className='md:max-w-[1200px] mx-auto relative bg-gray-100'>
+    <div className="md:max-w-[1200px] mx-auto relative bg-gray-100">
       <div className="min-h-screen">
         {/* Header */}
         <div className="sticky top-0 z-10 w-full">
           <div className="flex px-4 py-3">
-            <Link href={'/'}> 
+            <Link href={"/"}>
               <ChevronLeft className="w-6 h-6 text-gray-600" />
             </Link>
-            <div className='mx-auto'>
+            <div className="mx-auto">
               <h1 className="text-center ml-3 text-lg font-semibold text-gray-900">
                 Giỏ hàng của bạn
               </h1>
@@ -87,11 +102,7 @@ export default function CartPage(): JSX.Element {
 
           {/* Select All */}
           <div className="flex items-center mb-4">
-            <Checkbox
-              id="selectAll"
-              checked={isSelectAll}
-              onCheckedChange={handleSelectAll}
-            />
+            <Checkbox id="selectAll" checked={isSelectAll} onCheckedChange={handleSelectAll} />
             <label htmlFor="selectAll" className="ml-2 text-gray-700 text-base font-medium">
               Chọn tất cả
             </label>
@@ -103,19 +114,24 @@ export default function CartPage(): JSX.Element {
               key={product.id}
               id={product.id}
               name={product.name}
-              price={product.price}
-              originalPrice={product.originalPrice}
+              // ✅ ProductItem đang expect string => convert theo formatPrice (string)
+              price={formatPrice(product.price)}
+              originalPrice={formatPrice(product.originalPrice)}
               image={product.image}
               quantity={product.quantity}
               isSelected={product.isSelected}
-              onSelectionChange={(checked) => handleProductSelection(product.id, checked)}
-              onQuantityChange={(change) => handleQuantityChange(product.id, change)}
+              onSelectionChange={(checked: CheckedState) =>
+                handleProductSelection(product.id, checked)
+              }
+              onQuantityChange={(change: number) =>
+                handleQuantityChange(product.id, change)
+              }
               onDelete={() => handleDeleteProduct(product.id)}
             />
           ))}
         </div>
-        
-        <div className="h-24"></div>
+
+        <div className="h-24" />
       </div>
 
       {/* Bottom Summary */}
@@ -124,16 +140,15 @@ export default function CartPage(): JSX.Element {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center">
               <span className="text-gray-700">Tạm tính: </span>
-              <span className="text-red-600 font-bold ml-1">
-                {formatPrice(totalAmount)}
-              </span>
+              <span className="text-red-600 font-bold ml-1">{formatPrice(totalAmount)}</span>
             </div>
           </div>
-          <Button 
+
+          <Button
             className={`py-3 px-3 rounded-lg font-medium text-white transition-all duration-300 ease-in-out ${
-              hasSelectedProducts 
-                ? 'bg-[#00868B] hover:bg-[#00777B] shadow-lg transform hover:scale-105' 
-                : 'bg-gray-400 hover:bg-[#00868B]'
+              hasSelectedProducts
+                ? "bg-[#00868B] hover:bg-[#00777B] shadow-lg transform hover:scale-105"
+                : "bg-gray-400 hover:bg-[#00868B]"
             }`}
             onClick={handleProceedToPayment}
             disabled={!hasSelectedProducts}

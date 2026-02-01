@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Download, Upload, Plus } from 'lucide-react';
+import { Upload, Plus } from 'lucide-react';
 import CustomerList from '@/components/admin/customers/CustomerList';
 import CustomerFilter from '@/components/admin/customers/CustomerFilter';
 import CustomerDashboard from '@/components/admin/customers/CustomerDashboard';
@@ -42,9 +42,7 @@ const mockCustomers: Customer[] = [
     ],
     tags: ['VIP', 'Frequent'],
     notes: 'Khách hàng thân thiết, yêu cầu giao hàng nhanh.',
-    recentActivity: [
-      { action: 'Đặt hàng mới', timestamp: '2024-12-15 10:30' },
-    ],
+    recentActivity: [{ action: 'Đặt hàng mới', timestamp: '2024-12-15 10:30' }],
   },
   {
     customers_id: 'CUST002',
@@ -73,7 +71,6 @@ export default function CustomersPage() {
     totalSpent: '',
   });
   const [showExportImport, setShowExportImport] = useState(false);
-  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
 
   // Filtered customers based on filters
   const filteredCustomers = useMemo(() => {
@@ -90,7 +87,7 @@ export default function CustomersPage() {
         (!filters.createdTo || new Date(customer.created_at) <= new Date(filters.createdTo));
 
       const totalSpent = customer.orders.reduce((sum, order) => sum + order.total, 0);
-      const matchTotalSpent = !filters.totalSpent || totalSpent >= parseInt(filters.totalSpent);
+      const matchTotalSpent = !filters.totalSpent || totalSpent >= parseInt(filters.totalSpent, 10);
 
       return matchSearch && matchStatus && matchCreated && matchTotalSpent;
     });
@@ -98,20 +95,12 @@ export default function CustomersPage() {
 
   // Handle tag updates
   const handleTagUpdate = (customerId: string, newTags: string[]) => {
-    setCustomers(
-      customers.map((c) =>
-        c.customers_id === customerId ? { ...c, tags: newTags } : c
-      )
-    );
+    setCustomers(customers.map((c) => (c.customers_id === customerId ? { ...c, tags: newTags } : c)));
   };
 
   // Handle note updates
   const handleNoteUpdate = (customerId: string, note: string) => {
-    setCustomers(
-      customers.map((c) =>
-        c.customers_id === customerId ? { ...c, notes: note } : c
-      )
-    );
+    setCustomers(customers.map((c) => (c.customers_id === customerId ? { ...c, notes: note } : c)));
   };
 
   return (
@@ -140,7 +129,9 @@ export default function CustomersPage() {
       {/* Customer List */}
       <CustomerList
         customers={filteredCustomers}
-        setSelectedCustomer={setSelectedCustomer}
+        // Nếu component CustomerList bắt buộc prop này,
+        // mình truyền no-op để không tạo state unused
+        setSelectedCustomer={() => {}}
         onTagUpdate={handleTagUpdate}
         onNoteUpdate={handleNoteUpdate}
       />

@@ -1,18 +1,57 @@
-import React, { useState } from "react";
+"use client";
+
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetClose } from "@/components/ui/sheet";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetFooter,
+  SheetClose,
+} from "@/components/ui/sheet";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
-const PROMO_TYPE_OPTIONS = [
+type PromoType = "Giảm giá phần trăm" | "Giảm giá cố định" | "Tặng combo" | "Tặng vé";
+type ValueType = "%" | "VNĐ" | "vé" | "combo";
+type PromoStatus = "Đang hoạt động" | "Sắp diễn ra" | "Đã hết hạn";
+
+const PROMO_TYPE_OPTIONS: ReadonlyArray<{ label: string; value: PromoType }> = [
   { label: "Giảm giá phần trăm", value: "Giảm giá phần trăm" },
   { label: "Giảm giá cố định", value: "Giảm giá cố định" },
   { label: "Tặng combo", value: "Tặng combo" },
   { label: "Tặng vé", value: "Tặng vé" },
-];
+] as const;
 
-export default function PromotionForm({ onOpenChange }: { onOpenChange?: (open: boolean) => void }) {
-  const [form, setForm] = useState({
+type PromotionFormState = {
+  name: string;
+  code: string;
+  type: PromoType;
+  value: string;
+  valueType: ValueType;
+  startDate: string;
+  endDate: string;
+  status: PromoStatus;
+  used: number;
+  usageLimit: string;
+  enabled: boolean;
+  description: string;
+};
+
+type Props = {
+  onOpenChange?: (open: boolean) => void;
+};
+
+type FormFieldName = keyof PromotionFormState;
+
+export default function PromotionForm({ onOpenChange }: Props) {
+  const [form, setForm] = useState<PromotionFormState>({
     name: "",
     code: "",
     type: PROMO_TYPE_OPTIONS[0].value,
@@ -26,40 +65,83 @@ export default function PromotionForm({ onOpenChange }: { onOpenChange?: (open: 
     enabled: true,
     description: "",
   });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    let newValue: any = value;
-    if (type === "checkbox" && e.target instanceof HTMLInputElement) {
-      newValue = e.target.checked;
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const target = e.target;
+    const name = target.name as FormFieldName;
+
+    // checkbox
+    if (target instanceof HTMLInputElement && target.type === "checkbox") {
+      setForm((prev) => ({ ...prev, [name]: target.checked }));
+      return;
     }
-    setForm((prev: any) => ({ ...prev, [name]: newValue }));
+
+    // number inputs: used/usageLimit
+    if (target instanceof HTMLInputElement && target.type === "number") {
+      if (name === "used") {
+        const n = Number(target.value);
+        setForm((prev) => ({ ...prev, used: Number.isFinite(n) ? n : 0 }));
+        return;
+      }
+      if (name === "usageLimit") {
+        setForm((prev) => ({ ...prev, usageLimit: target.value }));
+        return;
+      }
+    }
+
+    // default text/date/textarea
+    setForm((prev) => ({ ...prev, [name]: target.value }));
   };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onOpenChange?.(false);
+  };
+
   return (
     <SheetContent side="right">
-      <form className="flex flex-col gap-4 h-full" onSubmit={e => { e.preventDefault(); onOpenChange?.(false); }}>
+      <form className="flex flex-col gap-4 h-full" onSubmit={handleSubmit}>
         <SheetHeader>
           <SheetTitle>Thêm khuyến mãi mới</SheetTitle>
         </SheetHeader>
+
         <div className="flex flex-col gap-2 px-4">
           <label className="text-sm">Tên khuyến mãi</label>
           <Input name="name" value={form.name} onChange={handleChange} required />
+
           <label className="text-sm mt-2">Mã khuyến mãi</label>
           <Input name="code" value={form.code} onChange={handleChange} required />
+
           <label className="text-sm mt-2">Loại khuyến mãi</label>
-          <Select value={form.type} onValueChange={val => setForm((f: any) => ({ ...f, type: val }))}>
+          <Select
+            value={form.type}
+            onValueChange={(val) => setForm((f) => ({ ...f, type: val as PromoType }))}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Chọn loại" />
             </SelectTrigger>
             <SelectContent>
               {PROMO_TYPE_OPTIONS.map((opt) => (
-                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                <SelectItem key={opt.value} value={opt.value}>
+                  {opt.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
+
           <label className="text-sm mt-2">Giá trị</label>
-          <Input name="value" value={form.value} onChange={handleChange} placeholder="VD: 20 hoặc 20000" />
+          <Input
+            name="value"
+            value={form.value}
+            onChange={handleChange}
+            placeholder="VD: 20 hoặc 20000"
+          />
+
           <label className="text-sm mt-2">Đơn vị</label>
-          <Select value={form.valueType} onValueChange={val => setForm((f: any) => ({ ...f, valueType: val }))}>
+          <Select
+            value={form.valueType}
+            onValueChange={(val) => setForm((f) => ({ ...f, valueType: val as ValueType }))}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Chọn đơn vị" />
             </SelectTrigger>
@@ -70,18 +152,35 @@ export default function PromotionForm({ onOpenChange }: { onOpenChange?: (open: 
               <SelectItem value="combo">combo</SelectItem>
             </SelectContent>
           </Select>
+
           <div className="flex gap-2 mt-2 flex-col sm:flex-row">
             <div className="flex-1">
               <label className="text-sm">Ngày bắt đầu</label>
-              <Input type="date" name="startDate" value={form.startDate} onChange={handleChange} required />
+              <Input
+                type="date"
+                name="startDate"
+                value={form.startDate}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="flex-1">
               <label className="text-sm">Ngày kết thúc</label>
-              <Input type="date" name="endDate" value={form.endDate} onChange={handleChange} required />
+              <Input
+                type="date"
+                name="endDate"
+                value={form.endDate}
+                onChange={handleChange}
+                required
+              />
             </div>
           </div>
+
           <label className="text-sm mt-2">Trạng thái</label>
-          <Select value={form.status} onValueChange={val => setForm((f: any) => ({ ...f, status: val }))}>
+          <Select
+            value={form.status}
+            onValueChange={(val) => setForm((f) => ({ ...f, status: val as PromoStatus }))}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Chọn trạng thái" />
             </SelectTrigger>
@@ -91,24 +190,43 @@ export default function PromotionForm({ onOpenChange }: { onOpenChange?: (open: 
               <SelectItem value="Đã hết hạn">Đã hết hạn</SelectItem>
             </SelectContent>
           </Select>
+
           <label className="text-sm mt-2">Số lượt đã dùng</label>
           <Input name="used" value={form.used} onChange={handleChange} type="number" min={0} />
+
           <label className="text-sm mt-2">Giới hạn lượt sử dụng</label>
-          <Input name="usageLimit" value={form.usageLimit} onChange={handleChange} type="number" min={0} />
+          <Input
+            name="usageLimit"
+            value={form.usageLimit}
+            onChange={handleChange}
+            type="number"
+            min={0}
+          />
+
           <label className="text-sm mt-2">Mô tả</label>
-          <textarea name="description" value={form.description} onChange={handleChange} className="border rounded px-2 py-1" rows={3} />
+          <textarea
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            className="border rounded px-2 py-1"
+            rows={3}
+          />
+
           <div className="flex items-center gap-2 mt-2">
             <input type="checkbox" name="enabled" checked={form.enabled} onChange={handleChange} />
             <span>Kích hoạt</span>
           </div>
         </div>
+
         <SheetFooter>
           <Button type="submit">Lưu</Button>
           <SheetClose asChild>
-            <Button type="button" variant="outline">Hủy</Button>
+            <Button type="button" variant="outline">
+              Hủy
+            </Button>
           </SheetClose>
         </SheetFooter>
       </form>
     </SheetContent>
   );
-} 
+}

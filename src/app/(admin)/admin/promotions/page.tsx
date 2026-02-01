@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -12,15 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetClose,
-} from "@/components/ui/sheet";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import PromotionTable from "@/components/admin/promotions/promotion-table";
 import PromotionForm from "@/components/admin/promotions/promotion-form";
 
@@ -45,8 +37,8 @@ const mockPromotions = [
     name: "Combo bắp nước giảm 20%",
     code: "COMBO20",
     type: "Tặng combo",
-    value: null,
-    valueType: null,
+    value: null as number | null,
+    valueType: null as string | null,
     startDate: "2024-07-01",
     endDate: "2024-07-15",
     status: "Sắp diễn ra",
@@ -77,22 +69,11 @@ const PROMO_TYPES = [
   "Tặng combo",
   "Tặng vé",
 ];
-const PROMO_STATUSES = [
-  "Tất cả",
-  "Đang hoạt động",
-  "Sắp diễn ra",
-  "Đã hết hạn",
-];
 
-const PROMO_TYPE_OPTIONS = [
-  { label: "Giảm giá phần trăm", value: "Giảm giá phần trăm" },
-  { label: "Giảm giá cố định", value: "Giảm giá cố định" },
-  { label: "Tặng combo", value: "Tặng combo" },
-  { label: "Tặng vé", value: "Tặng vé" },
-];
+const PROMO_STATUSES = ["Tất cả", "Đang hoạt động", "Sắp diễn ra", "Đã hết hạn"];
 
 export default function PromotionsPage() {
-  const [promotions, setPromotions] = useState(mockPromotions);
+  const [promotions] = useState(mockPromotions); // không dùng setPromotions => bỏ để hết lint
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("Tất cả");
   const [statusFilter, setStatusFilter] = useState("Tất cả");
@@ -103,11 +84,13 @@ export default function PromotionsPage() {
     const matchSearch =
       promo.name.toLowerCase().includes(search.toLowerCase()) ||
       promo.code.toLowerCase().includes(search.toLowerCase());
+
     const matchType = typeFilter === "Tất cả" || promo.type === typeFilter;
     const matchStatus = statusFilter === "Tất cả" || promo.status === statusFilter;
+
     const matchDate =
-      !dateFilter ||
-      (promo.startDate <= dateFilter && promo.endDate >= dateFilter);
+      !dateFilter || (promo.startDate <= dateFilter && promo.endDate >= dateFilter);
+
     return matchSearch && matchType && matchStatus && matchDate;
   });
 
@@ -115,6 +98,7 @@ export default function PromotionsPage() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Quản lý khuyến mãi</h1>
+
         <Sheet>
           <SheetTrigger asChild>
             <Button>+ Thêm khuyến mãi</Button>
@@ -122,6 +106,7 @@ export default function PromotionsPage() {
           <PromotionForm />
         </Sheet>
       </div>
+
       {/* Bộ lọc và tìm kiếm */}
       <Card className="mb-4 p-4">
         <div className="flex flex-wrap gap-4 items-end">
@@ -134,6 +119,7 @@ export default function PromotionsPage() {
               className="w-48"
             />
           </div>
+
           <div>
             <label className="block text-sm mb-1">Loại khuyến mãi</label>
             <Select value={typeFilter} onValueChange={setTypeFilter}>
@@ -142,11 +128,14 @@ export default function PromotionsPage() {
               </SelectTrigger>
               <SelectContent>
                 {PROMO_TYPES.map((type) => (
-                  <SelectItem key={type} value={type}>{type}</SelectItem>
+                  <SelectItem key={type} value={type}>
+                    {type}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
+
           <div>
             <label className="block text-sm mb-1">Trạng thái</label>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -155,11 +144,14 @@ export default function PromotionsPage() {
               </SelectTrigger>
               <SelectContent>
                 {PROMO_STATUSES.map((status) => (
-                  <SelectItem key={status} value={status}>{status}</SelectItem>
+                  <SelectItem key={status} value={status}>
+                    {status}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
+
           <div>
             <label className="block text-sm mb-1">Ngày áp dụng</label>
             <Input
@@ -171,7 +163,9 @@ export default function PromotionsPage() {
           </div>
         </div>
       </Card>
+
       <Separator className="mb-4" />
+
       <Card>
         <PromotionTable promotions={filteredPromotions} />
       </Card>
