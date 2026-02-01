@@ -8,13 +8,13 @@ export const baseApi = createApi({
     baseUrl,
     prepareHeaders: (headers) => {
       try {
-        const token = typeof window !== 'undefined' 
-          ? (localStorage.getItem('access_token') ?? localStorage.getItem('token')) 
+        const token = typeof window !== 'undefined'
+          ? (localStorage.getItem('access_token') ?? localStorage.getItem('token'))
           : null
         if (token) {
           headers.set('Authorization', `Bearer ${token}`)
         }
-      } catch (e) {
+      } catch (_e) {
         // ignore localStorage errors in SSR
       }
       return headers

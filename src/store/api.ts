@@ -8,9 +8,12 @@ export const api = createApi({
     baseUrl,
     prepareHeaders: (headers) => {
       try {
-        const token = typeof window !== 'undefined' ? (localStorage.getItem('access_token') ?? localStorage.getItem('token')) : null
+        const token =
+          typeof window !== 'undefined'
+            ? (localStorage.getItem('access_token') ?? localStorage.getItem('token'))
+            : null
         if (token) headers.set('Authorization', `Bearer ${token}`)
-      } catch (e) {
+      } catch (_e) {
         // ignore
       }
       return headers
@@ -28,7 +31,7 @@ export const api = createApi({
         body: credentials,
       }),
     }),
-    me: build.query<any, void>({
+    me: build.query<unknown, void>({
       query: () => ({ url: '/api/v1/me' }),
     }),
   }),

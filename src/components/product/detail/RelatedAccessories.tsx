@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 type Accessory = {
   name: string;
   imageSrc: string;
@@ -27,14 +29,16 @@ export default function RelatedAccessories({ accessories, onAddToCart }: Related
               className="w-full border rounded-lg py-2 px-1 flex flex-row"
               style={{ backgroundColor: '#fff', color: 'black', borderColor: '#e4e4e7' }}
             >
-              <img
+              <Image
                 src={accessory.imageSrc}
                 alt={accessory.imageAlt}
-                className="mr-3 w-[45px] h-[80px] object-cover rounded"
+                width={45}
+                height={80}
+                className="mr-3 h-[80px] w-[45px] object-cover rounded"
               />
               <div className="flex-1 text-sm" style={{ maxHeight: '3em' }}>
                 <a
-                  href=""
+                  href="#"
                   style={{
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -65,4 +69,4 @@ export default function RelatedAccessories({ accessories, onAddToCart }: Related
       </div>
     </div>
   );
-}   
+}

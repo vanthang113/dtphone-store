@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/components/icons/BannerMenuIcon';
 import { Button } from '@tremor/react';
-import { useState } from 'react';
-import { cn } from '@/lib/utils'; // nếu bạn dùng shadcn hoặc muốn class động
+import { cn } from '@/lib/utils';
 
 type ProductImageGalleryProps = {
   images: { src: string; alt: string }[];
@@ -23,7 +22,6 @@ export default function ProductImageGallery({
 }: ProductImageGalleryProps) {
   return (
     <div className="mt-4 sm:mt-5 md:mt-6">
-      {/* Main Image Display */}
       <div className="relative w-full h-[250px] sm:h-[300px] md:h-96 bg-white rounded-lg overflow-hidden group flex items-center justify-center">
         <Image
           src={currentImage.src}
@@ -48,24 +46,17 @@ export default function ProductImageGallery({
         </div>
       </div>
 
-      {/* Thumbnail Carousel */}
       <div className="mt-6 flex space-x-2 overflow-x-auto py-1">
         {images.map((image, index) => (
           <Button
             key={index}
             className={cn(
-              "relative w-16 h-16 bg-white rounded-lg overflow-hidden shrink-0 border transition-all",
-              currentImage.index === index && "ring-2 ring-blue-500 border-blue-500"
+              'relative w-16 h-16 bg-white rounded-lg overflow-hidden shrink-0 border transition-all',
+              currentImage.index === index && 'ring-2 ring-blue-500 border-blue-500'
             )}
             onClick={() => onImageClick(index)}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              className="object-cover"
-              sizes="64px"
-            />
+            <Image src={image.src} alt={image.alt} fill className="object-cover" sizes="64px" />
           </Button>
         ))}
       </div>

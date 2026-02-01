@@ -1,5 +1,5 @@
 // components/product/detail/PaymentPromotions.tsx
-import React from 'react';
+import Image from 'next/image';
 import { CheckLine } from 'lucide-react';
 
 interface PromotionItem {
@@ -11,12 +11,13 @@ interface PaymentPromotionsProps {
   promotions: PromotionItem[];
 }
 
-const PaymentPromotions: React.FC<PaymentPromotionsProps> = ({ promotions }) => {
+export default function PaymentPromotions({ promotions }: PaymentPromotionsProps) {
   return (
     <div
       className="mt-4 p-4 rounded-2xl border border-blue-300 w-full"
       style={{
-        background: 'linear-gradient(to top right, #fcfeff, #eff5ff) padding-box, linear-gradient(to top right, #dbe8fe, #609afa) border-box',
+        background:
+          'linear-gradient(to top right, #fcfeff, #eff5ff) padding-box, linear-gradient(to top right, #dbe8fe, #609afa) border-box',
       }}
     >
       <ul className="space-y-2 text-sm text-black">
@@ -25,10 +26,12 @@ const PaymentPromotions: React.FC<PaymentPromotionsProps> = ({ promotions }) => 
             <CheckLine style={{ color: '#5ace86' }} />
             <a href="#" className="hover:underline text-black flex items-center gap-2">
               {item.img && (
-                <img
+                <Image
                   src={item.img}
                   alt={item.img.replace('/images/', '').replace('.png', '')}
-                  className="mr-2 w-[50px] h-[30px] object-contain"
+                  width={50}
+                  height={30}
+                  className="mr-2 object-contain"
                 />
               )}
               {item.text}
@@ -38,6 +41,4 @@ const PaymentPromotions: React.FC<PaymentPromotionsProps> = ({ promotions }) => 
       </ul>
     </div>
   );
-};
-
-export default PaymentPromotions;
+}

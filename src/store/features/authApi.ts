@@ -1,7 +1,7 @@
 import { baseApi } from "../baseApi"
 import { mockLoginResponse, mockUser } from "@/data/mockData"
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 
-// Types
 interface LoginRequest {
   email: string
   password: string
@@ -41,58 +41,47 @@ interface VerifyEmailRequest {
   verification_code: string
 }
 
-// Auth API endpoints
 export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    // Đăng nhập (Mock)
     login: build.mutation<LoginResponse, LoginRequest>({
-      async queryFn(credentials) {
-        // Simulate delay
+      async queryFn(_credentials) {
         await new Promise(resolve => setTimeout(resolve, 500))
-        // Return mock data for any email/password
         return { data: mockLoginResponse }
       },
       invalidatesTags: ['User'],
     }),
 
-    // Đăng ký (Mock)
     register: build.mutation<{ message: string; email: string }, RegisterRequest>({
       async queryFn(userData) {
-        // Simulate delay
         await new Promise(resolve => setTimeout(resolve, 500))
-        return { 
-          data: { 
+        return {
+          data: {
             message: 'Đăng ký thành công. Vui lòng xác nhận email.',
-            email: userData.email 
-          } 
+            email: userData.email
+          }
         }
       },
     }),
 
-    // Xác nhận email (Mock)
     verifyEmail: build.mutation<UserResponse, VerifyEmailRequest>({
       async queryFn(data) {
-        // Simulate delay
         await new Promise(resolve => setTimeout(resolve, 500))
         return { data: { ...mockUser, email: data.email } }
       },
       invalidatesTags: ['User'],
     }),
 
-    // Gửi lại mã xác nhận (Mock)
     resendVerification: build.mutation<{ message: string }, string>({
-      async queryFn(email) {
-        // Simulate delay
+      async queryFn(_email) {
         await new Promise(resolve => setTimeout(resolve, 500))
-        return { 
-          data: { 
-            message: 'Mã xác nhận đã được gửi lại đến email của bạn.' 
-          } 
+        return {
+          data: {
+            message: 'Mã xác nhận đã được gửi lại đến email của bạn.'
+          }
         }
       },
     }),
 
-    // Đăng xuất (client-side): xóa token, reset cache
     logout: build.mutation<{ success: boolean }, void>({
       async queryFn(_arg, api) {
         try {
@@ -101,20 +90,21 @@ export const authApi = baseApi.injectEndpoints({
             localStorage.removeItem('refresh_token')
             localStorage.removeItem('user')
           }
-          // reset RTK Query cache/state
           api.dispatch(baseApi.util.resetApiState())
           return { data: { success: true } }
-        } catch (e: any) {
-          return { error: { status: 'CUSTOM_ERROR', error: String(e) } as any }
+        } catch (e: unknown) {
+          const err: FetchBaseQueryError = {
+            status: 500,
+            data: { message: String(e) },
+          }
+          return { error: err }
         }
       },
       invalidatesTags: ['User'],
     }),
 
-    // Lấy thông tin user hiện tại (Mock)
     me: build.query<UserResponse, void>({
       async queryFn() {
-        // Simulate delay
         await new Promise(resolve => setTimeout(resolve, 300))
         return { data: mockUser }
       },

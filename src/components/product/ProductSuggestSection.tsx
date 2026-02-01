@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons/BannerMenuIcon';
 import { CustomRadialIcon } from '../icons/MainIcon';
 import ProductCard from './ProductCard';
@@ -24,7 +24,7 @@ interface ProductSuggestSectionProps {
   formatPrice: (price: number) => string;
 }
 
-export function ProductSuggestSection({ products, formatPrice }: ProductSuggestSectionProps) {
+export function ProductSuggestSection({ products, formatPrice: _formatPrice }: ProductSuggestSectionProps) {
   const suggestRef = useRef<HTMLDivElement>(null);
   const ITEM_WIDTH = 224.8 + 8;
 

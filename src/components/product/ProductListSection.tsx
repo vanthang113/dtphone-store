@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import ProductCard from './ProductCard';
 
 interface Product {
@@ -26,7 +25,14 @@ interface ProductListSectionProps {
   hideHeader?: boolean;
 }
 
-export function ProductListSection({ title, categoryLink, relatedTags, products, formatPrice, hideHeader = false }: ProductListSectionProps) {
+export function ProductListSection({
+  title,
+  categoryLink,
+  relatedTags,
+  products,
+  formatPrice: _formatPrice,
+  hideHeader = false,
+}: ProductListSectionProps) {
   return (
     <div className="mt-3 sm:mt-4 md:mt-5">
       {!hideHeader && (
@@ -42,6 +48,7 @@ export function ProductListSection({ title, categoryLink, relatedTags, products,
           </a>
         </div>
       )}
+
       {/* Hiển thị các tag liên quan */}
       <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 mb-2 sm:mb-2.5">
         {relatedTags.map((tag, index) => (
@@ -54,6 +61,7 @@ export function ProductListSection({ title, categoryLink, relatedTags, products,
           </a>
         ))}
       </div>
+
       {/* Danh sách sản phẩm */}
       <div className="relative overflow-hidden mx-auto max-w-[1160px] w-full">
         <div className="flex gap-2 sm:gap-3 md:gap-5 overflow-x-auto snap-x snap-mandatory py-2 px-2 sm:px-3">

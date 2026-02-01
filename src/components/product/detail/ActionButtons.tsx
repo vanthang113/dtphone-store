@@ -16,31 +16,24 @@ export default function ActionButtons({
 }: ActionButtonsProps) {
   return (
     <div className="flex space-x-4 mb-4">
-      <button
-        className="flex items-center text-blue-500 hover:text-blue-700"
-        onClick={onFavoriteClick}
-      >
+      <button className="flex items-center text-blue-500 hover:text-blue-700" onClick={onFavoriteClick}>
         <Heart className="h-5 w-5 mr-1" strokeWidth={2} />
         Yêu thích
       </button>
-      <button
-        className="flex items-center text-blue-500 hover:text-blue-700"
-        onClick={onQAClick}
-      >
+
+      <button className="flex items-center text-blue-500 hover:text-blue-700" onClick={onQAClick}>
         <EthernetPort className="h-5 w-5 mr-1" strokeWidth={2} />
         Hỏi đáp
       </button>
-      <button
-        className="flex items-center text-blue-500 hover:text-blue-700"
-        onClick={onSpecsClick}
-      >
+
+      <button className="flex items-center text-blue-500 hover:text-blue-700" onClick={onSpecsClick}>
         <Cpu className="h-5 w-5 mr-1" strokeWidth={2} />
         Thông số
       </button>
-      <button
-        className="flex items-center text-blue-500 hover:text-blue-700"
-        onClick={onCompareClick}
-      >      
+
+      <button className="flex items-center text-blue-500 hover:text-blue-700" onClick={onCompareClick}>
+        <CircleFadingPlus className="h-5 w-5 mr-1" strokeWidth={2} />
+        So sánh
       </button>
     </div>
   );
