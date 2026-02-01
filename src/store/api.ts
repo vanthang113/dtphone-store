@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -11,20 +11,20 @@ export const api = createApi({
         const token =
           typeof window !== 'undefined'
             ? (localStorage.getItem('access_token') ?? localStorage.getItem('token'))
-            : null
-        if (token) headers.set('Authorization', `Bearer ${token}`)
-      } catch (_e) {
+            : null;
+
+        if (token) headers.set('Authorization', `Bearer ${token}`);
+      } catch {
         // ignore
       }
-      return headers
-    }
+      return headers;
+    },
   }),
   endpoints: (build) => ({
-    login: build.mutation<{
-      access_token: string
-      refresh_token: string
-      token_type: string
-    }, { email: string; password: string }>({
+    login: build.mutation<
+      { access_token: string; refresh_token: string; token_type: string },
+      { email: string; password: string }
+    >({
       query: (credentials) => ({
         url: '/api/v1/login',
         method: 'POST',
@@ -35,6 +35,6 @@ export const api = createApi({
       query: () => ({ url: '/api/v1/me' }),
     }),
   }),
-})
+});
 
-export const { useLoginMutation, useMeQuery } = api
+export const { useLoginMutation, useMeQuery } = api;

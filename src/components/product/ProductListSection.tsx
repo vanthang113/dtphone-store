@@ -21,7 +21,7 @@ interface ProductListSectionProps {
   categoryLink: string;
   relatedTags: string[];
   products: Product[];
-  formatPrice: (price: number) => string;
+  formatPrice: (price: number) => string; // giữ lại để tương thích nơi gọi
   hideHeader?: boolean;
 }
 
@@ -30,7 +30,6 @@ export function ProductListSection({
   categoryLink,
   relatedTags,
   products,
-  formatPrice: _formatPrice,
   hideHeader = false,
 }: ProductListSectionProps) {
   return (
@@ -49,7 +48,6 @@ export function ProductListSection({
         </div>
       )}
 
-      {/* Hiển thị các tag liên quan */}
       <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 mb-2 sm:mb-2.5">
         {relatedTags.map((tag, index) => (
           <a
@@ -62,7 +60,6 @@ export function ProductListSection({
         ))}
       </div>
 
-      {/* Danh sách sản phẩm */}
       <div className="relative overflow-hidden mx-auto max-w-[1160px] w-full">
         <div className="flex gap-2 sm:gap-3 md:gap-5 overflow-x-auto snap-x snap-mandatory py-2 px-2 sm:px-3">
           {products.map((product) => (

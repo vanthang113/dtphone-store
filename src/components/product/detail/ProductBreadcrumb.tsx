@@ -1,6 +1,5 @@
 // src/components/product/detail/ProductBreadcrumb.tsx
-import Link from 'next/link';
-import React from 'react'; // Thêm dòng này
+import React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,18 +9,18 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 
-type BreadcrumbItem = { href: string; label: string };
+type CrumbItem = { href: string; label: string };
 
 type ProductBreadcrumbProps = {
   slug: string;
 };
 
 const ProductBreadcrumb = ({ slug }: ProductBreadcrumbProps) => {
-  const breadcrumbs: BreadcrumbItem[] = [
-    { href: '/', label: 'Trang chủ' },
-    { href: '/dien-thoai', label: 'Điện thoại' },
-    { href: '/apple', label: 'Apple' },
-    { href: '/iphone-16-series', label: 'iPhone 16 Series' },
+  const breadcrumbs: CrumbItem[] = [
+    { href: "/", label: "Trang chủ" },
+    { href: "/dien-thoai", label: "Điện thoại" },
+    { href: "/apple", label: "Apple" },
+    { href: "/iphone-16-series", label: "iPhone 16 Series" },
     { href: `/products/${slug}`, label: slug },
   ];
 
@@ -42,7 +41,9 @@ const ProductBreadcrumb = ({ slug }: ProductBreadcrumbProps) => {
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
-                {index < breadcrumbs.length - 1 && <BreadcrumbSeparator>/</BreadcrumbSeparator>}
+                {index < breadcrumbs.length - 1 && (
+                  <BreadcrumbSeparator>/</BreadcrumbSeparator>
+                )}
               </React.Fragment>
             ))}
           </BreadcrumbList>
