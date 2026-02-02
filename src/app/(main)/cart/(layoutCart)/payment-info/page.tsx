@@ -52,7 +52,7 @@ export default function PaymentInfoPage() {
   return (
     <div>
       {/* Cart Content */}
-      <div className="px-4 py-4 rounded-lg bg-white border border-gray-200 transition-all duration-300 ease-in-out">
+      <div className=" rounded-lg bg-white border border-gray-200 transition-all duration-300 ease-in-out">
         {/* Header with product count */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-gray-800">

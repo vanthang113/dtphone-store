@@ -23,7 +23,7 @@ export default function HighlightSection({ }: HighlightSectionProps) {
               <p className="text-black">iPad A16 11 inch và iPad Air 11 inch M3 được ra mắt cùng năm vậy hai thế hệ iPad này có điểm gì giống và khác, hãy cùng so sánh chi tiết:</p>
             </div>
           </div>
-          <div className="w-full h-[350px] sm:w-1/2 bg-gray-100 rounded-lg px-4 py-4">
+          <div className="w-full h-[350px] sm:w-1/2 bg-gray-100 rounded-lg ">
             <div className="flex justify-between">
               <h1 className="text-xl font-bold">Tin tức sản phẩm</h1>
               <Link href="Xem tất cả" className="text-blue-600 text-sm flex items-center hover:underline">
