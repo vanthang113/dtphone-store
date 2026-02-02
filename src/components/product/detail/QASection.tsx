@@ -85,7 +85,7 @@ export default function QASection() {
                 {review.name.charAt(0)}
               </div>
               <div className="flex-1">
-                <p className="font-semibold">{review.name}</p>
+                <p className="text-black font-semibold">{review.name}</p>
                 <div className="flex items-center gap-2 text-yellow-400 text-sm mt-1">
                   {Array.from({ length: review.stars }, (_, i) => <Star key={i} className="text-yellow-400 text-sm" />)}
                   <span className="text-gray-700 text-sm font-medium ml-2">{review.note}</span>
