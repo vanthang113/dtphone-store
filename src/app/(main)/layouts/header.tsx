@@ -27,7 +27,6 @@ const Header = () => {
   const [userName, setUserName] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simple client-side check: try to read stored user or token
     try {
       const rawUser = localStorage.getItem("user");
       if (rawUser) {
@@ -46,9 +45,9 @@ const Header = () => {
         }
       }
 
-      const token = localStorage.getItem("access_token") || localStorage.getItem("token");
+      const token =
+        localStorage.getItem("access_token") || localStorage.getItem("token");
       if (token) {
-        // token present — optionally fetch profile here. For now show generic 'Tài khoản'
         setUserName("Tài khoản");
         return;
       }
@@ -66,7 +65,7 @@ const Header = () => {
         <Link
           href="/"
           className="
-            flex items-center shrink-0 mr-[5px]
+            flex items-center shrink-0 mr-2
             h-[64px]
             overflow-hidden
             transition-all duration-200 ease-out
@@ -80,35 +79,45 @@ const Header = () => {
             width={220}
             height={65}
             priority
-            className="block w-auto"
+            // ✅ Mobile to hơn một chút; Desktop giữ 220px
+            className="block h-auto w-[clamp(140px,34vw,220px)]"
+            sizes="(max-width: 640px) 34vw, 220px"
           />
         </Link>
 
-        <div className="flex items-center gap-x-1 sm:gap-x-2 flex-nowrap overflow-x-auto flex-1 justify-end">
-          {/* Danh mục */}
-          <MenuItem icon={<MenuIcon className="w-6 h-6" />} onClick={() => setIsMenuOpen((prev) => !prev)}>
+        {/* ✅ Desktop/Tablet: full menu */}
+        <div className="hidden md:flex items-center gap-x-1 sm:gap-x-2 flex-nowrap overflow-x-auto flex-1 justify-end min-w-0">
+          <MenuItem
+            icon={<MenuIcon className="w-6 h-6" />}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
             <span>Danh mục</span>
           </MenuItem>
 
-          {/* Xem giá tại */}
-          <LocationItem icon={<LocationIcon className="w-6 h-6" />} location="Hồ Chí Minh" />
+          <LocationItem
+            icon={<LocationIcon className="w-6 h-6" />}
+            location="Hồ Chí Minh"
+          />
 
-          {/* Search */}
           <SearchBar />
 
-          {/* Gọi mua hàng */}
-          <PhoneItem icon={<PhoneIcon className="w-6 h-6" />} number="1800.2097" />
+          <PhoneItem
+            icon={<PhoneIcon className="w-6 h-6" />}
+            number="1800.2097"
+          />
 
-          {/* Cửa hàng gần bạn */}
-          <StoreItem icon={<StoreIcon className="w-6 h-6" />} text="Cửa hàng<br />gần bạn" />
+          <StoreItem
+            icon={<StoreIcon className="w-6 h-6" />}
+            text="Cửa hàng<br />gần bạn"
+          />
 
-          {/* Tra cứu đơn hàng */}
-          <DeliveryTrackingItem icon={<DeliveryTrackingIcon className="w-10 h-10" />} text="Tra cứu<br />đơn hàng" />
+          <DeliveryTrackingItem
+            icon={<DeliveryTrackingIcon className="w-10 h-10" />}
+            text="Tra cứu<br />đơn hàng"
+          />
 
-          {/* Giỏ hàng */}
           <CartItem icon={<CartIcon className="w-6 h-6" />} text="Giỏ<br />hàng" />
 
-          {/* Tài khoản */}
           {userName ? (
             <Link href="/information">
               <UserItem icon={<UserIcon className="w-6 h-6" />} name={userName} />
@@ -121,10 +130,40 @@ const Header = () => {
             </Link>
           )}
         </div>
+
+        {/* ✅ Mobile: Logo + Search (thu lại) + Giỏ + Đăng nhập */}
+        <div className="flex md:hidden items-center gap-2 flex-1 min-w-0">
+          {/* SearchBar thu lại để chừa chỗ giỏ */}
+          <div className="flex-1 min-w-0 max-w-[52vw]">
+            <SearchBar />
+          </div>
+
+          {/* Giỏ hàng (mobile) */}
+          <div className="shrink-0">
+            <CartItem icon={<CartIcon className="w-6 h-6" />} text="" />
+          </div>
+
+          {/* Đăng nhập/Tài khoản */}
+          {userName ? (
+            <Link href="/information" className="shrink-0">
+              <button className="bg-white text-[#00868B] rounded-xl px-3 py-2 text-[14px] font-medium whitespace-nowrap leading-none">
+                {userName}
+              </button>
+            </Link>
+          ) : (
+            <Link href="/login" className="shrink-0">
+              <button className="bg-white text-[#00868B] rounded-xl px-3 py-2 text-[14px] font-medium whitespace-nowrap leading-none">
+                Đăng nhập
+              </button>
+            </Link>
+          )}
+        </div>
       </div>
 
-      {/* Menu Banner as Overlay */}
-      {isMenuOpen && <MenuBanner isOverlay onClose={() => setIsMenuOpen(false)} />}
+      {/* Menu Banner as Overlay (chỉ mở khi desktop dùng danh mục) */}
+      {isMenuOpen && (
+        <MenuBanner isOverlay onClose={() => setIsMenuOpen(false)} />
+      )}
     </header>
   );
 };
