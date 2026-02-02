@@ -28,9 +28,18 @@ export default function ProductDetail({ params }: Props) {
   const { slug } = use(params);
 
   const images = [
-    { src: "/images/my_phone/New folder/dien-thoai-itel-p55-plus-8gb-256gb_1__2.webp", alt: "Product Image 1" },
-    { src: "/images/my_phone/New folder/dien-thoai-meizu-mblu-21_3__1.webp", alt: "Product Image 2" },
-    { src: "/images/my_phone/New folder/dien-thoai-meizu-mblu-21_4__2.webp", alt: "Product Image 3" },
+    {
+      src: "/images/my_phone/New folder/dien-thoai-itel-p55-plus-8gb-256gb_1__2.webp",
+      alt: "Product Image 1",
+    },
+    {
+      src: "/images/my_phone/New folder/dien-thoai-meizu-mblu-21_3__1.webp",
+      alt: "Product Image 2",
+    },
+    {
+      src: "/images/my_phone/New folder/dien-thoai-meizu-mblu-21_4__2.webp",
+      alt: "Product Image 3",
+    },
     { src: "/images/my_phone/New folder/dien-thoai-nubia-a56_1.webp", alt: "Product Image 4" },
     { src: "/images/my_phone/New folder/dien-thoai-nubia-z70s-ultra-5g_10_.webp", alt: "Product Image 5" },
     { src: "/images/my_phone/New folder/dien-thoai-nubia-z70s-ultra-5g_11__2.webp", alt: "Product Image 6" },
@@ -206,10 +215,14 @@ export default function ProductDetail({ params }: Props) {
   return (
     <>
       <ProductBreadcrumb slug={slug} />
-      <div className="pt-6 sm:pt-8 md:pt-10 lg:pt-20">
-        <div className="max-w-[1200px] mx-auto px-2 sm:px-3 md:px-4">
-          <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 md:gap-6">
-            <div className="w-full lg:w-1/2 pr-0 lg:pr-3 md:pr-4">
+
+      {/* ✅ FIX: chặn tràn ngang mobile gây hở trắng bên phải */}
+      <div className="pt-6 sm:pt-8 md:pt-10 lg:pt-20 overflow-x-hidden">
+        <div className="max-w-[1200px] mx-auto px-2 sm:px-3 md:px-4 w-full min-w-0">
+          {/* ✅ FIX: min-w-0 cho flex container */}
+          <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 md:gap-6 w-full min-w-0">
+            {/* ✅ FIX: min-w-0 cho cột trái */}
+            <div className="w-full lg:w-1/2 pr-0 lg:pr-3 md:pr-4 min-w-0">
               <h1 className="text-lg sm:text-xl md:text-2xl text-black font-bold mb-2 sm:mb-3">
                 Chi tiết sản phẩm: {slug}
               </h1>
@@ -240,7 +253,8 @@ export default function ProductDetail({ params }: Props) {
               <FAQSection features={features} />
             </div>
 
-            <div className="w-full lg:w-1/2 pl-0 lg:pl-3 md:pl-4">
+            {/* ✅ FIX: min-w-0 cho cột phải */}
+            <div className="w-full lg:w-1/2 pl-0 lg:pl-3 md:pl-4 min-w-0">
               <ProductInfoPanel
                 price={price}
                 originalPrice={originalPrice}
