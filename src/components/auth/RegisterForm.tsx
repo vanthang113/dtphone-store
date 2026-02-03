@@ -197,7 +197,7 @@ export default function RegisterForm() {
         <h2 className="text-black font-bold text-base tablet:text-xl">Thông tin cá nhân</h2>
 
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 tablet:gap-4 items-stretch">
-          <div className="flex flex-col gap-1 tablet:gap-2">
+          <div className="flex flex-col gap-1 tablet:gap-2 text-black">
             <Label htmlFor="name" className="text-sm tablet:text-base font-medium">
               Họ và tên
             </Label>
@@ -212,7 +212,7 @@ export default function RegisterForm() {
             />
           </div>
 
-          <div className="flex flex-col gap-1 tablet:gap-2">
+          <div className="flex flex-col gap-1 tablet:gap-2 text-black">
             <Label htmlFor="phone" className="text-sm tablet:text-base font-medium">
               Số điện thoại
             </Label>
@@ -227,7 +227,7 @@ export default function RegisterForm() {
             />
           </div>
 
-          <div className="flex flex-col gap-1 tablet:gap-2">
+          <div className="flex flex-col gap-1 tablet:gap-2 text-black">
             <Label htmlFor="birthday" className="text-sm tablet:text-base font-medium">
               Ngày sinh
             </Label>
@@ -246,7 +246,7 @@ export default function RegisterForm() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 tablet:gap-2">
+          <div className="flex flex-col gap-1 tablet:gap-2 text-black">
             <Label htmlFor="email" className="text-sm tablet:text-base font-medium">
               Email{" "}
               <span className="text-xs tablet:text-sm font-regular text-neutral-400">(Không bắt buộc)</span>
@@ -271,7 +271,7 @@ export default function RegisterForm() {
         <h2 className="text-black font-bold text-base tablet:text-xl">Tạo mật khẩu</h2>
 
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 tablet:gap-4 items-stretch">
-          <div className="flex flex-col gap-1 tablet:gap-2">
+          <div className="flex flex-col gap-1 tablet:gap-2 text-black">
             <Label htmlFor="password" className="text-sm tablet:text-base font-medium">
               Mật khẩu
             </Label>
@@ -306,7 +306,7 @@ export default function RegisterForm() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 tablet:gap-2">
+          <div className="flex flex-col gap-1 tablet:gap-2 text-black">
             <Label htmlFor="confirmPassword" className="text-sm tablet:text-base font-medium">
               Nhập lại mật khẩu
             </Label>
@@ -345,13 +345,13 @@ export default function RegisterForm() {
               checked={formData.promotionConsent}
               onCheckedChange={handleCheckboxChange("promotionConsent")}
             />
-            <Label htmlFor="promotionConsent" className="text-sm tablet:text-base font-regular">
+            <Label htmlFor="promotionConsent" className="text-black text-sm tablet:text-base font-regular">
               Đăng ký nhận tin khuyến mãi từ DTPhone
             </Label>
           </div>
 
           <div className="flex gap-2 items-center">
-            <Label className="text-sm tablet:text-base font-regular inline-block">
+            <Label className="text-black text-sm tablet:text-base font-regular inline-block">
               Bằng việc Đăng ký, bạn đã đọc và đồng ý với{" "}
               <Link href="https://cellphones.com.vn/tos" className="font-bold text-info-500" target="_blank">
                 Điều khoản sử dụng
@@ -362,7 +362,7 @@ export default function RegisterForm() {
                 className="font-bold text-info-500"
                 target="_blank"
               >
-                Chính sách bảo mật của CellphoneS
+                Chính sách bảo mật của DTPhone
               </Link>
               .
             </Label>

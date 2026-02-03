@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -18,7 +18,7 @@ export function BannerCard({ banner }: BannerCardProps) {
   return (
     <Link
       href={banner.href}
-      className="mb-2 mr-1.5 inline-block overflow-hidden rounded-[10px] shadow-md w-[calc(25%-7.5px)] max-[1024px]:w-[calc(49%-5px)] max-[768px]:mr-[7px]"
+      className="block w-full overflow-hidden rounded-[10px] shadow-md"
     >
       <Image
         src={banner.src}
@@ -26,7 +26,7 @@ export function BannerCard({ banner }: BannerCardProps) {
         width={690}
         height={300}
         loading="lazy"
-        className="rounded-[10px] w-full h-auto"
+        className="w-full h-auto rounded-[10px]"
       />
     </Link>
   );

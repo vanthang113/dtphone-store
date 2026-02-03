@@ -46,7 +46,7 @@ export function CategorySection({ categories, relatedTags, title, categoryLink, 
           </Link>
         ))}
       </div>
-      <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3 w-full px-1 sm:px-2 md:px-0">
+      <div className="flex flex-wrap gap-6 sm:gap-2 md:gap-3 w-full px-1 sm:px-2 md:px-0">
         {categories.map((item, index) => (
           <CategoryCard key={index} category={item} index={index} />
         ))}

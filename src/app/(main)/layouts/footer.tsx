@@ -27,7 +27,6 @@ const Footer = () => {
 
   const memberSites = [
     { name: 'Hệ thống bảo hành sửa chữa Điện thoại - Máy tính', src: '/images/webuser/dienthoaivui.webp', href: '#' },
-    { name: 'Trung tâm bảo hành uỷ quyền Apple', src: '/images/webuser/Logo_CareS_1.webp', href: '#' },
     { name: 'Kênh thông tin giải trí công nghệ cho giới trẻ', src: '/images/webuser/schanel.webp', href: '#' },
     { name: 'Trang thông tin công nghệ mới nhất', src: '/images/webuser/sforum.webp', href: '#' },
   ];
