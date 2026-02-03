@@ -19,10 +19,14 @@ export default function MainLayout({
   const [isChatOpen, setIsChatOpen] = useState(false);
   const pathname = usePathname();
 
-  // Ẩn HEADER chỉ ở trang auth
+  // Ẩn HEADER ở trang auth
   const hideHeader =
     !!pathname &&
-    (pathname.startsWith('/login') || pathname.startsWith('/register'));
+    (
+      pathname.startsWith('/login') ||
+      pathname.startsWith('/register') ||
+      pathname.startsWith('/forgot-password')
+    );
 
   // Ẩn FOOTER ở trang auth + toàn bộ cart
   const hideFooter =
