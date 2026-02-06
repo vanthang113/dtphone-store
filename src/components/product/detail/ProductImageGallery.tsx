@@ -52,7 +52,7 @@ export default function ProductImageGallery({
             key={index}
             className={cn(
               'relative w-16 h-16 bg-white rounded-lg overflow-hidden shrink-0 border transition-all',
-              currentImage.index === index && 'ring-2 ring-blue-500 border-blue-500'
+              currentImage.index === index && 'ring-2 ring-[#00868B] border-[#00868B]'
             )}
             onClick={() => onImageClick(index)}
           >

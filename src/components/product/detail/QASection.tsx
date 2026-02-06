@@ -60,7 +60,7 @@ export default function QASection() {
         />
         <div className="flex-1">
           <div className="mb-4">
-            <h2 className="text-lg font-semibold">Hãy đặt câu hỏi cho chúng tôi</h2>
+            <h2 className="text-lg font-semibold text-gray-800">Hãy đặt câu hỏi cho chúng tôi</h2>
             <p className="text-sm text-gray-600">
               CellphoneS sẽ phản hồi trong vòng 1 giờ. Nếu Quý khách gửi câu hỏi sau 22h, chúng tôi sẽ trả lời vào sáng hôm sau. Thông tin có thể thay đổi theo thời gian, vui lòng đặt câu hỏi để nhận được cập nhật mới nhất!
             </p>
