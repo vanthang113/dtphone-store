@@ -229,7 +229,7 @@ export default function ProductDetail({ params }: Props) {
 
               <div className="flex items-center mb-3 sm:mb-4">
                 <Star className="text-yellow-500 text-base sm:text-lg md:text-xl" />
-                <span className="text-base sm:text-lg md:text-lg font-semibold ml-1">4.9</span>
+                <span className="text-black text-base sm:text-lg md:text-lg font-semibold ml-1">4.9</span>
                 <span className="text-gray-500 ml-1 text-xs sm:text-sm">(302 đánh giá)</span>
               </div>
 

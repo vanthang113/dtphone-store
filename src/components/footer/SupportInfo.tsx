@@ -33,7 +33,7 @@ export function SupportInfo({ supportNumbers, paymentMethods, newsletter }: Supp
           <li
             key={index}
             className="
-              flex flex-col items-start
+              text-black flex flex-col items-start
               sm:flex-row sm:items-center sm:gap-1
             "
           >
@@ -84,7 +84,7 @@ export function SupportInfo({ supportNumbers, paymentMethods, newsletter }: Supp
       {newsletter.perks.map((perk, index) => (
         <p
           key={index}
-          className={index === 0 ? 'text-[#00868B] text-sm' : 'text-xs'}
+          className={index === 0 ? 'text-[#00868B] text-sm' : 'text-gray-600 text-xs'}
         >
           {perk}
         </p>
@@ -95,7 +95,7 @@ export function SupportInfo({ supportNumbers, paymentMethods, newsletter }: Supp
           type="email"
           placeholder="Email *"
           required
-          className="w-full h-8 p-2 border border-gray-300 rounded-md shadow-sm text-sm"
+          className="text-black w-full h-8 p-2 border border-gray-300 rounded-md shadow-sm text-sm"
         />
       </div>
 
@@ -104,7 +104,7 @@ export function SupportInfo({ supportNumbers, paymentMethods, newsletter }: Supp
           type="tel"
           placeholder="Số điện thoại"
           maxLength={10}
-          className="w-full h-8 p-2 border border-gray-300 rounded-md shadow-sm text-sm"
+          className="text-black w-full h-8 p-2 border border-gray-300 rounded-md shadow-sm text-sm"
         />
       </div>
 

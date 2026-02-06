@@ -34,7 +34,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <span className="block text-[10px] sm:text-xs font-semibold max-w-[94px] sm:max-w-[104px] md:max-w-[114px] px-1.5 sm:px-2 whitespace-nowrap overflow-hidden text-ellipsis z-[1] absolute bottom-0 left-1/2 transform -translate-x-1/2 pb-1.5 sm:pb-2">
+        <span className="block text-black text-[10px] sm:text-xs font-semibold max-w-[94px] sm:max-w-[104px] md:max-w-[114px] px-1.5 sm:px-2 whitespace-nowrap overflow-hidden text-ellipsis z-[1] absolute bottom-0 left-1/2 transform -translate-x-1/2 pb-1.5 sm:pb-2">
           {category.title}
         </span>
       </Link>

@@ -79,14 +79,14 @@ function ProductCard({
       {/* Phần thông tin sản phẩm */}
       <CardContent className="p-2 sm:p-2.5 md:p-3 flex-1 flex flex-col min-h-0">
         <Link href={`/products/${id}`} className="block flex flex-col h-full">
-          <h3 className="text-[11px] sm:text-sm md:text-sm font-medium line-clamp-2 mb-1 sm:mb-2 h-[40px] sm:h-[48px] flex items-center">
+          <h3 className="text-[11px] text-black sm:text-sm md:text-sm font-medium line-clamp-2 mb-1 sm:mb-2 h-[40px] sm:h-[48px] flex items-center">
             {name}
           </h3>
 
           <div className="space-y-0.5 sm:space-y-1 flex-1 flex flex-col">
             {/* Giá sản phẩm */}
             <div className="flex items-baseline gap-1 sm:gap-2 h-[30px] sm:h-[36px] flex items-center">
-              <p className="text-sm sm:text-lg font-bold text-primary-500">
+              <p className="text-sm text-black sm:text-lg font-bold text-primary-500">
                 {new Intl.NumberFormat('vi-VN', {
                   style: 'currency',
                   currency: 'VND'
