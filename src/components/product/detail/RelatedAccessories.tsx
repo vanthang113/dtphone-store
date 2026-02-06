@@ -19,7 +19,7 @@ export default function RelatedAccessories({ accessories, onAddToCart }: Related
   return (
     <div className="mt-4 relative bg-[#f7f7f8] rounded-lg overflow-hidden group">
       <div className="flex items-center justify-between gap-x-4 px-4 py-2">
-        <h3 className="text-lg font-semibold mb-0">Phụ kiện mua cùng</h3>
+        <h3 className="text-lg text-black font-semibold mb-0">Phụ kiện mua cùng</h3>
       </div>
       <div className="px-4 pb-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">

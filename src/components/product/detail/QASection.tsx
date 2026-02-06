@@ -69,7 +69,7 @@ export default function QASection() {
             <input
               type="text"
               placeholder="Viết câu hỏi của bạn tại đây"
-              className="flex-grow px-4 py-4 border rounded-lg outline-none text-sm bg-white mr-2"
+              className="text-black flex-grow px-4 py-4 border rounded-lg outline-none text-sm bg-white mr-2"
             />
             <button className="bg-[#00868B] text-white px-4 py-4 rounded-lg flex items-center gap-1 hover:bg-[#00777B] text-sm">
               Gửi câu hỏi <ArrowRight className="h-4 w-4 ml-1" />

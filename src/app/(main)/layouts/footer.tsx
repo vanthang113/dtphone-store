@@ -157,7 +157,7 @@ const Footer = () => {
             <div className="w-full sm:w-1/2 md:w-1/4 px-2 sm:px-3 mb-4">
               <h3 className="text-sm sm:text-base font-medium text-gray-700 mb-3">Kết nối với DTphone</h3>
               <SocialLinks links={socialLinks} />
-              <h3 className="text-sm sm:text-base font-medium mb-3">Website thành viên</h3>
+              <h3 className="text-sm sm:text-base font-medium text-gray-700 mb-3">Website thành viên</h3>
               <MemberSites sites={memberSites} />
             </div>
           </div>
@@ -181,9 +181,9 @@ const Footer = () => {
           </div>
           <div className="flex flex-col items-center">
             <p className="text-[10px] sm:text-[11px] text-gray-500 mb-2 text-center">
-              Công ty TNHH Thương Mại Tổng Hợp HTV - GPĐKKD: 0108075931 cấp tại Sở KH & ĐT TP. Hà Nội. Địa chỉ văn
-              phòng: 543 Nguyễn Trãi, phường Thanh Xuân Nam, quận Thanh Xuân, Thành phố Hà Nội, Việt Nam. Điện thoại:
-              024.7303.0119.
+              Công ty TNHH Thương Mại Tổng Hợp DT - DTPHONE: 0862421003 cấp tại Sở KH & ĐT TP. Đà Nẵng. Địa chỉ văn
+              phòng: 39 Tạ Hiện, phường Hoà Cường Bắc, quận Hải Châu, Thành phố Đà Nẵng, Việt Nam. Điện thoại:
+              01234565789.
             </p>
             <div className="flex items-center gap-1">
               <Link href="http://online.gov.vn/Home/WebDetails/75641" target="_blank">

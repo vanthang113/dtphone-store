@@ -18,7 +18,7 @@ const PromotionItem: React.FC<PromotionItemProps> = ({ id, text, link }) => {
       </span>
       <span>
         {text}
-        {link && <a href={link} className="text-blue-600 ml-1">Xem chi tiết</a>}
+        {link && <a href={link} className="text-[#00868B] ml-1">Xem chi tiết</a>}
       </span>
     </li>
   );

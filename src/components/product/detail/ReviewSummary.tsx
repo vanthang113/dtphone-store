@@ -64,7 +64,7 @@ export default function ReviewSummary() {
 
             {/* Khối trải nghiệm */}
             <div className="w-full lg:w-1/2">
-              <h2 className="font-semibold mt-1 lg:mt-4">Đánh giá theo trải nghiệm</h2>
+              <h2 className="text-black font-semibold mt-1 lg:mt-4">Đánh giá theo trải nghiệm</h2>
 
               {["Hiệu năng", "Thời lượng pin", "Màn hình"].map((item) => (
                 <div

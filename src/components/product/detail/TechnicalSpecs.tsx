@@ -9,7 +9,7 @@ export default function TechnicalSpecs({ specs }: TechnicalSpecsProps) {
     <div className="mt-4 sm:mt-5 md:mt-6 w-full border border-gray-200 rounded-lg sm:rounded-xl overflow-hidden text-xs sm:text-sm text-gray-800">
       <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 border-b bg-gray-100">
         <h3 className="font-semibold text-base sm:text-lg text-gray-800">Thông số kỹ thuật</h3>
-        <a href="#" className="text-blue-600 text-xs sm:text-sm hover:underline">Xem tất cả</a>
+        <a href="#" className="text-[#00868B] text-xs sm:text-sm hover:underline">Xem tất cả</a>
       </div>
       {specs.map(([label, value], index) => (
         <div

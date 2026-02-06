@@ -24,7 +24,7 @@ export default function ProductCommitmentSection() {
           </div>
           <p className="text-xs sm:text-sm text-gray-800">
             Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.
-            <Link href="#" className="text-blue-600 ml-1">Xem chi tiết</Link>
+            <Link href="#" className="text-[#00868B] ml-1">Xem chi tiết</Link>
           </p>
         </div>
         <div className="flex flex-col p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-2xl space-y-1.5 sm:space-y-2">
