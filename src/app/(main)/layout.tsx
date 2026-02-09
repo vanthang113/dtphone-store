@@ -33,6 +33,17 @@ export default function MainLayout({
     !!pathname &&
     (hideHeader || pathname.startsWith('/cart'));
 
+  // Ẩn floating chat button
+  const hideFloating =
+    !!pathname &&
+    (
+      pathname.startsWith('/login') ||
+      pathname.startsWith('/register') ||
+      pathname.startsWith('/forgot-password') ||
+      pathname.startsWith('/cart') ||
+      pathname.startsWith('/checkout')
+    );
+
   return (
     <CartProvider>
       <PaymentFormProvider>
@@ -46,7 +57,7 @@ export default function MainLayout({
           </main>
 
           {/* Floating Chat Button */}
-          {!isChatOpen && (
+          {!hideFloating && !isChatOpen && (
             <button
               onClick={() => setIsChatOpen(true)}
               className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#00777B] text-white rounded-full shadow-lg hover:bg-[#00777B] transition-colors"
