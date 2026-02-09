@@ -33,7 +33,7 @@ export default function MainLayout({
     !!pathname &&
     (hideHeader || pathname.startsWith('/cart'));
 
-  // Ẩn floating chat button
+  // Ẩn phần liên hệ chatbox
   const hideFloating =
     !!pathname &&
     (

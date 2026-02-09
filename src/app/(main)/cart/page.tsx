@@ -161,8 +161,6 @@ export default function CartPage() {
               <div
                 className="
                   flex justify-end shrink-0
-                  pr-[92px]
-                  md:pr-0
                 "
               >
                 <Button
